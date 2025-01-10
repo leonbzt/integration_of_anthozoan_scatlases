@@ -1,0 +1,1 @@
+(xenia_longest_isoforms_Xe_009957-T1:0.078162,(xenia_longest_isoforms_Xe_009960-T1:0.146546,(xenia_longest_isoforms_Xe_009952-T1:0.13432,(xenia_longest_isoforms_Xe_009956-T1:0.076414,(xenia_longest_isoforms_Xe_009953-T1:0.016228,(xenia_longest_isoforms_Xe_009954-T1:0.003653,xenia_longest_isoforms_Xe_009955-T1:0.003687):0.00495):0.065008):0.021235):0.036778):0.078162);

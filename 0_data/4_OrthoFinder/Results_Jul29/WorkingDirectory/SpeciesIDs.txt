@@ -1,0 +1,4 @@
+0: aip_longest_isoforms.fasta
+1: nvec_longest_isoform.fasta
+2: spis_longest_isoform_marker.fasta
+3: xenia_longest_isoforms.fasta

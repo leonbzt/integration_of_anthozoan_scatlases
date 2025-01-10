@@ -1,0 +1,576 @@
+NVE,Aip_XP,Aip_LOC,HumanGene,Pfam,refseq_desc,gene,avg_log2FC,cluster,annotation_notes
+NVE19039,XP_020894226.1,LOC110233289,-,-,leucine-rich_repeat_extensin-like_protein_3,NVE19039,"6,27",cnidocyte,NA
+NVE19037,XP_020898759.1,LOC110237504,-,-,leucine-rich_repeat_extensin-like_protein_3,NVE19037,"5,58",cnidocyte,NA
+NVE3845,XP_020912057.1,LOC110249814,-,"Gal_Lectin(1),Collagen(2)",collectin-46,EVA1C-like3,"5,44",cnidocyte,Protein eva-1 homolog C
+NVE19040,XP_020894213.1,LOC110233278,-,-,leucine-rich_repeat_extensin-like_protein_3,NVE19040,"5,25",cnidocyte,NA
+NVE900,XP_020892806.1,LOC110232046,-,-,-,NVE900,"5,21",cnidocyte,NA
+NVE3844,XP_020912066.1,LOC110249821,-,"Collagen(2),Gal_Lectin(1)",collagen_alpha-2(IX)_chain_isoform_X1,LPHN-like2,"4,97",cnidocyte,Latrophilin Cirl {ECO:0000250|UniProtKB:A1Z7G7}
+NVE18972,XP_020903397.1,LOC110241830,TMEM194A,NEMP(1),nuclear_envelope_integral_membrane_protein_1,T194A-like,"4,57",cnidocyte,NA
+NVE24289,XP_028512798.1,LOC110232044,-,-,loricrin_isoform_X1,NVE24289,"4,46",cnidocyte,NA
+NVE9725,XP_020911633.1,LOC110249399,FKBP7,"FKBP_C(1),EF-hand_5(2),EF-hand_7(1)",peptidyl-prolyl_cis-trans_isomerase_FKBP14,FKB14-like1,"4,40",cnidocyte,Peptidyl-prolyl cis-trans isomerase FKBP14
+NVE20437,XP_020907202.1,LOC110245283,-,F5_F8_type_C(1),lactadherin,DCBD2-like,"4,27",cnidocyte,"Discoidin, CUB and LCCL domain-containing protein 2"
+NVE897,XP_020892811.1,LOC110232048,-,-,probable_global_transcription_activator_SNF2L2,NVE897,"4,18",cnidocyte,NA
+NVE9332,XP_020904788.1,LOC110243070,-,Pro_isomerase(1),peptidyl-prolyl_cis-trans_isomerase_B,PPIB-like2,"4,04",cnidocyte,Peptidyl-prolyl cis-trans isomerase B
+NVE24294,XP_020892745.1,LOC110232004,-,-,-,NVE24294,"4,01",cnidocyte,NA
+NVE22167,XP_020902722.1,LOC110241212,-,-,-,NVE22167,"3,89",cnidocyte,NA
+NVE24152,XP_020917509.1,LOC110254806,-,7tm_1(1),melanopsin,OPN4-like3,"3,82",cnidocyte,Melanopsin
+NVE3843,XP_020912054.1,LOC110249813,-,Gal_Lectin(1),adhesion_G_protein-coupled_receptor_L3,CSL1-like2,"3,78",cnidocyte,"Nematogalectin-like, L-rhamnose-binding lectin CSL1 {ECO:0000303|Ref.1}"
+NVE19597,XP_020916765.1,LOC110254145,-,GSHPx(1),glutathione_peroxidase_6,GPX5-like2,"3,66",cnidocyte,Epididymal secretory glutathione peroxidase
+NVE16303,XP_020898228.1,LOC110236998,-,"zf-C2H2_4(3),zf-C2H2(6),zf-H2C2_2(1)",zinc_finger_protein_239,NvKlf-spotty,"3,61",cnidocyte,Zinc finger and SCAN domain-containing protein 22
+NVE25957,XP_020902808.1,LOC110241280,-,Laminin_G_3(1),-,NVE25957,"3,44",cnidocyte,NA
+NVE5212,XP_020897146.1,LOC110236011,-,2OG-FeII_Oxy_3(1),transmembrane_prolyl_4-hydroxylase,P4HTM-like18,"3,41",cnidocyte,Transmembrane prolyl 4-hydroxylase
+NVE22139,XP_028516436.1,LOC110244366,-,SEA(1),protein_stoned-B,NVE22139,"3,30",cnidocyte,NA
+NVE142,XP_020903209.1,LOC110241669,-,-,dickkopf-related_protein_3,DKK3-like3,"3,28",cnidocyte,Dickkopf-related protein 3
+NVE20501,XP_020898660.1,LOC110237420,-,G_glu_transpept(1),glutathione_hydrolase_1_proenzyme,GGT1-like13,"3,23",cnidocyte,Gamma-glutamyltranspeptidase 1
+NVE19315,XP_020911552.1,LOC110249318,-,Laminin_G_3(2),LOW_QUALITY_PROTEIN:_-,NVE19315,"3,22",cnidocyte,NA
+NVE24290,XP_020892801.1,LOC110232043,-,-,-,NVE24290,"3,08",cnidocyte,NA
+NVE18870,XP_020915626.1,LOC110253095,-,"Collagen(2),Gal_Lectin(1)",-,NVE18870,"3,05",cnidocyte,NA
+NVE21061,XP_020908982.1,LOC110246940,-,-,anther-specific_proline-rich_protein_APG,NVE21061,"3,02",cnidocyte,NA
+NVE25239,XP_020911954.1,LOC110249712,-,"VWA_2(1),VWA(1)",cochlin,MATN1-like3,"2,97",cnidocyte,Cartilage matrix protein
+NVE17241,XP_020902757.1,LOC110241235,-,"CAP(1),PLAT(1),Lectin_C(1)",-,ISP2-like1,"2,87",cnidocyte,Type-2 ice-structuring protein
+NVE5471,XP_020911728.1,LOC110249497,POU4F3,"Homeodomain(1),Pou(1)","POU_domain,_class_4,_transcription_factor_3",NvPOU4,"2,69",cnidocyte,"NvPOU4, Brain-specific homeobox_POU domain protein 3"
+NVE9188,XP_028515233.1,LOC110240306,-,CAP(1),Golgi-associated_plant_pathogenesis-related_protein_1,GAPR1-like18,"2,67",cnidocyte,Golgi-associated plant pathogenesis-related protein 1
+NVE12609,XP_020898893.1,LOC110237629,-,"SEA(1),WSC(1)",-,KREM1-like1,"2,64",cnidocyte,Kremen protein 1
+NVE18953,XP_020893124.1,LOC110232293,-,-,-,NVE18953,"2,63",cnidocyte,NA
+NVE2100,XP_020899281.1,LOC110237993,-,"Thioredoxin_7(6),Thioredoxin(3)",-,TXD12-like2,"2,60",cnidocyte,Thioredoxin domain-containing protein 12
+NVE6865,XP_028513337.1,LOC110233903,-,ShK(6),YLP_motif-containing_protein_1_isoform_X2,NVE6865,"2,57",cnidocyte,NA
+NVE16015,XP_020908056.1,LOC110246092,-,-,-,NVE16015,"2,56",cnidocyte,NA
+NVE2937,XP_020894538.1,LOC110233582,FKBP14,"EF-hand_7(1),FKBP_C(1)",FK506-binding_protein_2,FKBP2-like2,"2,53",cnidocyte,FK506-binding protein 2
+NVE11004,XP_028517566.1,LOC110247820,-,ApeC(1),-,NVE11004,"2,53",cnidocyte,NA
+NVE7535,XP_020908497.1,LOC110246491,PRDM13,zf-C2H2(3),early_growth_response_protein_1,NvPrdm13,"2,50",cnidocyte,PR domain zinc finger protein 13
+NVE4417,XP_020892035.1,LOC110231359,-,Kazal_2(1),-,NVE4417,"2,48",cnidocyte,NA
+NVE11707,XP_020917508.1,LOC110254805,-,WAP(1),AP2-associated_protein_kinase_1,NVE11707,"2,40",cnidocyte,NA
+NVE144,XP_020903206.1,LOC110241667,-,-,dickkopf-related_protein_3,NVE144,"2,38",cnidocyte,NA
+NVE9965,XP_028519108.1,LOC110252787,-,-,-,NVE9965,"2,36",cnidocyte,NA
+NVE23051,XP_020914913.1,LOC110252428,-,-,-,NVE23051,"2,34",cnidocyte,NA
+NVE3662,XP_020892842.1,LOC110232079,-,-,ABC_transporter_F_family_member_4,NVE3662,"2,32",cnidocyte,NA
+NVE14257,XP_020903918.1,LOC110242303,-,-,-,NVE14257,"2,31",cnidocyte,NA
+NVE16204,XP_020902793.1,LOC110241265,-,MANEC(1),-,NVE16204,"2,31",cnidocyte,NA
+NVE774,XP_020907474.1,LOC110245536,-,-,-,NVE774,"2,29",cnidocyte,NA
+NVE22047,XP_020911177.1,LOC110248945,-,"Peptidase_M13_N(1),Peptidase_M13(1)",endothelin-converting_enzyme_2,ECE2-like3,"2,27",cnidocyte,Endothelin-converting enzyme 2
+NVE26057,XP_028514336.1,LOC110237195,-,ShK(3),mediator_of_RNA_polymerase_II_transcription_subunit_15_isoform_X4,NVE26057,"2,26",cnidocyte,NA
+NVE25815,XP_020907472.1,LOC110245533,-,-,-,NVE25815,"2,21",cnidocyte,NA
+NVE2102,XP_020905032.1,LOC110243285,-,"HMG_box_2(1),HMG_box(1)",transcription_factor_SOX-14,NvSox2,"2,16",cnidocyte,Transcription factor Sox-21-B {ECO:0000303|PubMed:15037315}
+NVE3009,XP_020897619.1,LOC110236437,-,CAP(1),ectin,PRY1-like4,"2,15",cnidocyte,Protein PRY1 {ECO:0000305}
+NVE2179,XP_028518745.1,LOC110251542,-,Lectin_C(1),-,PGCB-like2,"2,11",cnidocyte,Brevican core protein
+NVE350,XP_028515161.1,LOC114574221,-,Peptidase_C26(1),gamma-glutamyl_hydrolase-like_isoform_X2,GGHA-like3,"2,10",cnidocyte,Gamma-glutamyl hydrolase A
+NVE25301,XP_020898099.1,LOC110236884,MANF,"ARMET_C(1),ARMET_N(1)",mesencephalic_astrocyte-derived_neurotrophic_factor_homolog,ARMET-like,"2,02",cnidocyte,Mesencephalic astrocyte-derived neurotrophic factor homolog
+NVE22046,XP_020911180.1,LOC110248948,-,-,-,NVE22046,"1,99",cnidocyte,NA
+NVE5154,XP_028518508.1,LOC110250871,-,Carb_anhydrase(2),-,CAH2-like1,"1,99",cnidocyte,Carbonic anhydrase 2
+NVE20904,XP_028514250.1,LOC110236991,-,"Pentaxin(1),Laminin_G_3(2)",-,NVE20904,"1,98",cnidocyte,NA
+NVE21881,XP_020894139.1,LOC110233208,-,HLH(1),-,ID4-like21,"1,90",cnidocyte,DNA-binding protein inhibitor ID-4
+NVE14311,XP_020901412.1,LOC110239984,-,-,-,NVE14311,"1,88",cnidocyte,NA
+NVE19313,XP_020911606.1,LOC110249372,-,-,-,NVE19313,"1,87",cnidocyte,NA
+NVE9231,XP_020899803.1,LOC110238471,-,GON(1),-,NVE9231,"1,87",cnidocyte,NA
+NVE13177,XP_020907283.1,LOC110245344,HSP90B1,"HATPase_c(1),HATPase_c_3(1),HSP90(2)",endoplasmin,ENPL-like1,"1,84",cnidocyte,Endoplasmin
+NVE10950,XP_028513461.1,LOC110234421,-,"EGF(17),hEGF(17)",neurogenic_locus_notch_homolog_protein_1,FBP1-like16,"1,82",cnidocyte,Fibropellin-1
+NVE19836,XP_020895140.1,LOC110234116,-,-,-,NVE19836,"1,79",cnidocyte,NA
+NVE17879,XP_028519443.1,LOC110253944,-,-,-,NVE17879,"1,77",cnidocyte,NA
+NVE25820,XP_020904333.1,LOC110242660,-,-,serine/threonine-protein_kinase_PRP4_homolog,NVE25820,"1,77",cnidocyte,NA
+NVE15517,XP_020905515.1,LOC110243726,-,G_glu_transpept(1),glutathione_hydrolase_1_proenzyme_isoform_X1,GGT1-like12,"1,77",cnidocyte,Gamma-glutamyltranspeptidase 1
+NVE17663,XP_020907437.1,LOC110245492,-,-,serine/threonine-protein_phosphatase_1_regulatory_subunit_10,NVE17663,"1,75",cnidocyte,NA
+NVE2194,XP_020903810.1,LOC110242196,-,"zf-C3HC4(1),zf-B_box(1),NHL(5),zf-RING_UBOX(1),DUF5128(1),zf-C3HC4_2(1),Filamin(1)",E3_ubiquitin-protein_ligase_TRIM71,LIN41-like19,"1,73",cnidocyte,E3 ubiquitin-protein ligase TRIM71
+NVE4519,XP_020897089.1,LOC110235953,-,TSP_1(1),-,NVE4519,"1,70",cnidocyte,NA
+NVE18952,XP_020893121.1,LOC110232291,-,-,-,NVE18952,"1,68",cnidocyte,NA
+NVE20609,XP_020917352.1,LOC110254673,PCBP3,KH_1(3),poly(rC)-binding_protein_3,PCBP3-like1,"1,65",cnidocyte,Poly(rC)-binding protein 3
+NVE25192,XP_020897892.1,LOC110236692,-,"VWA(1),VWA_2(1)",von_Willebrand_factor_A_domain-containing_protein_2,MATN2-like3,"1,65",cnidocyte,Matrilin-2
+NVE20302,XP_028519197.1,LOC110253166,-,"TSP_1(2),Astacin(2)",SCO-spondin,NAS6-like1,"1,65",cnidocyte,Zinc metalloproteinase nas-6
+NVE13546,XP_020904942.1,LOC110243204,-,"Peptidase_M13(1),Peptidase_M13_N(1)",endothelin-converting_enzyme_homolog,ECE1-like5,"1,64",cnidocyte,"Peptidase M13, Endothelin-converting enzyme 1"
+NVE21135,XP_020916875.1,LOC110254245,-,"Hormone_recep(1),zf-C4(1)",COUP_transcription_factor_2,COT2-like2,"1,63",cnidocyte,COUP transcription factor 2
+NVE19866,XP_020914549.1,LOC110252123,-,"2OG-FeII_Oxy_3(1),P4Ha_N(1)",prolyl_4-hydroxylase_subunit_alpha-1,P4HA1-like2,"1,62",cnidocyte,Prolyl 4-hydroxylase subunit alpha-1
+NVE252,XP_028517323.1,LOC110247100,-,Gal_Lectin(4),-,SAL-like2,"1,61",cnidocyte,Rhamnose-binding lectin
+NVE1559,XP_020910329.1,LOC110248170,-,"Peptidase_S8(1),P_proprotein(1),S8_pro-domain(1)",PC3-like_endoprotease_variant_B,NECA-like,"1,58",cnidocyte,PC3-like endoprotease variant A
+NVE3754,XP_020897572.1,LOC110236391,-,EF-hand_7(1),multiple_coagulation_factor_deficiency_protein_2_homolog,MCFD2-like2,"1,58",cnidocyte,Multiple coagulation factor deficiency protein 2 homolog
+NVE10640,XP_020894407.1,LOC110233453,-,Metallophos(1),tartrate-resistant_acid_phosphatase_type_5,PPA5-like3,"1,58",cnidocyte,Tartrate-resistant acid phosphatase type 5
+NVE16780,XP_020896536.1,LOC110235417,-,"C2(1),C1_1(1)",titin_isoform_X2,UN13C-like,"1,57",cnidocyte,Protein unc-13 homolog C
+NVE19132,XP_020891867.1,LOC110231217,SLC35B1,"UAA(1),EamA(1)",solute_carrier_family_35_member_B1-like,S35B1-like1,"1,56",cnidocyte,Solute carrier family 35 member B1
+NVE17870,XP_020902842.1,LOC110241313,-,ApeC(1),LOW_QUALITY_PROTEIN:_-,NVE17870,"1,55",cnidocyte,NA
+NVE5902,XP_020896460.1,LOC110235346,-,"Ras(1),SRPRB(1),Roc(1),MMR_HSR1(1),Gtr1_RagA(1),Arf(1)",ADP-ribosylation_factor_1,ARF1-like21,"1,55",cnidocyte,ADP-ribosylation factor 1
+NVE5128,XP_020893532.1,LOC110232654,-,Cyt-b5(1),neudesin,NENF-like,"1,54",cnidocyte,Neudesin
+NVE8024,XP_020895040.1,LOC110234037,-,Aa_trans(1),vesicular_inhibitory_amino_acid_transporter-like,VIAAT-like15,"1,54",cnidocyte,Vesicular inhibitory amino acid transporter
+NVE25277,XP_020891848.1,LOC110231205,-,"EF-hand_7(1),2OG-FeII_Oxy_3(1)",transmembrane_prolyl_4-hydroxylase,P4HTM-like12,"1,49",cnidocyte,Transmembrane prolyl 4-hydroxylase
+NVE17658,XP_028515803.1,LOC114575333,-,-,-,NVE17658,"1,49",cnidocyte,NA
+NVE22736,XP_020916982.1,LOC110254345,SPSB1,"SPRY(1),SOCS_box(1)",protein_gustavus,GUS-like1,"1,48",cnidocyte,Protein gustavus {ECO:0000312|EMBL:AAM68373.1}
+NVE14312,XP_020901452.1,LOC110240024,-,"EGF(1),Lipoxygenase(1)",allene_oxide_synthase-lipoxygenase_protein,LOXA-like,"1,46",cnidocyte,Arachidonate 15-lipoxygenase
+NVE2834,XP_020913975.1,LOC110251591,CAPN15,"zf-RanBP(4),Peptidase_C2(1)",calpain-15,CAN15-like,"1,46",cnidocyte,Calpain-15
+NVE23050,XP_028518975.1,LOC110252425,-,TSP_1(4),-,HMCN1-like31,"1,42",cnidocyte,Hemicentin-1
+NVE3792,XP_020903068.1,LOC110241543,-,2OG-FeII_Oxy_3(1),transmembrane_prolyl_4-hydroxylase,P4HTM-like6,"1,41",cnidocyte,Transmembrane prolyl 4-hydroxylase
+NVE25856,XP_020895432.1,LOC110234394,-,-,-,NVE25856,"1,40",cnidocyte,NA
+NVE143,XP_020903208.1,LOC110241668,-,-,dickkopf-related_protein_3,DKK3-like2,"1,40",cnidocyte,Dickkopf-related protein 3
+NVE5271,XP_020902052.1,LOC110240574,-,-,-,NVE5271,"1,39",cnidocyte,NA
+NVE25285,XP_020904162.1,LOC110242504,-,"Toxin_R_bind_N(1),Laminin_G_3(1)",-,NVE25285,"1,38",cnidocyte,NA
+NVE25286,XP_020904127.1,LOC110242476,PRDM6,"zf-C2H2(1),SET(1)",putative_histone-lysine_N-methyltransferase_PRDM6,NvPrdm6-like,"1,37",cnidocyte,Putative histone-lysine N-methyltransferase PRDM6
+NVE12762,XP_020914867.1,LOC110252389,SOX4,"HMG_box(1),HMG_box_2(1)",transcription_factor_SOX-12-like,NvSoxC1,"1,33",cnidocyte,SRY-related protein AES4
+NVE10073,XP_020899893.1,LOC110238559,-,"CAP(1),TSP_1(1)",-,GAPR1-like1,"1,29",cnidocyte,Golgi-associated plant pathogenesis-related protein 1
+NVE25278,XP_020891871.1,LOC110231223,-,-,transmembrane_prolyl_4-hydroxylase,P4HTM-like13,"1,29",cnidocyte,Transmembrane prolyl 4-hydroxylase
+NVE15727,XP_020904839.1,LOC110243118,-,C2(2),synaptotagmin-1_isoform_X2,SY63-like4,"1,27",cnidocyte,Synaptotagmin-C
+NVE4053,XP_028516349.1,LOC110244110,-,"MFS_1_like(2),MFS_1(3),Nuc_H_symport(1)",major_facilitator_superfamily_domain-containing_protein_6,MFSD6-like4,"1,26",cnidocyte,Major facilitator superfamily domain-containing protein 6
+NVE15734,XP_028516075.1,LOC110243164,PDIA3,"Thioredoxin(4),Thioredoxin_6(1)",-,PDIA3-like11,"1,24",cnidocyte,Protein disulfide-isomerase A3
+NVE16625,XP_020906618.1,LOC110244741,FAM20B,Fam20C(1),glycosaminoglycan_xylosylkinase,XYLK-like2,"1,24",cnidocyte,Glycosaminoglycan xylosylkinase
+NVE15609,XP_020892225.1,LOC110231544,-,MFS_1(1),vesicular_glutamate_transporter_1,VGLU3-like3,"1,22",cnidocyte,Vesicular glutamate transporter 3
+NVE3041,XP_020914777.1,LOC110252314,-,Peptidase_A22B(1),minor_histocompatibility_antigen_H13_isoform_X1,HM13-like1,"1,22",cnidocyte,Minor histocompatibility antigen H13
+NVE12650,XP_020906067.1,LOC110244209,PDIA4,"Thioredoxin_6(1),Thioredoxin(3),Calsequestrin(1)",protein_disulfide-isomerase_A4,PDIA4-like2,"1,22",cnidocyte,Protein disulfide-isomerase A4
+NVE17613,XP_020917312.1,LOC110254641,-,"DnaJ(1),TM2(1)",dnaJ_homolog_subfamily_C_member_22,DJC22-like,"1,17",cnidocyte,DnaJ homolog subfamily C member 22
+NVE13176,XP_020907281.1,LOC110245342,CRELD2,"Laminin_EGF(1),EGF_CA(1)",cysteine-rich_with_EGF-like_domain_protein_2,CREL2-like,"1,16",cnidocyte,Cysteine-rich with EGF-like domain protein 2
+NVE5009,XP_020900534.1,LOC110239168,P4HB,"Thioredoxin_2(1),Thioredoxin_6(1),Calsequestrin(1),Thioredoxin(2)",protein_disulfide-isomerase_2,PDIA1-like1,"1,13",cnidocyte,Protein disulfide-isomerase
+NVE20102,XP_028518580.1,LOC114576333,-,-,-,NVE20102,"1,13",cnidocyte,NA
+NVE26058,XP_028514357.1,LOC110237179,-,"VWC(1),fn2(2)","flocculation_protein_FLO11,_partial",NVE26058,"1,12",cnidocyte,NA
+NVE22461,XP_020894951.1,LOC110233956,-,-,-,NVE22461,"1,11",cnidocyte,NA
+NVE11221,XP_020915219.1,LOC110252726,LZTFL1,Leu_zip(1),leucine_zipper_transcription_factor-like_protein_1,LZTL1-like,"1,10",cnidocyte,Leucine zipper transcription factor-like protein 1
+NVE9419,XP_020909477.1,LOC110247387,-,Ion_trans_2(2),two_pore_potassium_channel_protein_sup-9,KCNK3-like1,"1,09",cnidocyte,Potassium channel subfamily K member 3
+NVE21534,XP_028512708.1,LOC110231836,-,Collagen(2),collagen_alpha-1(I)_chain_isoform_X2,NVE215341,"1,06",cnidocyte,NA
+NVE11746,XP_020914459.1,LOC110252043,-,CLN3(2),protein_BTN1,BTN1-like9,"1,05",cnidocyte,Protein BTN1
+NVE9110,XP_020905633.1,LOC110243835,-,Cg6151-P(1),calcium_channel_flower_homolog,FLOWR-like2,"1,05",cnidocyte,Calcium channel flower homolog
+NVE15970,XP_020909122.1,LOC110247080,-,-,nucleolin,NVE15970,"1,01",cnidocyte,NA
+NVE7082,XP_020897561.1,LOC110236384,-,BIR(1),E3_ubiquitin-protein_ligase_XIAP,BIR7B-like,"5,92",cnidocyte.mature,Baculoviral IAP repeat-containing protein 7-B
+NVE47,XP_020900394.1,LOC110239032,-,ATP-grasp_3(1),-,NVE47,"5,80",cnidocyte.mature,NA
+NVE10898,XP_020905748.1,LOC110243935,-,"EF-hand_1(1),EF-hand_5(4),EF-hand_6(2),EF-hand_7(1)",secretagogin,CAB32-like,"5,39",cnidocyte.mature,Calbindin-32
+NVE11748,XP_020913806.1,LOC110251431,-,C2(3),multiple_C2_and_transmembrane_domain-containing_protein_1_isoform_X2,MCTP1-like,"4,59",cnidocyte.mature,Multiple C2 and transmembrane domain-containing protein 1
+NVE11820,XP_020916852.1,LOC110254223,-,-,-,NVE11820,"4,35",cnidocyte.mature,NA
+NVE1605,XP_020916084.1,LOC110253507,ANO8,Anoctamin(1),anoctamin-8,ANO8-like3,"3,71",cnidocyte.mature,Anoctamin-8
+NVE426,XP_020897578.1,LOC110236397,-,"HMG_box_2(1),HMG_box(1)",transcription_factor_sox-2,NvSoxA,"3,68",cnidocyte.mature,Transcription factor SOX-2
+NVE3357,XP_020914787.1,LOC110252322,TMEM214,TMEM214(1),transmembrane_protein_214-A,T214B-like,"3,68",cnidocyte.mature,Transmembrane protein 214-B
+NVE2514,XP_020903487.1,LOC110241907,-,Usp(1),-,Y1101-like4,"3,66",cnidocyte.mature,Universal stress protein Slr1101
+NVE22714,XP_020910241.1,LOC110247762,-,F5_F8_type_C(1),trichohyalin,HECD1-like2,"3,56",cnidocyte.mature,E3 ubiquitin-protein ligase HECTD1
+NVE1495,XP_020905877.1,LOC110244049,-,-,titin_homolog_isoform_X3,NVE1495,"3,43",cnidocyte.mature,NA
+NVE1277,XP_020897576.1,LOC110236394,-,ParBc(1),putative_sulfiredoxin,SRX-like1,"3,20",cnidocyte.mature,Putative sulfiredoxin
+NVE5442,XP_020911675.1,LOC110249446,PKD2,"Polycystin_dom(1),PKD_channel(1),Ion_trans(1)",polycystic_kidney_disease_2-like_1_protein,PKD2-like4,"3,08",cnidocyte.mature,Polycystin-2
+NVE24215,XP_020892065.1,LOC110231387,MBOAT2,MBOAT(1),membrane-bound_O-acyltransferase_domain-containing_protein_2,MBOA2-like1,"2,96",cnidocyte.mature,Membrane-bound O-acyltransferase domain-containing protein 2
+NVE1276,XP_020897591.1,LOC110236411,-,-,COP1-interactive_protein_1-like,NVE1276,"2,90",cnidocyte.mature,NA
+NVE19,XP_020899124.1,LOC110237854,RBPMS,RRM_1(2),U1_small_nuclear_ribonucleoprotein_A_isoform_X2,SCW1-like,"2,86",cnidocyte.mature,Cell wall integrity protein scw1
+NVE14762,XP_020916087.1,LOC110253512,REEP5,TB2_DP1_HVA22(1),receptor_expression-enhancing_protein_5_isoform_X2,REEP5-like1,"2,75",cnidocyte.mature,Receptor expression-enhancing protein 5
+NVE21874,XP_020908174.1,LOC110246196,IDH1,Iso_dh(1),isocitrate_dehydrogenase_[NADP]_cytoplasmic,IDHC-like,"2,74",cnidocyte.mature,Isocitrate dehydrogenase [NADP] cytoplasmic
+NVE12063,XP_020911653.1,LOC110249422,KCNK3,Ion_trans_2(2),two_pore_potassium_channel_protein_sup-9,KCNK9-like6,"2,72",cnidocyte.mature,Potassium channel subfamily K member 9
+NVE22513,XP_028517366.1,LOC110247296,-,"EF-hand_1(2),EF-hand_5(2),EF-hand_6(1),EF-hand_7(3),EF-hand_8(2)",calcium-dependent_protein_kinase_8,CALM3-like,"2,68",cnidocyte.mature,"Calmodulin, aClmodulin-related protein"
+NVE20107,XP_020895553.1,LOC110234516,KCNIP3,"EF-hand_1(1),EF-hand_5(3),EF-hand_7(1),EF-hand_8(2)",Kv_channel-interacting_protein_2_isoform_X5,CSEN-like1,"2,61",cnidocyte.mature,Calsenilin
+NVE26153,XP_020895870.1,LOC110234815,-,-,-,NVE26153,"2,60",cnidocyte.mature,NA
+NVE8088,XP_020905273.1,LOC110243497,-,Myelin_PLP(1),neuronal_membrane_glycoprotein_M6-a,NVE8088,"2,56",cnidocyte.mature,NA
+NVE6868,XP_020892363.1,LOC110231669,-,-,-,NVE6868,"2,49",cnidocyte.mature,NA
+NVE15463,XP_020894685.1,LOC110233711,-,WD40(4),transducin_beta-like_protein_2_isoform_X1,TBL2-like,"2,47",cnidocyte.mature,Transducin beta-like protein 2
+NVE10252,XP_028516388.1,LOC110244076,-,-,-,NVE10252,"2,47",cnidocyte.mature,NA
+NVE13244,XP_028513950.1,LOC110239746,-,Cnn_1N(1),splicing_regulatory_glutamine/lysine-rich_protein_1,NVE13244,"2,42",cnidocyte.mature,NA
+NVE21445,XP_020914417.1,LOC110252002,RAX,"OAR(1),Homeodomain(1)",retinal_homeobox_protein_Rx1,NvRx,"2,36",cnidocyte.mature,Retinal homeobox protein Rx2
+NVE18975,XP_028519684.1,LOC110254618,-,"Ion_trans_2(1),MAM(1),Fibrinogen_C(1),fn3(5)",-,SDK2-like2,"2,34",cnidocyte.mature,Protein sidekick-2 {ECO:0000303|PubMed:15213259}
+NVE2140,XP_020913889.1,LOC110251504,-,"zf-C2H2_jaz(1),zf-met(1),zf-C2H2(4),zf-C2H2_4(2),zf-C2H2_6(1)",fez_family_zinc_finger_protein_1,Nvfez-like,"2,33",cnidocyte.mature,Fez family zinc finger protein 2
+NVE18169,XP_020906382.1,LOC110244518,-,-,-,NVE18169,"2,29",cnidocyte.mature,NA
+NVE2081,XP_020913347.1,LOC110251025,-,-,dentin_sialophosphoprotein,NVE2081,"2,28",cnidocyte.mature,NA
+NVE16640,XP_020904576.2,LOC110242872,-,"zf-C2H2_4(1),zf-C2H2(3),zf-met(2)",zinc_finger_protein_69_homolog,GFI1B-like3,"2,28",cnidocyte.mature,Zinc finger protein Gfi-1b
+NVE17685,XP_020905987.1,LOC110244151,PLCB1,"PLC-beta_C(1),PH_14(1),EF-hand_like(1),DUF1154(1),PI-PLC-X(1),PI-PLC-Y(1)","LOW_QUALITY_PROTEIN:_1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_beta-1-like",PLCB1-like,"2,23",cnidocyte.mature,"1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase beta-1"
+NVE7771,XP_020905298.1,LOC110243514,-,-,-,NVE77711,"2,23",cnidocyte.mature,NA
+NVE14741,XP_028517348.1,LOC110247270,-,-,-,NVE147411,"2,20",cnidocyte.mature,NA
+NVE5471,XP_020911728.1,LOC110249497,POU4F3,"Homeodomain(1),Pou(1)","POU_domain,_class_4,_transcription_factor_3",NvPOU41,"2,18",cnidocyte.mature,"NvPOU4, Brain-specific homeobox_POU domain protein 3"
+NVE4945,XP_020904323.1,LOC110242650,KCNA4,"BTB_2(1),Ion_trans_2(1),Ion_trans(1)",potassium_voltage-gated_channel_subfamily_A_member_1,KCNA1-like5,"2,13",cnidocyte.mature,Potassium voltage-gated channel subfamily A member 1
+NVE19980,XP_020900738.1,LOC110239367,SCD5,FA_desaturase(1),acyl-CoA_desaturase,ACOD-like,"2,10",cnidocyte.mature,Acyl-CoA desaturase
+NVE2733,XP_020902796.1,LOC110241264,-,"ELFV_dehydrog(1),ELFV_dehydrog_N(1)",-,DHE3-like12,"2,10",cnidocyte.mature,Glutamate dehydrogenase
+NVE7106,XP_020917341.1,LOC110254663,-,"DM(1),DMA(1)",doublesex-_and_mab-3-related_transcription_factor_A2_isoform_X3,NvDMRT-H,"2,09",cnidocyte.mature,Doublesex- and mab-3-related transcription factor A2
+NVE10859,XP_020900006.1,LOC110238659,TCAIM,"DUF4460(1),DUF4461(1)","T-cell_activation_inhibitor,_mitochondrial_isoform_X2",TCAIM-like,"2,06",cnidocyte.mature,"T-cell activation inhibitor, mitochondrial"
+NVE12889,XP_020894225.1,LOC110233288,CDK5R1,CDK5_activator(1),cyclin-dependent_kinase_5_activator_1,CD5R1-like1,"2,05",cnidocyte.mature,Cyclin-dependent kinase 5 activator 1
+NVE8024,XP_020895040.1,LOC110234037,-,Aa_trans(1),vesicular_inhibitory_amino_acid_transporter-like,VIAAT-like151,"2,05",cnidocyte.mature,Vesicular inhibitory amino acid transporter
+NVE8270,XP_020912624.1,LOC110250368,CALM2,"EF-hand_1(4),EF-hand_4(1),EF-hand_5(4),EF-hand_6(2),EF-hand_7(2),EF-hand_8(3),EF-hand_9(1)",calmodulin-beta_isoform_X2,NvCalmodulin,"2,03",cnidocyte.mature,Calmodulin
+NVE23972,XP_020900527.1,LOC110239163,-,G-gamma(1),guanine_nucleotide-binding_protein_subunit_gamma-e,GBGE-like3,"1,93",cnidocyte.mature,Guanine nucleotide-binding protein subunit gamma-e
+NVE3595,XP_020895778.1,LOC110234735,-,Usp(1),-,Y1101-like5,"1,89",cnidocyte.mature,Universal stress protein Slr1101
+NVE12749,XP_020914678.1,LOC110252241,TRAF4,"zf-C3HC4(1),zf-TRAF(2)",TNF_receptor-associated_factor_4_isoform_X3,TRAF4-like7,"1,87",cnidocyte.mature,TNF receptor-associated factor 4
+NVE25651,XP_020901088.2,LOC110239692,-,-,"large_neutral_amino_acids_transporter_small_subunit_4,_partial",LAT3-like,"1,86",cnidocyte.mature,Large neutral amino acids transporter small subunit 3
+NVE24951,XP_028517374.1,LOC110247309,-,"MFS_1(1),Laminin_G_3(1)",-,DIRC2-like5,"1,86",cnidocyte.mature,Disrupted in renal carcinoma protein 2 homolog
+NVE18161,XP_020900242.1,LOC110238891,NKX6-1,Homeodomain(1),homeobox_protein_Nkx-6.1,NvNKX6,"1,85",cnidocyte.mature,Homeobox protein Nkx-6.2
+NVE22445,XP_020896785.1,LOC110235651,PC,"ATP-grasp(1),PYC_OADA(1),Biotin_carb_C(1),Biotin_carb_N(1),HMGL-like(1),Dala_Dala_lig_C(1),Biotin_lipoyl(1),CPSase_L_D2(1)","pyruvate_carboxylase,_mitochondrial",PYC-like4,"1,80",cnidocyte.mature,"Pyruvate carboxylase, mitochondrial"
+NVE3506,XP_020916099.1,LOC110253519,-,"Arrestin_C(1),Arrestin_N(1)",arrestin_domain-containing_protein_3,ARRD3-like2,"1,78",cnidocyte.mature,Arrestin domain-containing protein 3
+NVE9541,XP_020905027.1,LOC110243280,-,CAP(5),titin,GAPR1-like34,"1,74",cnidocyte.mature,Golgi-associated plant pathogenesis-related protein 1
+NVE18455,XP_020912643.1,LOC110250387,RTN4,Reticulon(1),reticulon-1-A,RTN1A-like1,"1,73",cnidocyte.mature,Reticulon-1-A
+NVE266,XP_020900187.1,LOC110238843,-,Tropomyosin(1),probable_cyclin-dependent_serine/threonine-protein_kinase_DDB_G0278487,Nve-Tpm31,"1,72",cnidocyte.mature,Tropomyosin beta chain
+NVE6699,XP_020894712.1,LOC110233734,-,"Ion_trans(1),BTB_2(1),Ion_trans_2(1)",potassium_voltage-gated_channel_subfamily_A_member_7,KCNA7-like,"1,72",cnidocyte.mature,Potassium voltage-gated channel subfamily A member 7
+NVE17309,XP_020892287.1,LOC110231598,TXNDC12,"Thioredoxin(1),Thioredoxin_7(1)",thioredoxin_domain-containing_protein_12,TXD12-like11,"1,68",cnidocyte.mature,Thioredoxin domain-containing protein 12
+NVE1650,XP_020908650.1,LOC110246629,-,-,-,NVE1650,"1,65",cnidocyte.mature,NA
+NVE22380,XP_020905693.1,LOC110243881,-,Ion_trans_2(2),TWiK_family_of_potassium_channels_protein_7,TWK7-like3,"1,64",cnidocyte.mature,TWiK family of potassium channels protein 7
+NVE16780,XP_020896536.1,LOC110235417,-,"C2(1),C1_1(1)",titin_isoform_X2,UN13C-like1,"1,61",cnidocyte.mature,Protein unc-13 homolog C
+NVE13352,XP_020895219.1,LOC110234199,-,"Hormone_recep(1),zf-C4(1)",photoreceptor-specific_nuclear_receptor,NR2E3-like1,"1,56",cnidocyte.mature,Photoreceptor-specific nuclear receptor
+NVE3963,XP_020899891.1,LOC110238557,-,-,-,NVE3963,"1,52",cnidocyte.mature,NA
+NVE7535,XP_020908497.1,LOC110246491,PRDM13,zf-C2H2(3),early_growth_response_protein_1,NvPrdm131,"1,46",cnidocyte.mature,PR domain zinc finger protein 13
+NVE11221,XP_020915219.1,LOC110252726,LZTFL1,Leu_zip(1),leucine_zipper_transcription_factor-like_protein_1,LZTL1-like1,"1,45",cnidocyte.mature,Leucine zipper transcription factor-like protein 1
+NVE12021,XP_020894814.1,LOC110233827,-,Syndecan(1),syndecan-3,NVE12021,"1,45",cnidocyte.mature,NA
+NVE25283,XP_020898791.1,LOC110237530,-,Gal-3-0_sulfotr(1),galactose-3-O-sulfotransferase_2,G3ST1-like5,"1,43",cnidocyte.mature,Galactosylceramide sulfotransferase
+NVE6890,XP_020891897.2,LOC110231244,-,-,TRAF-type_zinc_finger_domain-containing_protein_1,TRAD1-like21,"1,41",cnidocyte.mature,TRAF-type zinc finger domain-containing protein 1
+NVE6363,XP_020917073.2,LOC110254431,APPBP2,"TPR_10(2),TPR_12(1),TPR_7(1)",LOW_QUALITY_PROTEIN:_amyloid_protein-binding_protein_2-like,APBP2-like1,"1,38",cnidocyte.mature,Amyloid protein-binding protein 2
+NVE12842,XP_020898740.1,LOC110237488,-,BAG(1),histone_acetyltransferase_KAT6B,BAG4-like12,"1,29",cnidocyte.mature,BAG family molecular chaperone regulator 4
+NVE24272,XP_020916557.1,LOC110253942,-,-,-,NVE242721,"1,25",cnidocyte.mature,NA
+NVE6983,XP_020915628.1,LOC110253093,-,"EF-hand_5(5),EF-hand_7(1)",calumenin-A,CALUA-like31,"1,21",cnidocyte.mature,Calumenin-A
+NVE7206,XP_020901918.1,LOC110240446,INSM1,"zf-met(1),zf-C2H2_4(1),zf-C2H2_6(3),zf-C2H2(3)",insulinoma-associated_protein_1a,INSM1-like3,"1,16",cnidocyte.mature,Insulinoma-associated protein 1
+NVE15559,XP_020909828.1,LOC110247711,-,HLH(1),achaete-scute_homolog_2,NvAshA1,"1,11",cnidocyte.mature,Achaete-scute homolog 4
+NVE16351,XP_020903813.1,LOC110242199,-,-,-,NVE163511,"1,01",cnidocyte.mature,NA
+NVE5223,XP_020904702.1,LOC110242992,CTSL,"Inhibitor_I29(1),Peptidase_C1(1)",cathepsin_L1,CATL-like8,"3,26",ectoderm.embryonic,Cathepsin L
+NVE9490,XP_020902996.1,LOC110241475,PPM1K,"PP2C_2(1),PP2C(1)","protein_phosphatase_1K,_mitochondrial",PPM1K-like1,"2,78",ectoderm.embryonic,"Protein phosphatase 1K, mitochondrial"
+NVE17817,XP_020892744.1,LOC110232003,CDK1,"PK_Tyr_Ser-Thr(1),Pkinase(1)",cyclin-dependent_kinase_1-B,CDK1-like,"2,59",ectoderm.embryonic,Cyclin-dependent kinase 1
+NVE23956,XP_020900503.1,LOC110239135,-,Histone(1),histone_H3-like,H3-like81,"2,59",ectoderm.embryonic,Histone H3
+NVE2273,XP_020904442.1,LOC110242761,-,HAD_2(1),-,PHNX-like1,"2,58",ectoderm.embryonic,Phosphonoacetaldehyde hydrolase {ECO:0000255|HAMAP-Rule:MF_01375}
+NVE23841,XP_020894461.1,LOC110233506,-,"HMG_box(1),HMG_box_2(1)",SOX_domain-containing_protein_dichaete,NvSox3,"2,54",ectoderm.embryonic,Transcription factor Sox-14 {ECO:0000250|UniProtKB:Q9W7R6}
+NVE9767,XP_020898441.1,LOC110237193,CCNB1,"Cyclin_C(1),Cyclin_N(1)",G2/mitotic-specific_cyclin-B,CCNB-like,"2,53",ectoderm.embryonic,G2_mitotic-specific cyclin-B
+NVE11822,XP_020916854.1,LOC110254224,CKS1B,CKS(1),cyclin-dependent_kinases_regulatory_subunit,CKS1-like1,"2,45",ectoderm.embryonic,Cyclin-dependent kinases regulatory subunit 1
+NVE366,XP_020899312.1,LOC110238016,-,"Lgl_C(1),LLGL(1)",lethal(2)_giant_larvae_protein_homolog_1_isoform_X1,NvLgl,"2,26",ectoderm.embryonic,Lethal(2) giant larvae protein homolog 2
+NVE10060,XP_020901373.1,LOC110239951,ALYREF,"FoP_duplication(1),RRM_1(1)",THO_complex_subunit_4,ALRF2-like1,"2,22",ectoderm.embryonic,Aly_REF export factor 2
+NVE11962,XP_020909295.1,LOC110247229,SNRPD2,LSM(1),small_nuclear_ribonucleoprotein_Sm_D2,SMD2-like1,"2,19",ectoderm.embryonic,Probable small nuclear ribonucleoprotein Sm D2
+NVE5003,XP_020902299.1,LOC110240820,-,Ribosomal_L7Ae(1),NHP2-like_protein_1,NH2L1-like1,"2,15",ectoderm.embryonic,NHP2-like protein 1
+NVE5207,XP_020897693.1,LOC110236503,TPX2,"TPX2_importin(1),TPX2(1)",targeting_protein_for_Xklp2,TPX2-like,"2,13",ectoderm.embryonic,Targeting protein for Xklp2 homolog
+NVE3064,XP_020905793.1,LOC110243978,SNRPD3,LSM(1),small_nuclear_ribonucleoprotein_Sm_D3,SMD3-like1,"2,13",ectoderm.embryonic,Small nuclear ribonucleoprotein Sm D3
+NVE22651,XP_020905216.1,LOC110243452,PAICS,"AIRC(1),SAICAR_synt(1)",multifunctional_protein_ADE2,PUR6-like,"2,11",ectoderm.embryonic,Multifunctional protein ADE2
+NVE19943,XP_020898845.1,LOC110237580,-,Zona_pellucida(1),ZP_domain-containing_protein,ZPP-like12,"2,03",ectoderm.embryonic,ZP domain-containing protein {ECO:0000303|PubMed:23765379}
+NVE20438,XP_020899767.1,LOC110238437,-,"DMA(1),DM(1)",doublesex-_and_mab-3-related_transcription_factor_3a,NvDMRT-E1,"2,03",ectoderm.embryonic,NA
+NVE16345,XP_020911663.1,LOC110249430,-,"zf-CCHC(1),RRM_1(1)",serine/arginine-rich_splicing_factor_RS2Z33,RSZ32-like1,"2,02",ectoderm.embryonic,Serine_arginine-rich splicing factor RS2Z32
+NVE19935,XP_020908478.1,LOC110246472,-,Tropomyosin(1),tropomyosin-2,Nve-Tpm7,"2,01",ectoderm.embryonic,Tropomyosin
+NVE12519,XP_020910685.1,LOC110248494,H2AFY2,"Histone(1),Histone_H2A_C(1),Macro(1)",core_histone_macro-H2A.1,H2AY-like1,"2,00",ectoderm.embryonic,Core histone macro-H2A.1
+NVE21004,XP_020899886.1,LOC110238553,SNRPG,LSM(1),small_nuclear_ribonucleoprotein_G,RUXG-like1,"1,99",ectoderm.embryonic,Probable small nuclear ribonucleoprotein G
+NVE25544,XP_020899272.1,LOC110237982,FBL,Fibrillarin(1),rRNA_2'-O-methyltransferase_fibrillarin_isoform_X2,FBRL-like1,"1,98",ectoderm.embryonic,rRNA 2'-O-methyltransferase fibrillarin
+NVE16398,XP_020907541.1,LOC110245598,-,SLBP_RNA_bind(1),histone_RNA_hairpin-binding_protein,SLBP1-like,"1,96",ectoderm.embryonic,Histone RNA hairpin-binding protein
+NVE17311,XP_020912355.1,LOC110250094,SNRPF,LSM(1),small_nuclear_ribonucleoprotein_F,RUXF-like1,"1,92",ectoderm.embryonic,Small nuclear ribonucleoprotein F
+NVE16373,XP_020895546.1,LOC110234512,-,Homeodomain(1),homeobox_protein_Hox-B4,NvHoxA-Anthox6,"1,86",ectoderm.embryonic,Homeobox protein Hox-C4
+NVE8463,XP_020907059.1,LOC110245146,-,RRM_1(1),"RNA-binding_motif_protein,_X_chromosome_isoform_X1",RBM3-like31,"1,84",ectoderm.embryonic,RNA-binding protein 3
+NVE3145,XP_020908790.1,LOC110246765,MCM7,"MCM_OB(1),Mg_chelatase(1),AAA_5(1),MCM_lid(1),MCM(1),MCM_N(1)",DNA_replication_licensing_factor_mcm7-A,MCM7-like,"1,84",ectoderm.embryonic,DNA replication licensing factor mcm7
+NVE24472,XP_020897495.1,LOC110236325,ZNF367,"zf-C2H2_4(1),zf-C2H2_6(1),zf-C2H2(2)",zinc_finger_protein_367,NVE24472,"1,81",ectoderm.embryonic,NA
+NVE18293,XP_020911328.1,LOC110249088,-,"Ig_2(1),Ig_3(1),I-set(2),ig(1)",neural_cell_adhesion_molecule_1,NCAM2-like5,"1,80",ectoderm.embryonic,Neural cell adhesion molecule 2
+NVE21175,XP_020893025.1,LOC110232217,SNRPB,LSM(1),small_nuclear_ribonucleoprotein-associated_protein_B',RSMB-like1,"1,79",ectoderm.embryonic,Small nuclear ribonucleoprotein-associated protein B'
+NVE4944,XP_020904324.1,LOC110242651,SNRNP70,"RRM_1(1),U1snRNP70_N(1)",U1_small_nuclear_ribonucleoprotein_70_kDa,RU17-like21,"1,78",ectoderm.embryonic,U1 small nuclear ribonucleoprotein 70 kDa
+NVE14419,XP_020907975.1,LOC110246028,GPC6,Glypican(1),glypican-6,NvGpc6,"1,78",ectoderm.embryonic,NvGlypican1_2_4_6
+NVE21214,XP_028517479.1,LOC110247637,SRSF3,"RRM_1(2),RRM_5(2)",serine/arginine-rich_splicing_factor_7,SRSF3-like1,"1,77",ectoderm.embryonic,Serine_arginine-rich splicing factor 3
+NVE12346,XP_020917096.1,LOC110254452,SIX3,"Homeobox_KN(1),SIX1_SD(1),Homeodomain(1)",homeobox_protein_SIX3,NvSix3-6,"1,75",ectoderm.embryonic,Homeobox protein SIX3
+NVE7441,XP_020899139.1,LOC110237861,MAGOHB,Mago_nashi(1),protein_mago_nashi_homolog,MGN2-like1,"1,75",ectoderm.embryonic,Protein mago nashi homolog 2
+NVE1245,XP_020894055.1,LOC110233131,-,RRM_1(2),serine-arginine_protein_55,SRSF4-like11,"1,75",ectoderm.embryonic,Serine_arginine-rich splicing factor 4
+NVE14268,XP_020894072.1,LOC110233147,-,Forkhead(1),forkhead_box_protein_I1c,NvFoxQ2a,"1,72",ectoderm.embryonic,Forkhead box protein L1
+NVE25705,XP_020915909.1,LOC110253349,-,Geminin(1),geminin,NVE257051,"1,72",ectoderm.embryonic,NA
+NVE13522,XP_020903689.1,LOC110242084,DKC1,"PUA(1),TruB_N(1),DKCLD(1),TruB_C_2(1)",LOW_QUALITY_PROTEIN:_H/ACA_ribonucleoprotein_complex_subunit_CBF5-like_isoform_X2,CBF5-like1,"1,68",ectoderm.embryonic,Centromere_microtubule-binding protein cbf5
+NVE21992,XP_020895878.1,LOC110234822,WNT2B,wnt(1),protein_Wnt-2b-A,NvWnt2,"1,68",ectoderm.embryonic,Protein Wnt-2b
+NVE6615,XP_020905079.1,LOC110243331,-,-,-,NVE6615,"1,68",ectoderm.embryonic,NA
+NVE13155,XP_020904726.1,LOC110243018,C1orf194,DUF3695(1),-,CA194-like,"1,67",ectoderm.embryonic,Uncharacterized protein C1orf194 homolog
+NVE4477,XP_020913900.1,LOC110251515,NOP56,"Nop(1),NOP5NT(1)",nucleolar_protein_56,NOP56-like11,"1,66",ectoderm.embryonic,Nucleolar protein 56
+NVE18069,XP_020897132.1,LOC110235995,SAP18,SAP18(1),histone_deacetylase_complex_subunit_SAP18,SAP18-like1,"1,65",ectoderm.embryonic,Histone deacetylase complex subunit SAP18
+NVE16891,XP_020896290.1,LOC110235190,SRSF7,"RRM_1(1),zf-CCHC(1)",serine/arginine-rich_splicing_factor_7,SRSF7-like1,"1,64",ectoderm.embryonic,Serine_arginine-rich splicing factor 7
+NVE734,XP_020894582.1,LOC110233615,-,RRM_1(2),serine-arginine_protein_55_isoform_X2,SRR55-like21,"1,63",ectoderm.embryonic,Serine-arginine protein 55
+NVE18993,XP_020892838.1,LOC110232076,CBX1,"Chromo(1),Chromo_shadow(1)",chromobox_protein_homolog_1,CBX1-like1,"1,63",ectoderm.embryonic,Chromobox protein homolog 1
+NVE12823,XP_028518813.1,LOC110251709,HNRNPA1L2,RRM_1(2),heterogeneous_nuclear_ribonucleoprotein_A1_isoform_X2,MSI2H-like1,"1,62",ectoderm.embryonic,RNA-binding protein Musashi homolog 2
+NVE5541,XP_020915622.1,LOC110253090,UBE2C,UQ_con(1),ubiquitin-conjugating_enzyme_E2_C,UBE2C-like,"1,62",ectoderm.embryonic,Ubiquitin-conjugating enzyme E2 C
+NVE18548,XP_020908422.1,LOC110246420,DDX39B,"DEAD(1),ResIII(1),Helicase_C(1)",spliceosome_RNA_helicase_Ddx39b,DX39B-like,"1,61",ectoderm.embryonic,Spliceosome RNA helicase Ddx39b
+NVE13526,XP_028516971.1,LOC110246080,-,-,-,NVE13526,"1,57",ectoderm.embryonic,NA
+NVE942,XP_028516245.1,LOC110243800,HNRNPL,"RRM_1(2),RRM_5(2),RRM_8(1)",heterogeneous_nuclear_ribonucleoprotein_L,HNRPL-like11,"1,55",ectoderm.embryonic,Heterogeneous nuclear ribonucleoprotein L
+NVE14995,XP_020913118.1,LOC110250821,-,"Histone(1),Histone_H2A_C(1)",histone_H2A,H2A-like12,"1,54",ectoderm.embryonic,Histone H2A
+NVE19736,XP_020904535.1,LOC110242837,FZD5,"Fz(1),Frizzled(1)",frizzled-5,NvFrizzled-like,"1,53",ectoderm.embryonic,Frizzled-5
+NVE20807,XP_020900437.1,LOC110239070,SF3B4,RRM_1(2),splicing_factor_3B_subunit_4,SF3B4-like2,"1,52",ectoderm.embryonic,Splicing factor 3B subunit 4
+NVE19118,XP_028514491.1,LOC110237724,NOP58,"Nop(2),NOP5NT(1)",nucleolar_protein_58,NOP58-like1,"1,51",ectoderm.embryonic,Nucleolar protein 58
+NVE1453,XP_020899030.1,LOC110237758,-,-,-,NVE1453,"1,50",ectoderm.embryonic,NA
+NVE15668,XP_020916224.1,LOC110253617,H3F3A,Histone(1),histone_H3.3,H33-like,"1,49",ectoderm.embryonic,Histone H3.3
+NVE7358,XP_020900180.1,LOC110238839,-,DOMON(1),-,MOXD1-like8,"1,49",ectoderm.embryonic,DBH-like monooxygenase protein 1
+NVE8868,XP_020903094.1,LOC110241565,PABPN1,RRM_1(1),polyadenylate-binding_protein_2-B,PABP2-like1,"1,46",ectoderm.embryonic,Polyadenylate-binding protein 2
+NVE15075,XP_020908569.1,LOC110246554,PHF5A,PHF5(1),PHD_finger-like_domain-containing_protein_5A,PHF5A-like,"1,46",ectoderm.embryonic,PHD finger-like domain-containing protein 5A
+NVE23423,XP_020892560.1,LOC110231841,-,DHHC(1),putative_ZDHHC-type_palmitoyltransferase_8,ZDHC8-like1,"1,45",ectoderm.embryonic,Putative ZDHHC-type palmitoyltransferase 8
+NVE3026,XP_020909715.1,LOC110247597,TIMM10,zf-Tim10_DDP(1),mitochondrial_import_inner_membrane_translocase_subunit_Tim10,TIM10-like,"1,45",ectoderm.embryonic,Mitochondrial import inner membrane translocase subunit Tim10
+NVE24079,XP_020908727.1,LOC110246703,RSL1D1,Ribosomal_L1(1),ribosomal_L1_domain-containing_protein_1,RL1D1-like1,"1,44",ectoderm.embryonic,Ribosomal L1 domain-containing protein 1
+NVE10626,XP_020915522.1,LOC110253010,CCNE2,"Cyclin_C(1),Cyclin_N(1)",G1/S-specific_cyclin-E,Nvcyclin,"1,44",ectoderm.embryonic,G1_S-specific cyclin-E
+NVE22395,XP_020900161.1,LOC110238819,EIF4A3,"DEAD(1),Helicase_C(1)",eukaryotic_initiation_factor_4A-III,IF4A3-like,"1,43",ectoderm.embryonic,Eukaryotic initiation factor 4A-III {ECO:0000303|PubMed:22961380}
+NVE21444,XP_020914432.2,LOC110252014,-,"OAR(1),Homeodomain(1)",retinal_homeobox_protein_Rx1,NvHomeobrain,"1,43",ectoderm.embryonic,Aristaless-related homeobox protein
+NVE6118,XP_020900919.1,LOC110239538,-,Ebp2(1),probable_rRNA-processing_protein_EBP2,EBP2-like1,"1,43",ectoderm.embryonic,Probable rRNA-processing protein EBP2
+NVE22673,XP_028519125.1,LOC110252843,RBM4B,"RRM_1(1),zf-CCHC(1)",RNA-binding_protein_lark-like,LARK-like,"1,42",ectoderm.embryonic,RNA-binding protein lark
+NVE17936,XP_020912635.1,LOC110250378,-,-,-,NVE17936,"1,41",ectoderm.embryonic,NA
+NVE20755,XP_020914183.1,LOC110251782,PSMB6,Proteasome(1),proteasome_subunit_beta_type-6,PSB6-like1,"1,38",ectoderm.embryonic,Proteasome subunit beta type-6
+NVE17642,XP_020907108.1,LOC110245186,-,Folate_rec(1),riboflavin-binding_protein,RBP-like1,"1,38",ectoderm.embryonic,Riboflavin-binding protein
+NVE17668,XP_020902493.1,LOC110241005,-,Spindle_Spc25(1),kinetochore_protein_Spc25,SPC25-like2,"1,37",ectoderm.embryonic,Kinetochore protein Spc25
+NVE24801,XP_020914543.1,LOC110252118,-,-,-,NVE24801,"1,37",ectoderm.embryonic,NA
+NVE8945,XP_020892027.1,LOC110231352,NSMCE2,"zf-Nse(1),zf-RING_UBOX(1)",E3_SUMO-protein_ligase_NSE2,NSE2-like,"1,37",ectoderm.embryonic,E3 SUMO-protein ligase NSE2
+NVE11230,XP_020904525.1,LOC110242831,-,"Peptidase_C1(1),Inhibitor_I29(1)",cathepsin_L1,CATL-like4,"1,34",ectoderm.embryonic,Cathepsin L
+NVE21741,XP_020915854.1,LOC110253307,RANBP1,"WH1(1),Ran_BP1(1)",ran-specific_GTPase-activating_protein,RANG-like1,"1,34",ectoderm.embryonic,Ran-specific GTPase-activating protein
+NVE20091,XP_020906510.1,LOC110244641,-,"Ank(1),Ank_2(1),Ank_3(1),Ank_4(1)",protein_phosphatase_1_regulatory_subunit_12A_isoform_X2,PP12C-like2,"1,33",ectoderm.embryonic,Protein phosphatase 1 regulatory subunit 12C
+NVE2132,XP_020910905.1,LOC110248697,-,Nop16(2),nucleolar_protein_16_isoform_X1,NOP16-like1,"1,33",ectoderm.embryonic,Nucleolar protein 16
+NVE1266,XP_020898908.1,LOC110237642,GTF2A2,"TFIIA_gamma_C(1),TFIIA_gamma_N(1)",transcription_initiation_factor_IIA_subunit_2,T2AG-like,"1,32",ectoderm.embryonic,Transcription initiation factor IIA subunit 2
+NVE26040,XP_020896087.1,LOC110235016,MTFR2,Mito_fiss_reg(1),mitochondrial_fission_regulator_2_isoform_X2,MTFR1-like,"1,31",ectoderm.embryonic,Mitochondrial fission regulator 1
+NVE25531,XP_020895237.1,LOC110234212,SUCLA2,"Ligase_CoA(1),ATP-grasp_2(1)","succinate--CoA_ligase_[ADP-forming]_subunit_beta,_mitochondrial",SUCB1-like,"1,30",ectoderm.embryonic,"Succinyl-CoA ligase [ADP-forming] subunit beta, mitochondrial"
+NVE3288,XP_020901614.1,LOC110240168,PLK1,"POLO_box(2),Pkinase(1),Kinase-like(1),Pkinase_fungal(1),PK_Tyr_Ser-Thr(1)",serine/threonine-protein_kinase_PLK1,PLK1-like2,"1,30",ectoderm.embryonic,Serine_threonine-protein kinase PLK1
+NVE24388,XP_020906116.1,LOC110244256,-,Csm1(1),-,NVE24388,"1,29",ectoderm.embryonic,NA
+NVE26039,XP_020896081.1,LOC110235010,ARMC1,-,armadillo_repeat-containing_protein_1_isoform_X2,ARMC1-like,"1,29",ectoderm.embryonic,Armadillo repeat-containing protein 1
+NVE10217,XP_020900255.1,LOC110238904,-,Homeodomain(1),homeobox_protein_pnx_isoform_X1,NvNK-like,"1,29",ectoderm.embryonic,Homeobox protein vent1
+NVE9959,XP_020898618.1,LOC110237376,CENPF,CENP-F_C_Rb_bdg(1),centromere_protein_F,CENPF-like,"1,29",ectoderm.embryonic,Centromere protein F
+NVE18987,XP_020892232.1,LOC110231552,-,"SAP(1),Tho1_MOS11_C(2)",SAP_domain-containing_ribonucleoprotein,SARNP-like1,"1,28",ectoderm.embryonic,SAP domain-containing ribonucleoprotein
+NVE4352,XP_020914026.1,LOC110251640,CNOT7,CAF1(1),CCR4-NOT_transcription_complex_subunit_7,CNOT7-like,"1,28",ectoderm.embryonic,CCR4-NOT transcription complex subunit 7
+NVE4852,XP_020908304.1,LOC110246310,BUD31,G10(1),protein_BUD31_homolog,BUD31-like1,"1,27",ectoderm.embryonic,Protein BUD31 homolog
+NVE21263,XP_020899655.1,LOC110238335,NDUFA10,"Thymidylate_kin(1),dNK(1),AAA_18(1),AAA_33(1)",deoxyguanosine_kinase,DGK-like,"1,27",ectoderm.embryonic,Deoxyguanosine kinase
+NVE2702,XP_020907390.1,LOC110245449,TUBA1A,"Tubulin(1),Tubulin_C(1)",tubulin_alpha-1A_chain,TBA1D-like2,"1,26",ectoderm.embryonic,Tubulin alpha-1D chain
+NVE24723,XP_020914012.1,LOC110251628,RUVBL1,"TIP49(1),RuvB_N(1),TIP49_C(1),AAA(1)",ruvB-like_1,RUVB1-like,"1,26",ectoderm.embryonic,RuvB-like 1
+NVE18090,XP_020906861.1,LOC110244963,-,NUSAP(1),nucleolar_and_spindle-associated_protein_1_isoform_X2,NUSAP-like,"1,25",ectoderm.embryonic,Nucleolar and spindle-associated protein 1
+NVE20970,XP_020898654.1,LOC110237413,CCT7,Cpn60_TCP1(1),T-complex_protein_1_subunit_eta,TCPH-like31,"1,25",ectoderm.embryonic,T-complex protein 1 subunit eta
+NVE19525,XP_028512645.1,LOC114574389,ERH,ER(1),enhancer_of_rudimentary_homolog,ERH-like11,"1,24",ectoderm.embryonic,Enhancer of rudimentary homolog
+NVE19753,XP_020905973.1,LOC110244141,-,"zf-C2H2(3),zf-C2H2_4(1)",transcription_factor_Sp5_isoform_X1,NvSp5,"1,24",ectoderm.embryonic,Transcription factor Sp5
+NVE19046,XP_028519697.1,LOC110254627,RACGAP1,RhoGAP(1),LOW_QUALITY_PROTEIN:_rac_GTPase-activating_protein_1-like_isoform_X1,RGAP1-like,"1,23",ectoderm.embryonic,Rac GTPase-activating protein 1
+NVE6918,XP_020915239.1,LOC110252749,-,-,-,NVE6918,"1,23",ectoderm.embryonic,NA
+NVE16028,XP_020892279.1,LOC110231594,PRPF38A,PRP38(1),pre-mRNA-splicing_factor_38A,PR38A-like,"1,22",ectoderm.embryonic,Pre-mRNA-splicing factor 38A
+NVE9422,XP_028514859.1,LOC110239124,SNRNP40,WD40(7),LOW_QUALITY_PROTEIN:_U5_small_nuclear_ribonucleoprotein_40_kDa_protein-like,SNR40-like,"1,22",ectoderm.embryonic,U5 small nuclear ribonucleoprotein 40 kDa protein
+NVE3698,XP_020916997.1,LOC110254358,NIP7,"UPF0113(1),UPF0113_N(1)",60S_ribosome_subunit_biogenesis_protein_NIP7_homolog,NIP7-like1,"1,21",ectoderm.embryonic,60S ribosome subunit biogenesis protein NIP7 homolog
+NVE2923,XP_020894539.1,LOC110233583,PRPF19,"U-box(1),Prp19(1),WD40(5)",pre-mRNA-processing_factor_19,PRP19-like,"1,21",ectoderm.embryonic,Pre-mRNA-processing factor 19 {ECO:0000305}
+NVE12123,XP_020907840.1,LOC110245884,-,NPL(1),FK506-binding_protein_4,FKBP4-like21,"1,21",ectoderm.embryonic,46 kDa FK506-binding nuclear protein
+NVE1539,XP_020911415.1,LOC110249174,SFPQ,"RRM_1(2),NOPS(1)",paraspeckle_component_1,PSPC1-like,"1,19",ectoderm.embryonic,Paraspeckle component 1
+NVE11365,XP_020896471.1,LOC110235357,NIFK,RRM_1(1),MKI67_FHA_domain-interacting_nucleolar_phosphoprotein-like,MK67I-like1,"1,18",ectoderm.embryonic,MKI67 FHA domain-interacting nucleolar phosphoprotein-like
+NVE11062,XP_020915804.1,LOC110253258,CDC20,"ANAPC4_WD40(2),WD40(3)",cell_division_cycle_protein_20_homolog,CDC20-like1,"1,18",ectoderm.embryonic,Cell division cycle protein 20 homolog
+NVE13958,XP_020891991.1,LOC110231320,WDR83OS,ASTER(1),protein_Asterix,ASTER-like,"1,17",ectoderm.embryonic,Protein Asterix
+NVE3037,XP_020913255.1,LOC110250936,ZMAT5,"zf-CCCH(1),zf-CCCH_4(1),zf-U1(1)",zinc_finger_matrin-type_protein_5,ZMAT5-like,"1,17",ectoderm.embryonic,Zinc finger matrin-type protein 5
+NVE18017,XP_020906832.1,LOC110244940,SLC30A2,Cation_efflux(1),zinc_transporter_2_isoform_X1,ZNT2-like21,"1,17",ectoderm.embryonic,Zinc transporter 2
+NVE2470,XP_020897888.1,LOC110236655,HIST4H4,"TAF(1),CENP-T_C(1)",histone_H4,H4-like20,"1,16",ectoderm.embryonic,Histone H4
+NVE13992,XP_020910572.1,LOC110248391,UBB,"ubiquitin(3),Ubiquitin_2(3),Rad60-SLD(3),Rad60-SLD_2(2)",polyubiquitin,UBB-like1,"1,16",ectoderm.embryonic,Polyubiquitin-B
+NVE25223,XP_020901699.1,LOC110240254,TIMM17A,Tim17(1),mitochondrial_import_inner_membrane_translocase_subunit_Tim17-B,TI17B-like,"1,15",ectoderm.embryonic,Mitochondrial import inner membrane translocase subunit Tim17-B
+NVE720,XP_020913232.1,LOC110250918,SMPD4,mit_SMPDase(3),sphingomyelin_phosphodiesterase_4,NSMA3-like2,"1,15",ectoderm.embryonic,Sphingomyelin phosphodiesterase 4
+NVE18683,XP_020906317.1,LOC110244450,-,"Hairy_orange(1),HLH(1)",transcription_factor_HES-1,NvHes2a,"1,14",ectoderm.embryonic,Transcription factor HES-1-A
+NVE7514,XP_020914241.1,LOC110251832,-,-,-,NVE7514,"1,11",ectoderm.embryonic,NA
+NVE10359,XP_020917442.2,LOC110254747,-,Mis12(1),LOW_QUALITY_PROTEIN:_centrosomal_protein_of_290_kDa,NVE10359,"1,11",ectoderm.embryonic,NA
+NVE19949,XP_028515830.1,LOC110242245,DCAF13,"Sof1(1),WD40(2)",DDB1-_and_CUL4-associated_factor_13,DCA13-like,"1,09",ectoderm.embryonic,DDB1- and CUL4-associated factor 13
+NVE18110,XP_020903400.1,LOC110241832,-,"Ank(3),Ank_2(1),Ank_3(2),Ank_4(2),Ank_5(3)",-,NVE18110,"1,08",ectoderm.embryonic,NA
+NVE21774,XP_020915752.1,LOC110253215,-,p450(1),cytochrome_P450_27C1-like,CP27A-like1,"1,07",ectoderm.embryonic,"Sterol 26-hydroxylase, mitochondrial"
+NVE3187,XP_020910164.1,LOC110248017,CCNA1,"Cyclin_N2(1),Cyclin_C(1),Cyclin_N(1)",G2/mitotic-specific_cyclin-A,CCNA-like1,"1,06",ectoderm.embryonic,G2_mitotic-specific cyclin-A
+NVE8275,XP_020913827.1,LOC110251447,DDX19A,"Helicase_C(1),DEAD(1),ResIII(1)",ATP-dependent_RNA_helicase_DDX19A,DD19A-like1,"1,06",ectoderm.embryonic,ATP-dependent RNA helicase DDX19A
+NVE12137,XP_020904777.1,LOC110243060,-,-,protein_CASC4_isoform_X2,NVE12137,"1,05",ectoderm.embryonic,NA
+NVE2314,XP_020913529.1,LOC110251195,LOC102724594,"zf-CCCH(2),RRM_1(1)",splicing_factor_U2AF_26_kDa_subunit_isoform_X1,U2AF1-like,"1,04",ectoderm.embryonic,Splicing factor U2AF 35 kDa subunit
+NVE2616,XP_020907713.1,LOC110245757,-,-,TNF_receptor-associated_factor_6,NVE2616,"1,03",ectoderm.embryonic,NA
+NVE20867,XP_020901222.1,LOC110239809,-,"FA(1),FERM_C(1),FERM_M(1),FERM_N(1)",band_4.1-like_protein_1,E41L1-like3,"1,03",ectoderm.embryonic,Band 4.1-like protein 1
+NVE21869,XP_020900466.1,LOC110239101,CEP19,CEP19(1),centrosomal_protein_of_19_kDa,CEP19-like,"1,03",ectoderm.embryonic,Centrosomal protein of 19 kDa
+NVE2519,XP_020915817.1,LOC110253272,PBK,"Pkinase(1),PK_Tyr_Ser-Thr(1)",lymphokine-activated_killer_T-cell-originated_protein_kinase_homolog,TOPK-like,"1,03",ectoderm.embryonic,Lymphokine-activated killer T-cell-originated protein kinase
+NVE3149,XP_020908031.1,LOC110246070,-,Scramblase(1),-,NVE3149,"1,01",ectoderm.embryonic,NA
+NVE7211,XP_028513888.1,LOC110235805,MTR,"Pterin_bind(1),B12-binding_2(1),Met_synt_B12(1),B12-binding(1),S-methyl_trans(1)",methionine_synthase,METH-like,"1,01",ectoderm.embryonic,Methionine synthase
+NVE5412,XP_020894826.1,LOC110233834,-,-,-,TDA6-like,"2,77",ectoderm.epidermis,Putative vacuolar protein sorting-associated protein TDA6
+NVE10817,XP_020911005.1,LOC110248790,-,MARVEL(1),-,NVE10817,"2,61",ectoderm.epidermis,NA
+NVE10968,XP_020894867.1,LOC110233879,-,"GST_N_3(1),GST_C(1),GST_N(1),GST_C_3(1)",S-crystallin_4,GST36-like1,"1,61",ectoderm.epidermis,Probable glutathione S-transferase gst-36
+NVE22473,XP_020891959.1,LOC110231291,MMP25,"Peptidase_M10(1),Hemopexin(4),PG_binding_1(1)",LOW_QUALITY_PROTEIN:_matrix_metalloproteinase-17-like,MMP17-like21,"1,34",ectoderm.epidermis,Matrix metalloproteinase-17
+NVE3331,XP_020915865.1,LOC110253314,RPS20,Ribosomal_S10(1),40S_ribosomal_protein_S20,RS20-like1,"1,10",ectoderm.epidermis,40S ribosomal protein S20
+NVE2870,XP_020916498.1,LOC110253888,ACTB,Actin(1),"actin,_cytoplasmic_1",Nve-Actin11,"1,85",ectoderm.pharyngeal,"Actin, cytoplasmic 1"
+NVE6890,XP_020891897.2,LOC110231244,-,-,TRAF-type_zinc_finger_domain-containing_protein_1,TRAD1-like2,"1,85",ectoderm.pharyngeal,TRAF-type zinc finger domain-containing protein 1
+NVE448,XP_020893331.1,LOC110232468,-,-,-,NVE448,"1,35",ectoderm.pharyngeal,NA
+NVE18456,XP_020896830.1,LOC110235692,NPC2,E1_DerP2_DerF2(1),NPC_intracellular_cholesterol_transporter_2,NPC2-like41,"1,25",ectoderm.pharyngeal,Epididymal secretory protein E1
+NVE20630,XP_020893103.1,LOC110232276,FOXA2,"Forkhead(1),Forkhead_N(1)",forkhead_box_protein_A2,NvFoxA,"1,23",ectoderm.pharyngeal,Forkhead box protein A2
+NVE12842,XP_020898740.1,LOC110237488,-,BAG(1),histone_acetyltransferase_KAT6B,BAG4-like1,"1,18",ectoderm.pharyngeal,BAG family molecular chaperone regulator 4
+NVE16630,XP_020904377.1,LOC110242702,-,"zf-RING_11(1),zf-rbx1(1),zf-RING_2(1),zf-C3HC4(1),zf-C3HC4_2(1)",-,RMR1-like,"1,15",ectoderm.pharyngeal,"Receptor homology region, transmembrane domain- and RING domain-containing protein 1"
+NVE21090,XP_020897882.1,LOC110236685,JUN,"Jun(1),bZIP_1(1),bZIP_2(1),bZIP_Maf(1)",transcription_factor_jun-D,Nve-c-jun,"1,05",ectoderm.pharyngeal,Transcription factor AP-1
+NVE25536,XP_020897223.1,LOC110236085,ERG,"SAM_PNT(1),Ets(1)",transcriptional_regulator_ERG,NvERG,"1,01",ectoderm.pharyngeal,Transcriptional regulator Erg
+NVE2426,XP_028515661.1,LOC110241672,-,"Kunitz_BPTI(1),IGFBP(1)",four-domain_proteases_inhibitor,VKT1-like1,"3,27",endomesoderm,PI-actitoxin-Axm2a {ECO:0000303|PubMed:22683676}
+NVE2673,XP_020899747.1,LOC110238411,HEBP2,SOUL(1),heme-binding_protein_2,HEBP2-like1,"3,18",endomesoderm,Heme-binding protein 2
+NVE21289,XP_028514447.1,LOC110237484,-,"Collagen(5),COLFI(1)",collagen_alpha-1(I)_chain,COA-like1,"3,08",endomesoderm,Collagen alpha chain
+NVE7520,XP_020915419.1,LOC110252905,-,CH(1),muscle-specific_protein_20_isoform_X2,MP20-like3,"3,01",endomesoderm,Muscle-specific protein 20
+NVE25290,XP_020903051.1,LOC110241526,LOC400499,"Vit_open_b-sht(1),Vitellogenin_N(1),DUF1081(1),VWD(1)",-,APLP-like,"3,01",endomesoderm,Apolipophorins
+NVE4355,XP_020909293.1,LOC110247226,-,Fasciclin(2),transforming_growth_factor-beta-induced_protein_ig-h3,BGH3-like2,"3,00",endomesoderm,Transforming growth factor-beta-induced protein ig-h3
+NVE19791,XP_020917447.2,LOC110254749,-,"COLFI(1),Collagen(8)",collagen_alpha_chain,COA-like2,"2,87",endomesoderm,Collagen alpha chain
+NVE12857,XP_028519665.1,LOC110254720,-,"Collagen(5),COLFI(1)",collagen_alpha-1(I)_chain,CO1A2-like1,"2,76",endomesoderm,NA
+NVE4855,XP_020899403.1,LOC110238097,-,"Lipocalin_2(1),Lipocalin(1)",temperature-induced_lipocalin-1,BLC-like1,"2,74",endomesoderm,Outer membrane lipoprotein Blc
+NVE19183,XP_020908550.2,LOC110246538,-,Gelsolin(3),gelsolin-like_protein_1_isoform_X2,GELS1-like2,"2,51",endomesoderm,Gelsolin-like protein 1
+NVE18456,XP_020896830.1,LOC110235692,NPC2,E1_DerP2_DerF2(1),NPC_intracellular_cholesterol_transporter_2,NPC2-like4,"2,49",endomesoderm,Epididymal secretory protein E1
+NVE26034,XP_020893934.1,LOC110233033,-,Tropomyosin(1),tropomyosin_beta_chain,Nve-Tpm9,"2,41",endomesoderm,Tropomyosin
+NVE1244,XP_020892475.1,LOC110231767,-,Aerolysin(1),-,AERA-like2,"2,40",endomesoderm,Aerolysin
+NVE16375,XP_020895558.1,LOC110234521,-,TIMP(2),-,NvMMPi1,"2,34",endomesoderm,Metalloproteinase inhibitor 3
+NVE9354,XP_020895353.1,LOC110234324,CTSB,"Peptidase_C1(1),Propeptide_C1(1)",cathepsin_B,CATB-like,"2,24",endomesoderm,Cathepsin B
+NVE25569,XP_020908035.1,LOC110246074,-,Ferritin(1),soma_ferritin,FRIS-like9,"2,05",endomesoderm,Soma ferritin
+NVE1769,XP_020910228.1,LOC110248074,-,"VWC(1),TIL(1)",protein_kinase_C-binding_protein_NELL1,KCP-like6,"2,05",endomesoderm,Kielin_chordin-like protein
+NVE23205,XP_020915162.1,LOC110252666,-,"PK_Tyr_Ser-Thr(1),Pkinase(1),ABC1(1),Pkinase_fungal(1)",calcium/calmodulin-dependent_protein_kinase_type_1,KCC2A-like,"2,03",endomesoderm,Calcium_calmodulin-dependent protein kinase type II alpha chain
+NVE8113,XP_020905521.1,LOC110243735,-,"SPARC_Ca_bdg(1),Kazal_2(1),Thyroglobulin_1(1)",testican-2,TICN2-like1,"2,00",endomesoderm,Testican-2
+NVE18971,XP_020903385.1,LOC110241819,-,SPARC_Ca_bdg(1),follistatin-related_protein_1,NVE189711,"1,96",endomesoderm,NA
+NVE4672,XP_020906666.1,LOC110244782,-,PH(1),PH_domain-containing_protein_DDB_G0267786,Y7786-like1,"1,88",endomesoderm,PH domain-containing protein DDB_G0267786
+NVE540,XP_028513047.1,LOC110232880,-,-,-,NVE540,"1,86",endomesoderm,NA
+NVE12983,XP_020917237.1,LOC110254571,MYL6,"EF-hand_5(1),EF-hand_6(2),EF-hand_7(1),EF-hand_8(2)",myosin-2_essential_light_chain,Nve-MELC5,"1,73",endomesoderm,Myosin-2 essential light chain
+NVE18976,XP_020917233.1,LOC110254567,-,"VWA_2(1),VWA(1),WAP(1)",integrin_alpha-M,COCA1-like13,"1,71",endomesoderm,Collagen alpha-1(XII) chain
+NVE13457,XP_028515818.1,LOC110242256,CRIP1,LIM(2),cysteine_and_glycine-rich_protein_1,CRIP1-like1,"1,68",endomesoderm,Cysteine-rich protein 1
+NVE21242,XP_020917348.1,LOC110254668,-,"Ank(1),Ank_2(1),Ank_3(1),Ank_4(1),Ank_5(1)",myotrophin,MTPN-like1,"1,66",endomesoderm,Myotrophin
+NVE2870,XP_020916498.1,LOC110253888,ACTB,Actin(1),"actin,_cytoplasmic_1",Nve-Actin1,"1,65",endomesoderm,"Actin, cytoplasmic 1"
+NVE22473,XP_020891959.1,LOC110231291,MMP25,"Peptidase_M10(1),Hemopexin(4),PG_binding_1(1)",LOW_QUALITY_PROTEIN:_matrix_metalloproteinase-17-like,MMP17-like2,"1,47",endomesoderm,Matrix metalloproteinase-17
+NVE20254,XP_020895525.1,LOC110234488,-,DUF4773(1),-,NVE20254,"1,44",endomesoderm,NA
+NVE2733,XP_020902796.1,LOC110241264,-,"ELFV_dehydrog(1),ELFV_dehydrog_N(1)",-,DHE3-like1,"1,42",endomesoderm,Glutamate dehydrogenase
+NVE14552,XP_020901361.1,LOC110239943,-,"Myosin_tail_1(1),Myosin_N(1),Myosin_head(1)","myosin_heavy_chain,_striated_muscle_isoform_X1",Nve-MyHC-st,"1,40",endomesoderm,"Myosin heavy chain, striated muscle"
+NVE22050,XP_020911743.1,LOC110249513,TPP1,"Pro-kuma_activ(1),Peptidase_S8(1)",tripeptidyl-peptidase_1,TPP1-like,"1,39",endomesoderm,Tripeptidyl-peptidase 1
+NVE4476,XP_020892212.1,LOC110231534,BPI,"LBP_BPI_CETP_C(1),LBP_BPI_CETP(1)",bactericidal_permeability-increasing_protein,LBP-like2,"1,38",endomesoderm,Lipopolysaccharide-binding protein
+NVE22474,XP_020891960.1,LOC110231292,MMP13,"PG_binding_1(1),Hemopexin(3),Peptidase_M10(1)",72_kDa_type_IV_collagenase,MMP17-like1,"1,33",endomesoderm,Matrix metalloproteinase-17
+NVE18185,XP_020895293.1,LOC110234165,-,-,-,NVE18185,"1,31",endomesoderm,NA
+NVE14259,XP_020894141.1,LOC110233213,-,UPAR_LY6(1),-,NVE142591,"1,24",endomesoderm,NA
+NVE5570,XP_020892926.1,LOC110232154,COTL1,Cofilin_ADF(1),coactosin-like_protein,COTL1-like1,"1,13",endomesoderm,Coactosin-like protein
+NVE24374,XP_020910752.1,LOC110248555,-,DDE_Tnp_IS1595(1),-,NVE24374,"3,93",endomesoderm.embryonic,NA
+NVE14526,XP_020902867.1,LOC110241354,FSCN1,"Fascin(4),FRG1(1)",protein_singed,SING-like,"3,57",endomesoderm.embryonic,Protein singed
+NVE12086,XP_020903143.1,LOC110241605,-,-,-,NVE12086,"3,26",endomesoderm.embryonic,NA
+NVE235,XP_020914714.1,LOC110252274,-,LURAP(1),-,NVE235,"2,94",endomesoderm.embryonic,NA
+NVE17554,XP_020916831.1,LOC110254200,-,"SIX1_SD(1),Homeobox_KN(1),Homeodomain(1)",homeobox_protein_SIX2,NvSix4-5,"2,91",endomesoderm.embryonic,Homeobox protein SIX4
+NVE22755,XP_020903351.1,LOC110241790,-,RINGv(1),E3_ubiquitin-protein_ligase_MARCH3,MARH3-like,"2,82",endomesoderm.embryonic,E3 ubiquitin-protein ligase MARCH3
+NVE22697,XP_028515697.1,LOC110241798,PLOD3,-,multifunctional_procollagen_lysine_hydroxylase_and_glycosyltransferase_LH3,PLOD3-like,"2,64",endomesoderm.embryonic,"Procollagen-lysine,2-oxoglutarate 5-dioxygenase 3"
+NVE11652,XP_020909894.1,LOC110247769,EFHD2,"EF-hand_1(1),EF-hand_7(1)",EF-hand_domain-containing_protein_D2,EFHD2-like,"2,50",endomesoderm.embryonic,EF-hand domain-containing protein D2 homolog
+NVE5570,XP_020892926.1,LOC110232154,COTL1,Cofilin_ADF(1),coactosin-like_protein,COTL1-like,"2,50",endomesoderm.embryonic,Coactosin-like protein
+NVE2944,XP_020914797.1,LOC110252330,-,"TSP1_spondin(1),TSP_1(1)",somatomedin-B_and_thrombospondin_type-1_domain-containing_protein,SBSPO-like,"2,49",endomesoderm.embryonic,Somatomedin-B and thrombospondin type-1 domain-containing protein
+NVE8113,XP_020905521.1,LOC110243735,-,"SPARC_Ca_bdg(1),Kazal_2(1),Thyroglobulin_1(1)",testican-2,TICN2-like,"2,48",endomesoderm.embryonic,Testican-2
+NVE14440,XP_020896005.1,LOC110234935,-,DDE_Tnp_IS1595(1),-,Y132A-like2,"2,45",endomesoderm.embryonic,Uncharacterized transposase-like protein HI_1328.1
+NVE7116,XP_020908327.1,LOC110246336,-,Homeodomain(1),homeobox_protein_otx5-B,NvOtxB,"2,43",endomesoderm.embryonic,Homeobox protein OTX1 B
+NVE20438,XP_020899767.1,LOC110238437,-,"DMA(1),DM(1)",doublesex-_and_mab-3-related_transcription_factor_3a,NvDMRT-E,"2,33",endomesoderm.embryonic,NA
+NVE24170,XP_020911729.1,LOC110249498,-,HLH(1),heart-_and_neural_crest_derivatives-expressed_protein_2,Nve-Hand2,"2,30",endomesoderm.embryonic,Heart- and neural crest derivatives-expressed protein 1
+NVE18054,XP_020893146.1,LOC110232312,-,-,-,NVE18054,"2,29",endomesoderm.embryonic,NA
+NVE8348,XP_020908679.1,LOC110246653,A1CF,"DND1_DSRM(1),RRM_1(3)",APOBEC1_complementation_factor_isoform_X1,A1CF-like,"2,26",endomesoderm.embryonic,APOBEC1 complementation factor
+NVE25610,XP_020896478.1,LOC110235363,-,"zf_ZIC(1),zf-C2H2(2)",transcriptional_activator_GLI3,Nv-ZicA,"2,11",endomesoderm.embryonic,Zinc finger protein ZIC 4 {ECO:0000303|PubMed:16871625}
+NVE13986,XP_020904131.1,LOC110242479,-,"zf-C2H2_4(2),zf-C2H2_6(2),zf-met(1),zf-C2H2(4)",protein_snail_homolog_Sna,NvSnailA,"2,05",endomesoderm.embryonic,Zinc finger protein SNAI2
+NVE23956,XP_020900503.1,LOC110239135,-,Histone(1),histone_H3-like,H3-like8,"1,92",endomesoderm.embryonic,Histone H3
+NVE18971,XP_020903385.1,LOC110241819,-,SPARC_Ca_bdg(1),follistatin-related_protein_1,NVE18971,"1,88",endomesoderm.embryonic,NA
+NVE5767,XP_020909414.1,LOC110247328,HS6ST1,Sulfotransfer_2(1),heparan-sulfate_6-O-sulfotransferase_1-A-like,H6S1B-like,"1,79",endomesoderm.embryonic,Heparan-sulfate 6-O-sulfotransferase 1-B
+NVE5003,XP_020902299.1,LOC110240820,-,Ribosomal_L7Ae(1),NHP2-like_protein_1,NH2L1-like,"1,78",endomesoderm.embryonic,NHP2-like protein 1
+NVE6118,XP_020900919.1,LOC110239538,-,Ebp2(1),probable_rRNA-processing_protein_EBP2,EBP2-like,"1,75",endomesoderm.embryonic,Probable rRNA-processing protein EBP2
+NVE17681,XP_020895109.1,LOC110234095,-,CSRNP_N(2),cysteine/serine-rich_nuclear_protein_2-like,CSRN2-like,"1,74",endomesoderm.embryonic,Cysteine_serine-rich nuclear protein 2
+NVE13427,XP_020899560.1,LOC110238244,CALU,EF-hand_5(3),calumenin-B,CALUB-like1,"1,69",endomesoderm.embryonic,Calumenin-B
+NVE456,XP_028516585.1,LOC110245005,LAMB1,"Laminin_N(1),Laminin_EGF(13)",laminin_subunit_beta-1,NVbetaLaminin,"1,66",endomesoderm.embryonic,Laminin subunit beta-1
+NVE25544,XP_020899272.1,LOC110237982,FBL,Fibrillarin(1),rRNA_2'-O-methyltransferase_fibrillarin_isoform_X2,FBRL-like,"1,64",endomesoderm.embryonic,rRNA 2'-O-methyltransferase fibrillarin
+NVE7776,XP_020905287.1,LOC110243505,-,-,-,NVE7776,"1,64",endomesoderm.embryonic,NA
+NVE11962,XP_020909295.1,LOC110247229,SNRPD2,LSM(1),small_nuclear_ribonucleoprotein_Sm_D2,SMD2-like,"1,59",endomesoderm.embryonic,Probable small nuclear ribonucleoprotein Sm D2
+NVE942,XP_028516245.1,LOC110243800,HNRNPL,"RRM_1(2),RRM_5(2),RRM_8(1)",heterogeneous_nuclear_ribonucleoprotein_L,HNRPL-like1,"1,58",endomesoderm.embryonic,Heterogeneous nuclear ribonucleoprotein L
+NVE21741,XP_020915854.1,LOC110253307,RANBP1,"WH1(1),Ran_BP1(1)",ran-specific_GTPase-activating_protein,RANG-like,"1,57",endomesoderm.embryonic,Ran-specific GTPase-activating protein
+NVE12821,XP_020917171.1,LOC110254504,-,PX(1),-,SNX30-like1,"1,55",endomesoderm.embryonic,Sorting nexin-30
+NVE17039,XP_020914138.1,LOC110251746,RPF2,Brix(1),ribosome_production_factor_2_homolog,RPF2-like,"1,55",endomesoderm.embryonic,Ribosome production factor 2 homolog
+NVE4852,XP_020908304.1,LOC110246310,BUD31,G10(1),protein_BUD31_homolog,BUD31-like,"1,54",endomesoderm.embryonic,Protein BUD31 homolog
+NVE22465,XP_020915242.1,LOC110252752,PRSS23,"Trypsin(1),Trypsin_2(1)",serine_protease_23,PRS23-like1,"1,52",endomesoderm.embryonic,Serine protease 23
+NVE16375,XP_020895558.1,LOC110234521,-,TIMP(2),-,NvMMPi,"1,51",endomesoderm.embryonic,Metalloproteinase inhibitor 3
+NVE20970,XP_020898654.1,LOC110237413,CCT7,Cpn60_TCP1(1),T-complex_protein_1_subunit_eta,TCPH-like3,"1,50",endomesoderm.embryonic,T-complex protein 1 subunit eta
+NVE8868,XP_020903094.1,LOC110241565,PABPN1,RRM_1(1),polyadenylate-binding_protein_2-B,PABP2-like,"1,49",endomesoderm.embryonic,Polyadenylate-binding protein 2
+NVE10557,XP_020906888.1,LOC110244983,NKX2-8,Homeodomain(1),homeobox_protein_XENK-2,NvNKx2.2D,"1,49",endomesoderm.embryonic,Homeobox protein Nkx-2.2a
+NVE16351,XP_020903813.1,LOC110242199,-,-,-,NVE16351,"1,48",endomesoderm.embryonic,NA
+NVE21214,XP_028517479.1,LOC110247637,SRSF3,"RRM_1(2),RRM_5(2)",serine/arginine-rich_splicing_factor_7,SRSF3-like,"1,45",endomesoderm.embryonic,Serine_arginine-rich splicing factor 3
+NVE7441,XP_020899139.1,LOC110237861,MAGOHB,Mago_nashi(1),protein_mago_nashi_homolog,MGN2-like,"1,43",endomesoderm.embryonic,Protein mago nashi homolog 2
+NVE16345,XP_020911663.1,LOC110249430,-,"zf-CCHC(1),RRM_1(1)",serine/arginine-rich_splicing_factor_RS2Z33,RSZ32-like,"1,42",endomesoderm.embryonic,Serine_arginine-rich splicing factor RS2Z32
+NVE3698,XP_020916997.1,LOC110254358,NIP7,"UPF0113(1),UPF0113_N(1)",60S_ribosome_subunit_biogenesis_protein_NIP7_homolog,NIP7-like,"1,42",endomesoderm.embryonic,60S ribosome subunit biogenesis protein NIP7 homolog
+NVE18069,XP_020897132.1,LOC110235995,SAP18,SAP18(1),histone_deacetylase_complex_subunit_SAP18,SAP18-like,"1,40",endomesoderm.embryonic,Histone deacetylase complex subunit SAP18
+NVE10178,XP_028518629.1,LOC110251133,COL4A5,"C4(2),Collagen(13)",collagen_alpha-5(IV)_chain,CO4A2-like1,"1,39",endomesoderm.embryonic,Collagen alpha-2(IV) chain
+NVE17311,XP_020912355.1,LOC110250094,SNRPF,LSM(1),small_nuclear_ribonucleoprotein_F,RUXF-like,"1,38",endomesoderm.embryonic,Small nuclear ribonucleoprotein F
+NVE4372,XP_020908251.1,LOC110246273,-,"Astacin(1),ShK(2),fn2(1)",zinc_metalloproteinase_nas-6,SPAN-like,"1,36",endomesoderm.embryonic,Protein SpAN
+NVE19118,XP_028514491.1,LOC110237724,NOP58,"Nop(2),NOP5NT(1)",nucleolar_protein_58,NOP58-like,"1,34",endomesoderm.embryonic,Nucleolar protein 58
+NVE16256,XP_028515467.1,LOC110241029,HMBS,"Porphobil_deam(1),Porphobil_deamC(1)",porphobilinogen_deaminase,HEM3-like,"1,33",endomesoderm.embryonic,Porphobilinogen deaminase
+NVE2132,XP_020910905.1,LOC110248697,-,Nop16(2),nucleolar_protein_16_isoform_X1,NOP16-like,"1,33",endomesoderm.embryonic,Nucleolar protein 16
+NVE18987,XP_020892232.1,LOC110231552,-,"SAP(1),Tho1_MOS11_C(2)",SAP_domain-containing_ribonucleoprotein,SARNP-like,"1,32",endomesoderm.embryonic,SAP domain-containing ribonucleoprotein
+NVE13522,XP_020903689.1,LOC110242084,DKC1,"PUA(1),TruB_N(1),DKCLD(1),TruB_C_2(1)",LOW_QUALITY_PROTEIN:_H/ACA_ribonucleoprotein_complex_subunit_CBF5-like_isoform_X2,CBF5-like,"1,32",endomesoderm.embryonic,Centromere_microtubule-binding protein cbf5
+NVE12823,XP_028518813.1,LOC110251709,HNRNPA1L2,RRM_1(2),heterogeneous_nuclear_ribonucleoprotein_A1_isoform_X2,MSI2H-like,"1,31",endomesoderm.embryonic,RNA-binding protein Musashi homolog 2
+NVE10060,XP_020901373.1,LOC110239951,ALYREF,"FoP_duplication(1),RRM_1(1)",THO_complex_subunit_4,ALRF2-like,"1,30",endomesoderm.embryonic,Aly_REF export factor 2
+NVE21175,XP_020893025.1,LOC110232217,SNRPB,LSM(1),small_nuclear_ribonucleoprotein-associated_protein_B',RSMB-like,"1,25",endomesoderm.embryonic,Small nuclear ribonucleoprotein-associated protein B'
+NVE4477,XP_020913900.1,LOC110251515,NOP56,"Nop(1),NOP5NT(1)",nucleolar_protein_56,NOP56-like1,"1,24",endomesoderm.embryonic,Nucleolar protein 56
+NVE8275,XP_020913827.1,LOC110251447,DDX19A,"Helicase_C(1),DEAD(1),ResIII(1)",ATP-dependent_RNA_helicase_DDX19A,DD19A-like,"1,23",endomesoderm.embryonic,ATP-dependent RNA helicase DDX19A
+NVE16452,XP_020895608.2,LOC110234562,CCNJ,"Cyclin_C(1),Cyclin_N(1)",cyclin-J,CCNJ-like,"1,22",endomesoderm.embryonic,Cyclin-J
+NVE21004,XP_020899886.1,LOC110238553,SNRPG,LSM(1),small_nuclear_ribonucleoprotein_G,RUXG-like,"1,21",endomesoderm.embryonic,Probable small nuclear ribonucleoprotein G
+NVE11365,XP_020896471.1,LOC110235357,NIFK,RRM_1(1),MKI67_FHA_domain-interacting_nucleolar_phosphoprotein-like,MK67I-like,"1,21",endomesoderm.embryonic,MKI67 FHA domain-interacting nucleolar phosphoprotein-like
+NVE716,XP_020906324.1,LOC110244454,-,"zf-C2HC(2),SAM_1(1),SAM_2(1),MBT(3)",lethal(3)malignant_brain_tumor-like_protein_1,LMBL3-like2,"1,19",endomesoderm.embryonic,Lethal(3)malignant brain tumor-like protein 3
+NVE14259,XP_020894141.1,LOC110233213,-,UPAR_LY6(1),-,NVE14259,"1,18",endomesoderm.embryonic,NA
+NVE18536,XP_028515953.1,LOC110242685,CERCAM,Glyco_transf_25(1),probable_inactive_glycosyltransferase_25_family_member_3,GT251-like,"1,17",endomesoderm.embryonic,Procollagen galactosyltransferase 1
+NVE24079,XP_020908727.1,LOC110246703,RSL1D1,Ribosomal_L1(1),ribosomal_L1_domain-containing_protein_1,RL1D1-like,"1,17",endomesoderm.embryonic,Ribosomal L1 domain-containing protein 1
+NVE8463,XP_020907059.1,LOC110245146,-,RRM_1(1),"RNA-binding_motif_protein,_X_chromosome_isoform_X1",RBM3-like3,"1,15",endomesoderm.embryonic,RNA-binding protein 3
+NVE1245,XP_020894055.1,LOC110233131,-,RRM_1(2),serine-arginine_protein_55,SRSF4-like1,"1,15",endomesoderm.embryonic,Serine_arginine-rich splicing factor 4
+NVE4944,XP_020904324.1,LOC110242651,SNRNP70,"RRM_1(1),U1snRNP70_N(1)",U1_small_nuclear_ribonucleoprotein_70_kDa,RU17-like2,"1,15",endomesoderm.embryonic,U1 small nuclear ribonucleoprotein 70 kDa
+NVE3894,XP_020904688.1,LOC110242980,VAT1,"ADH_N(1),ADH_zinc_N(1),ADH_zinc_N_2(1)",synaptic_vesicle_membrane_protein_VAT-1_homolog,VAT1-like2,"1,15",endomesoderm.embryonic,Synaptic vesicle membrane protein VAT-1 homolog
+NVE19525,XP_028512645.1,LOC114574389,ERH,ER(1),enhancer_of_rudimentary_homolog,ERH-like1,"1,14",endomesoderm.embryonic,Enhancer of rudimentary homolog
+NVE22736,XP_020916982.1,LOC110254345,SPSB1,"SPRY(1),SOCS_box(1)",protein_gustavus,GUS-like,"1,13",endomesoderm.embryonic,Protein gustavus {ECO:0000312|EMBL:AAM68373.1}
+NVE10153,XP_020895347.1,LOC110234319,SULF1,Sulfatase(1),extracellular_sulfatase_Sulf-1,SULF1-like,"1,12",endomesoderm.embryonic,Extracellular sulfatase Sulf-1
+NVE6983,XP_020915628.1,LOC110253093,-,"EF-hand_5(5),EF-hand_7(1)",calumenin-A,CALUA-like3,"1,12",endomesoderm.embryonic,Calumenin-A
+NVE18017,XP_020906832.1,LOC110244940,SLC30A2,Cation_efflux(1),zinc_transporter_2_isoform_X1,ZNT2-like2,"1,12",endomesoderm.embryonic,Zinc transporter 2
+NVE11233,XP_020904537.1,LOC110242839,-,"zf-met(1),zf-C2H2_jaz(1)",tyrosine-protein_kinase_BTK,NVE11233,"1,11",endomesoderm.embryonic,NA
+NVE12123,XP_020907840.1,LOC110245884,-,NPL(1),FK506-binding_protein_4,FKBP4-like2,"1,11",endomesoderm.embryonic,46 kDa FK506-binding nuclear protein
+NVE12519,XP_020910685.1,LOC110248494,H2AFY2,"Histone(1),Histone_H2A_C(1),Macro(1)",core_histone_macro-H2A.1,H2AY-like,"1,10",endomesoderm.embryonic,Core histone macro-H2A.1
+NVE3064,XP_020905793.1,LOC110243978,SNRPD3,LSM(1),small_nuclear_ribonucleoprotein_Sm_D3,SMD3-like,"1,10",endomesoderm.embryonic,Small nuclear ribonucleoprotein Sm D3
+NVE20755,XP_020914183.1,LOC110251782,PSMB6,Proteasome(1),proteasome_subunit_beta_type-6,PSB6-like,"1,09",endomesoderm.embryonic,Proteasome subunit beta type-6
+NVE25705,XP_020915909.1,LOC110253349,-,Geminin(1),geminin,NVE25705,"1,09",endomesoderm.embryonic,NA
+NVE24511,XP_020903474.1,LOC110241894,TECR,"Steroid_dh(1),ubiquitin(1)",probable_very-long-chain_enoyl-CoA_reductase_art-1,TECR-like1,"1,08",endomesoderm.embryonic,Probable very-long-chain enoyl-CoA reductase art-1
+NVE3319,XP_020914755.1,LOC110252300,-,"zf-TRAF(4),zf-C3HC4(1)",TNF_receptor-associated_factor_4,Nvtraf4,"1,07",endomesoderm.embryonic,TNF receptor-associated factor 4
+NVE734,XP_020894582.1,LOC110233615,-,RRM_1(2),serine-arginine_protein_55_isoform_X2,SRR55-like2,"1,07",endomesoderm.embryonic,Serine-arginine protein 55
+NVE21498,XP_020912146.1,LOC110249905,TMED7,EMP24_GP25L(1),transmembrane_emp24_domain-containing_protein_7,TMED7-like,"1,06",endomesoderm.embryonic,Transmembrane emp24 domain-containing protein 7
+NVE18993,XP_020892838.1,LOC110232076,CBX1,"Chromo(1),Chromo_shadow(1)",chromobox_protein_homolog_1,CBX1-like,"1,06",endomesoderm.embryonic,Chromobox protein homolog 1
+NVE19132,XP_020891867.1,LOC110231217,SLC35B1,"UAA(1),EamA(1)",solute_carrier_family_35_member_B1-like,S35B1-like,"1,05",endomesoderm.embryonic,Solute carrier family 35 member B1
+NVE13171,XP_020897939.1,LOC110236738,IMP4,Brix(1),U3_small_nucleolar_ribonucleoprotein_protein_IMP4,IMP4-like,"1,05",endomesoderm.embryonic,U3 small nucleolar ribonucleoprotein protein IMP4
+NVE13992,XP_020910572.1,LOC110248391,UBB,"ubiquitin(3),Ubiquitin_2(3),Rad60-SLD(3),Rad60-SLD_2(2)",polyubiquitin,UBB-like,"1,04",endomesoderm.embryonic,Polyubiquitin-B
+NVE21460,XP_020903127.1,LOC110241591,PSMA4,"Proteasome_A_N(1),Proteasome(1)",proteasome_subunit_alpha_type-4,PSA4-like2,"1,03",endomesoderm.embryonic,Proteasome subunit alpha type-4
+NVE21515,XP_020902341.1,LOC110240870,CHORDC1,"CHORD(2),CS(1)",cysteine_and_histidine-rich_domain-containing_protein_1,CHRD1-like,"1,02",endomesoderm.embryonic,Cysteine and histidine-rich domain-containing protein 1
+NVE25135,XP_020892386.2,LOC110231680,GLTSCR2,Nop53(1),ribosome_biogenesis_protein_NOP53,GSCR2-like,"1,01",endomesoderm.embryonic,Glioma tumor suppressor candidate region gene 2 protein
+NVE3041,XP_020914777.1,LOC110252314,-,Peptidase_A22B(1),minor_histocompatibility_antigen_H13_isoform_X1,HM13-like,"1,01",endomesoderm.embryonic,Minor histocompatibility antigen H13
+NVE14917,XP_020896469.1,LOC110235354,-,"EF-hand_1(1),EF-hand_5(2),EF-hand_7(1),FKBP_C(1)",FK506-binding_protein_2,FKB14-like2,"6,90",gland.mucous,Peptidyl-prolyl cis-trans isomerase FKBP14
+NVE25858,XP_020897889.1,LOC110236688,-,Gly_rich(1),-,ALK-like,"6,32",gland.mucous,ALK tyrosine kinase receptor
+NVE16867,XP_020917180.2,LOC110254511,-,Cys_knot(1),-,NVE16867,"5,84",gland.mucous,NA
+NVE23327,XP_020917050.1,LOC110254406,-,"CAP(1),ShK(1)",protein_PRY1,PRY1-like3,"4,32",gland.mucous,Protein PRY1 {ECO:0000305} = probe pry1a  | questionable assembly?
+NVE23932,XP_020893299.2,LOC110232443,-,Glyco_hydro_9(2),LOW_QUALITY_PROTEIN:_-,NvCellulase,"4,08",gland.mucous,Endoglucanase A GUNA_BACPU
+NVE2906,XP_020894569.1,LOC110233608,-,-,-,NVE2906,"4,02",gland.mucous,NA
+NVE17839,XP_020909011.1,LOC110246968,-,-,-,NVE178391,"3,68",gland.mucous,NA
+NVE2435,XP_020909944.1,LOC110247812,-,"bZIP_Maf(1),bZIP_1(1),bZIP_2(1)",-,Nvcreb-like2,"3,41",gland.mucous,Cyclic AMP-responsive element-binding protein 3-like protein 2
+NVE16872,XP_028517760.1,LOC110248328,-,"VWD(3),C8(3),TIL(1)","mucin-2,_partial",NvMucin,"3,24",gland.mucous,Mucin-5AC {ECO:0000305} (MUC5A_HUMAN)
+NVE21881,XP_020894139.1,LOC110233208,-,HLH(1),-,ID4-like2,"2,84",gland.mucous,DNA-binding protein inhibitor ID-4
+NVE2174,XP_020907161.1,LOC110245235,-,Homeodomain(1),homeobox_protein_MOX-2,NOT2-like2,"2,70",gland.mucous,Homeobox protein not2
+NVE3852,XP_020905762.1,LOC110243950,ESRP1,RRM_1(1),epithelial_splicing_regulatory_protein_1,ESRP2-like,"2,64",gland.mucous,Epithelial splicing regulatory protein 2
+NVE7805,XP_020916421.1,LOC110253811,-,STELLO(1),probable_glycosyltransferase_STELLO1,NVE7805,"2,49",gland.mucous,NA
+NVE4175,XP_020915806.1,LOC110253250,-,"TSP1_ADAMTS(3),TSP_1(3)",coadhesin,HMCN1-like43,"2,48",gland.mucous,Hemicentin-1
+NVE6677,XP_020913364.1,LOC110251042,CD151,Tetraspanin(1),CD151_antigen_isoform_X1,CD151-like32,"2,43",gland.mucous,CD151 antigen
+NVE10806,XP_020894143.1,LOC110233215,-,SBF_like(1),"probable_sodium/metabolite_cotransporter_BASS4,_chloroplastic",BASS4-like1,"2,40",gland.mucous,"Probable sodium_metabolite cotransporter BASS4, chloroplastic"
+NVE4418,XP_020894840.2,LOC110233851,-,"Glyco_transf_7C(1),Glyco_transf_7N(1)","beta-1,4-galactosyltransferase_4",B4GT1-like1,"2,14",gland.mucous,"Beta-1,4-galactosyltransferase 1"
+NVE12945,XP_028516213.1,LOC110243669,TMEM63B,"RSN1_TM(1),RSN1_7TM(1),PHM7_cyt(1)",CSC1-like_protein_2,CSCL2-like,"2,12",gland.mucous,CSC1-like protein 2
+NVE7206,XP_020901918.1,LOC110240446,INSM1,"zf-met(1),zf-C2H2_4(1),zf-C2H2_6(3),zf-C2H2(3)",insulinoma-associated_protein_1a,INSM1-like2,"2,07",gland.mucous,Insulinoma-associated protein 1
+NVE4616,XP_020915601.2,LOC110253071,-,-,protein_C19orf12_homolog,NVE4616,"1,95",gland.mucous,NA
+NVE16339,XP_020893387.1,LOC110232514,ERGIC1,"ERGIC_N(1),COPIIcoated_ERV(1)",endoplasmic_reticulum-Golgi_intermediate_compartment_protein_1,ERGI1-like,"1,95",gland.mucous,Endoplasmic reticulum-Golgi intermediate compartment protein 1
+NVE20152,XP_028515443.1,LOC110240955,-,DUF229(1),-,NVE20152,"1,94",gland.mucous,NA
+NVE14848,XP_020895078.1,LOC110234068,GMPPA,NTP_transferase(1),mannose-1-phosphate_guanyltransferase_alpha-A,GMPAA-like,"1,92",gland.mucous,Mannose-1-phosphate guanyltransferase alpha-A
+NVE2222,XP_020898373.1,LOC110237134,-,Galactosyl_T(1),"beta-1,3-galactosyltransferase_1",B3GT1-like1,"1,85",gland.mucous,"Beta-1,3-galactosyltransferase 1"
+NVE11242,XP_020893177.1,LOC110232340,-,Glyco_transf_18(1),"alpha-1,6-mannosylglycoprotein_6-beta-N-acetylglucosaminyltransferase_A",MGT5A-like1,"1,77",gland.mucous,"Alpha-1,6-mannosylglycoprotein 6-beta-N-acetylglucosaminyltransferase A"
+NVE5902,XP_020896460.1,LOC110235346,-,"Ras(1),SRPRB(1),Roc(1),MMR_HSR1(1),Gtr1_RagA(1),Arf(1)",ADP-ribosylation_factor_1,ARF1-like2,"1,75",gland.mucous,ADP-ribosylation factor 1
+NVE9110,XP_020905633.1,LOC110243835,-,Cg6151-P(1),calcium_channel_flower_homolog,FLOWR-like1,"1,68",gland.mucous,Calcium channel flower homolog
+NVE23972,XP_020900527.1,LOC110239163,-,G-gamma(1),guanine_nucleotide-binding_protein_subunit_gamma-e,GBGE-like2,"1,60",gland.mucous,Guanine nucleotide-binding protein subunit gamma-e
+NVE17368,XP_020910662.1,LOC110248471,RFX1,RFX_DNA_binding(1),DNA-binding_protein_RFX2_isoform_X2,RFX3-like,"1,52",gland.mucous,Transcription factor RFX3
+NVE13506,XP_020904937.2,LOC110243200,-,Glyco_transf_54(1),"alpha-1,3-mannosyl-glycoprotein_4-beta-N-acetylglucosaminyltransferase_C",MGT4C-like4,"1,46",gland.mucous,"Alpha-1,3-mannosyl-glycoprotein 4-beta-N-acetylglucosaminyltransferase C"
+NVE13151,XP_020896292.1,LOC110235193,-,"Thioredoxin(1),Thioredoxin_8(1)",thioredoxin,THIO-like,"1,45",gland.mucous,Thioredoxin
+NVE15734,XP_028516075.1,LOC110243164,PDIA3,"Thioredoxin(4),Thioredoxin_6(1)",-,PDIA3-like1,"1,44",gland.mucous,Protein disulfide-isomerase A3
+NVE17309,XP_020892287.1,LOC110231598,TXNDC12,"Thioredoxin(1),Thioredoxin_7(1)",thioredoxin_domain-containing_protein_12,TXD12-like1,"1,44",gland.mucous,Thioredoxin domain-containing protein 12
+NVE11299,XP_020902508.2,LOC110241017,-,Arm(1),armadillo_repeat-containing_protein_4-like,ARMC4-like1,"1,42",gland.mucous,Armadillo repeat-containing protein 4
+NVE21199,XP_020908456.1,LOC110246450,-,-,-,NVE21199,"1,41",gland.mucous,NA
+NVE19611,XP_020901813.1,LOC110240351,POMT2,"MIR(1),PMT(1),PMT_4TMC(1)",protein_O-mannosyl-transferase_2_isoform_X2,POMT2-like,"1,38",gland.mucous,Protein O-mannosyl-transferase 2
+NVE12908,XP_020906895.1,LOC110244990,-,Galactosyl_T(1),hydroxyproline_O-galactosyltransferase_GALT5,B3GTG-like,"1,38",gland.mucous,"Probable beta-1,3-galactosyltransferase 16"
+NVE14741,XP_028517348.1,LOC110247270,-,-,-,NVE14741,"1,31",gland.mucous,NA
+NVE21534,XP_028512708.1,LOC110231836,-,Collagen(2),collagen_alpha-1(I)_chain_isoform_X2,NVE21534,"1,26",gland.mucous,NA
+NVE20609,XP_020917352.1,LOC110254673,PCBP3,KH_1(3),poly(rC)-binding_protein_3,PCBP3-like,"1,24",gland.mucous,Poly(rC)-binding protein 3
+NVE15552,XP_020893919.1,LOC110233019,-,C2(2),synaptotagmin-2,SYT1-like3,"1,22",gland.mucous,Synaptotagmin-1
+NVE8441,XP_020905884.1,LOC110244064,-,Neurensin(1),-,NVE8441,"1,20",gland.mucous,NA
+NVE10899,XP_020905749.1,LOC110243936,CALB2,"EF-hand_1(1),EF-hand_5(3),EF-hand_6(1),EF-hand_7(3),EF-hand_8(1)",calbindin-32,SEGN-like31,"1,19",gland.mucous,Secretagogin
+NVE16373,XP_020895546.1,LOC110234512,-,Homeodomain(1),homeobox_protein_Hox-B4,NvHoxA-Anthox61,"1,14",gland.mucous,Homeobox protein Hox-C4
+NVE7373,XP_020907715.1,LOC110245760,KCNK6,"Ion_trans_2(2),Ion_trans(1)",potassium_channel_subfamily_K_member_1,KCNK1-like2,"1,07",gland.mucous,Potassium channel subfamily K member 1
+NVE6677,XP_020913364.1,LOC110251042,CD151,Tetraspanin(1),CD151_antigen_isoform_X1,CD151-like3,"3,17",neuronal,CD151 antigen
+NVE10899,XP_020905749.1,LOC110243936,CALB2,"EF-hand_1(1),EF-hand_5(3),EF-hand_6(1),EF-hand_7(3),EF-hand_8(1)",calbindin-32,SEGN-like3,"2,58",neuronal,Secretagogin
+NVE429,XP_020911789.1,LOC110249555,-,-,-,NVE429,"2,52",neuronal,NA
+NVE23972,XP_020900527.1,LOC110239163,-,G-gamma(1),guanine_nucleotide-binding_protein_subunit_gamma-e,GBGE-like,"2,46",neuronal,Guanine nucleotide-binding protein subunit gamma-e
+NVE15559,XP_020909828.1,LOC110247711,-,HLH(1),achaete-scute_homolog_2,NvAshA,"2,45",neuronal,Achaete-scute homolog 4
+NVE8534,XP_028515700.1,LOC110241801,-,-,-,NVE8534,"2,26",neuronal,NA
+NVE8536,XP_020903354.1,LOC110241792,-,-,-,NVE8536,"2,08",neuronal,NA
+NVE8535,XP_020903364.1,LOC110241802,-,-,-,NVE8535,"2,06",neuronal,NA
+NVE12889,XP_020894225.1,LOC110233288,CDK5R1,CDK5_activator(1),cyclin-dependent_kinase_5_activator_1,CD5R1-like,"1,84",neuronal,Cyclin-dependent kinase 5 activator 1
+NVE24272,XP_020916557.1,LOC110253942,-,-,-,NVE24272,"1,82",neuronal,NA
+NVE12842,XP_020898740.1,LOC110237488,-,BAG(1),histone_acetyltransferase_KAT6B,BAG4-like11,"1,68",neuronal,BAG family molecular chaperone regulator 4
+NVE18455,XP_020912643.1,LOC110250387,RTN4,Reticulon(1),reticulon-1-A,RTN1A-like,"1,62",neuronal,Reticulon-1-A
+NVE7206,XP_020901918.1,LOC110240446,INSM1,"zf-met(1),zf-C2H2_4(1),zf-C2H2_6(3),zf-C2H2(3)",insulinoma-associated_protein_1a,INSM1-like,"1,51",neuronal,Insulinoma-associated protein 1
+NVE266,XP_020900187.1,LOC110238843,-,Tropomyosin(1),probable_cyclin-dependent_serine/threonine-protein_kinase_DDB_G0278487,Nve-Tpm3,"1,36",neuronal,Tropomyosin beta chain
+NVE7771,XP_020905298.1,LOC110243514,-,-,-,NVE7771,"1,15",neuronal,NA
+NVE9110,XP_020905633.1,LOC110243835,-,Cg6151-P(1),calcium_channel_flower_homolog,FLOWR-like,"1,10",neuronal,Calcium channel flower homolog
+NVE3894,XP_020904688.1,LOC110242980,VAT1,"ADH_N(1),ADH_zinc_N(1),ADH_zinc_N_2(1)",synaptic_vesicle_membrane_protein_VAT-1_homolog,VAT1-like21,"1,08",neuronal,Synaptic vesicle membrane protein VAT-1 homolog
+NVE12172,XP_020904931.1,LOC110243192,LARP6,"SUZ-C(1),La(1)",la-related_protein_6,LARP6-like,"1,08",neuronal,La-related protein 6
+NVE21864,XP_020900434.1,LOC110239068,-,-,high_mobility_group_nucleosome-binding_domain-containing_protein_5,NVE21864,"2,12",NPC,NA
+NVE26120,XP_020905478.1,LOC110243695,PCNA,"PCNA_C(1),PCNA_N(1),Rad9(1)",proliferating_cell_nuclear_antigen,PCNA-like,"1,83",NPC,Proliferating cell nuclear antigen
+NVE19926,XP_020898065.1,LOC110236847,-,-,-,NVE19926,"1,42",NPC,NA
+NVE12762,XP_020914867.1,LOC110252389,SOX4,"HMG_box(1),HMG_box_2(1)",transcription_factor_SOX-12-like,NvSoxC,"1,41",NPC,SRY-related protein AES4
+NVE7848,XP_020909622.1,LOC110247521,DLGAP5,GKAP(1),disks_large-associated_protein_5_isoform_X2,DLGP5-like,"1,41",NPC,Disks large-associated protein 5
+NVE20961,XP_020914930.1,LOC110252442,-,HLH(1),myc_proto-oncogene_protein_isoform_X4,NvMyc3,"1,29",NPC,Myc proto-oncogene protein
+NVE24655,XP_020915552.1,LOC110253032,-,"HMG_box(1),HMG_box_2(1)",transcription_factor_Sox-21-B,NvSoxB.2,"1,04",NPC,Transcription factor Sox-21-B {ECO:0000303|PubMed:15037315}
+NVE20160,XP_020892193.1,LOC110231520,-,"EF-hand_1(1),EF-hand_5(2),EF-hand_6(1),EF-hand_7(1)",myosin_regulatory_light_polypeptide_9,Nve-MRLC3,"6,93",retractor muscle,Myosin regulatory light polypeptide 9
+NVE1725,XP_020900757.1,LOC110239382,-,Tropomyosin(1),tropomyosin-1,Nve-Tpm2,"5,81",retractor muscle,Tropomyosin alpha-4 chain
+NVE7822,XP_028518318.1,LOC110250215,-,LIM(2),cysteine_and_glycine-rich_protein_1,Nvmuscle-LIM1.1,"4,82",retractor muscle,Cysteine and glycine-rich protein 1 CSRP1_COTJA NOT LIM1.1!
+NVE17049,XP_020895643.1,LOC110234596,-,"Calponin(1),CH(1)",muscle-specific_protein_20_isoform_X2,NvMyophilin-like,"4,75",retractor muscle,Myophilin
+NVE19155,XP_020894958.1,LOC110233960,-,"Ank_2(1),Ank_3(2),Ank_4(1),Ank_5(1),Ank(2)",poly_[ADP-ribose]_polymerase_tankyrase-2,MTPN-like2,"4,57",retractor muscle,Myotrophin
+NVE14552,XP_020901361.1,LOC110239943,-,"Myosin_tail_1(1),Myosin_N(1),Myosin_head(1)","myosin_heavy_chain,_striated_muscle_isoform_X1",Nve-MyHC-st1,"4,36",retractor muscle,"Myosin heavy chain, striated muscle"
+NVE21834,XP_020893154.1,LOC110232319,-,BTB(1),-,BAT47-like,"3,89",retractor muscle,BTB and MATH domain-containing protein 47
+NVE1642,XP_020907072.1,LOC110245155,-,CH(1),calponin-3_isoform_X2,MYPH-like1,"3,86",retractor muscle,Myophilin
+NVE6666,XP_028516658.1,LOC110245031,-,-,vicilin-like_seed_storage_protein_At2g18540_isoform_X23,NVE6666,"3,75",retractor muscle,NA
+NVE12038,XP_020914511.1,LOC110252089,-,-,-,NVE12038,"3,55",retractor muscle,NA
+NVE13457,XP_028515818.1,LOC110242256,CRIP1,LIM(2),cysteine_and_glycine-rich_protein_1,CRIP1-like11,"3,39",retractor muscle,Cysteine-rich protein 1
+NVE16356,XP_020894797.1,LOC110233807,-,"ATP-gua_Ptrans(2),ATP-gua_PtransN(2)",arginine_kinase,KARG-like2,"3,28",retractor muscle,Arginine kinase
+NVE12992,XP_028512859.1,LOC110232235,TTN,"V-set(2),Spectrin(2),CRAL_TRIO_2(1),ig(65),I-set(123),RhoGEF(2),Ig_2(39),Ig_3(106),PK_Tyr_Ser-Thr(3),Pkinase(3)",titin,Nve-Obscurin-likei1,"3,15",retractor muscle,Titin
+NVE477,XP_020905066.1,LOC110243317,-,-,-,NVE477,"2,69",retractor muscle,NA
+NVE8007,XP_020912730.1,LOC110250469,-,Asparaginase_2(1),N(4)-(Beta-N-acetylglucosaminyl)-L-asparaginase,ASPG-like5,"2,51",retractor muscle,N(4)-(Beta-N-acetylglucosaminyl)-L-asparaginase
+NVE11583,XP_020903114.1,LOC110241578,-,"NCD3G(1),7tm_3(1),ANF_receptor(1)",metabotropic_glutamate_receptor_4,GRM4-like3,"2,35",retractor muscle,Metabotropic glutamate receptor 4
+NVE12731,XP_020909334.1,LOC110247259,-,CUB(1),-,NVE12731,"2,14",retractor muscle,NA
+NVE23943,XP_028519223.1,LOC110253276,-,"7tm_1(1),7TM_GPCR_Srsx(1)",orexin_receptor_type_2,OX2R-like2,"2,04",retractor muscle,NA
+NVE11430,XP_020915340.1,LOC110252833,-,"EF-hand_1(4),EF-hand_5(4),EF-hand_6(2),EF-hand_7(2),EF-hand_8(3)",calmodulin_isoform_X1,CALM-like6,"1,95",retractor muscle,Calmodulin
+NVE23205,XP_020915162.1,LOC110252666,-,"PK_Tyr_Ser-Thr(1),Pkinase(1),ABC1(1),Pkinase_fungal(1)",calcium/calmodulin-dependent_protein_kinase_type_1,KCC2A-like1,"1,92",retractor muscle,Calcium_calmodulin-dependent protein kinase type II alpha chain
+NVE12988,XP_020898796.1,LOC110237537,-,"zf-TRAF(2),zf-RING_UBOX(1),zf-C3HC4(1),zf-C3HC4_2(1),zf-C3HC4_3(1),zf-RING_2(1)",TNF_receptor-associated_factor_5,TRAF4-like1,"1,54",retractor muscle,TNF receptor-associated factor 4
+NVE8199,XP_020917106.1,LOC110254457,GATA2,GATA(2),GATA-binding_factor_2_isoform_X3,NvGATA,"1,40",retractor muscle,GATA-binding factor 2
+NVE20107,XP_020895553.1,LOC110234516,KCNIP3,"EF-hand_1(1),EF-hand_5(3),EF-hand_7(1),EF-hand_8(2)",Kv_channel-interacting_protein_2_isoform_X5,CSEN-like,"1,24",retractor muscle,Calsenilin
+NVE2733,XP_020902796.1,LOC110241264,-,"ELFV_dehydrog(1),ELFV_dehydrog_N(1)",-,DHE3-like11,"1,20",retractor muscle,Glutamate dehydrogenase
+NVE23392,XP_028517039.1,LOC110246314,-,Kunitz_BPTI(2),kunitz/BPTI-like_toxin,VKT52-like,"3,10",secretory,KappaPI-actitoxin-Avd3a {ECO:0000303|PubMed:22683676}
+NVE17839,XP_020909011.1,LOC110246968,-,-,-,NVE17839,"2,67",secretory,NA
+NVE20630,XP_020893103.1,LOC110232276,FOXA2,"Forkhead(1),Forkhead_N(1)",forkhead_box_protein_A2,NvFoxA1,"1,80",secretory,Forkhead box protein A2
+NVE2234,XP_020914316.1,LOC110251909,PCSK1,"P_proprotein(1),Peptidase_S8(1),S8_pro-domain(1)",neuroendocrine_convertase_1,NEC1-like1,"1,62",secretory,Neuroendocrine convertase 1
+NVE6677,XP_020913364.1,LOC110251042,CD151,Tetraspanin(1),CD151_antigen_isoform_X1,CD151-like31,"1,55",secretory,CD151 antigen
+NVE5009,XP_020900534.1,LOC110239168,P4HB,"Thioredoxin_2(1),Thioredoxin_6(1),Calsequestrin(1),Thioredoxin(2)",protein_disulfide-isomerase_2,PDIA1-like,"1,45",secretory,Protein disulfide-isomerase
+NVE7206,XP_020901918.1,LOC110240446,INSM1,"zf-met(1),zf-C2H2_4(1),zf-C2H2_6(3),zf-C2H2(3)",insulinoma-associated_protein_1a,INSM1-like1,"1,38",secretory,Insulinoma-associated protein 1
+NVE23972,XP_020900527.1,LOC110239163,-,G-gamma(1),guanine_nucleotide-binding_protein_subunit_gamma-e,GBGE-like1,"1,07",secretory,Guanine nucleotide-binding protein subunit gamma-e
+NVE13177,XP_020907283.1,LOC110245344,HSP90B1,"HATPase_c(1),HATPase_c_3(1),HSP90(2)",endoplasmin,ENPL-like,"1,07",secretory,Endoplasmin

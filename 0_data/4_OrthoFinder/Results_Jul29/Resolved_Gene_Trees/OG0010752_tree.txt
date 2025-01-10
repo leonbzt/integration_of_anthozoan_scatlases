@@ -1,0 +1,1 @@
+(spis_longest_isoform_marker_XP_022783054.1:0.339579,(spis_longest_isoform_marker_XP_022783114.1:0.931327,(spis_longest_isoform_marker_XP_022783053.1:0.532257,spis_longest_isoform_marker_XP_022783113.1:0.816354)n2:0.058071)n1:0.339579)n0;

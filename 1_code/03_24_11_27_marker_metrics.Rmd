@@ -1,0 +1,530 @@
+---
+title: "03_24_11_27_marker_metrics"
+author: "L Botzenhardt"
+date: "2024-11-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(patchwork)
+```
+
+
+# Loading
+## Orthogroups
+```{r}
+orthogroups <- read_rds("../2_output/24_11_27_orthogroups_markers.RDS")
+```
+## Marker genes
+```{r}
+####Loading marker genes
+##Xenia
+#cluster 16 is likely algae-hosting cells https://www.nature.com/articles/s41586-020-2385-7
+xenia_marker <- readRDS("../0_data/1_xenia/cluster_markers.RDS") %>% select(gene, cluster)
+xenia_id2symbol <- read_tsv("../0_data/1_xenia/id2symbol.txt")
+  
+#replace _ with - to unify with marker genes
+xenia_id2symbol$symbol <- gsub(pattern = "_", replacement = "-", x = xenia_id2symbol$symbol)
+
+#add gene_id column to xenia marker genes
+xenia_marker <- xenia_marker %>% 
+  left_join(xenia_id2symbol, by = c("gene" = "symbol")) %>% 
+  rename(gene_id = ID)
+
+
+##Stylophora, remove spis_ from gene names to unify with orthofinder results
+spis_marker <- read.csv("../0_data/2_stylophora/spis_all_marker_genes_annotated.tsv", header = TRUE, sep = "\t") 
+spis_marker$gene.ID <- gsub("Spis_", "", spis_marker$gene.ID)
+spis_marker$gene.ID <- gsub("(\\d)_(\\d)", "\\1.\\2", spis_marker$gene.ID)
+spis_marker <- spis_marker %>% rename(gene_id = gene.ID) %>% select (gene_id, cell_type, PFAM)
+
+#NVEC
+nvec_marker <- read.csv("../0_data/3_nematostella/Aiptasia_orthologs_of_Nematostella_markers - All_markers.csv", header = TRUE, sep = ",")
+
+#Aiptasia
+aip_marker <- read.csv("../0_data/0_aiptasia/24_10_10_clustering_16/Sym_clustering_res_0.5_50dims.markers.tab", header = TRUE, sep = "\t")
+aip_fun_ann <- read.csv("../0_data/0_aiptasia/refseq_Aip1.1.fun_annotations.tsv", header = TRUE, sep = "\t")
+
+```
+
+### Seperating and filtering for only orthologs of aiptasia
+here I decided to filter to keep only rows that have in ortholog in aiptasia, to compare to sc orthologs, which all have an ortholog in aptasia. I will do it with both versions
+```{r}
+##filter for aiptasia orthologs
+orthogroups_aip <- orthogroups %>% filter(!is.na(aip))
+```
+
+
+### getting the split lists of genes for spis and xenia
+```{r}
+#spis
+#spis_genes <- orthogroups %>% pull(spis) %>% strsplit(", ") %>% unlist() %>% unique()
+#spis_genes <- spis_genes[!is.na(spis_genes)]
+spis_genes_aip_orth <- orthogroups_aip %>% pull(spis) %>% strsplit(", ") %>% unlist() %>% unique()
+spis_genes_aip_orth <- spis_genes_aip_orth[!is.na(spis_genes_aip_orth)]
+
+#xenia
+#xenia_genes <- orthogroups %>% pull(xenia) %>% strsplit(", ") %>% unlist() %>% unique()
+#xenia_genes <- xenia_genes[!is.na(xenia_genes)]
+xenia_genes_aip_orth <- orthogroups_aip %>% pull(xenia) %>% strsplit(", ") %>% unlist() %>% unique()
+xenia_genes_aip_orth <- xenia_genes_aip_orth[!is.na(xenia_genes_aip_orth)]
+
+#nvec
+nvec_genes_aip_orth <- orthogroups_aip %>% pull(nvec) %>% strsplit(", ") %>% unlist() %>% unique()
+nvec_genes_aip_orth <- nvec_genes_aip_orth[!is.na(nvec_genes_aip_orth)]
+
+#aip
+aip_genes <- orthogroups %>% pull(aip) %>% strsplit(", ") %>% unlist() %>% unique()
+aip_genes <- aip_genes[!is.na(aip_genes)]
+```
+
+
+### getting only marker genes, that are in the ortholog table
+I noted that out of 3500 marker genes of spis, 800 of those gene IDs (XP) were not in the orthogroups results. could indicate problems with the isoform filtering?
+```{r}
+#spis_total_marker <- spis_marker %>% filter(gene_id %in% spis_genes)
+#spis_ommited_genes <- spis_marker %>% filter(!gene_id %in% spis_genes)
+spis_total_marker_aip_orth <- spis_marker %>% filter(gene_id %in% spis_genes_aip_orth)
+
+#xenia_total_marker <- xenia_marker %>% filter(gene_id %in% xenia_genes)
+#xenia_ommited_genes <- xenia_marker %>% filter(!gene_id %in% xenia_genes)
+xenia_total_marker_aip_orth <- xenia_marker %>% filter(gene_id %in% xenia_genes_aip_orth)
+
+#nvec
+nvec_total_marker_aip_orth <- nvec_marker %>% filter(Aip_XP %in% aip_genes)
+
+```
+
+
+# Analysis
+
+
+## Genes per Cluster
+```{r}
+#spis
+# genes_per_cluster_spis <- spis_total_marker %>%
+#   group_by(cell_type) %>%
+#   summarise(n_genes = n()) %>% 
+#   arrange(desc(n_genes))
+
+genes_per_cluster_spis_aip_orth <- spis_total_marker_aip_orth %>%
+  group_by(cell_type) %>%
+  summarise(n_genes = n()) %>% 
+  arrange(desc(n_genes))
+
+#xenia
+# genes_per_cluster_xenia <- xenia_total_marker %>%
+#   group_by(cluster) %>%
+#   summarise(n_genes = n()) %>% 
+#   arrange(desc(n_genes))
+
+genes_per_cluster_xenia_aip_orth <- xenia_total_marker_aip_orth %>%
+  group_by(cluster) %>%
+  summarise(n_genes = n()) %>% 
+  arrange(desc(n_genes))
+
+#nvec
+genes_per_cluster_nvec_aip_orth <- nvec_total_marker_aip_orth %>%
+  group_by(cluster) %>%
+  summarise(n_genes = n()) %>% 
+  arrange(desc(n_genes))
+
+#aip
+genes_per_cluster_aip <- aip_marker %>%
+  group_by(cluster) %>%
+  summarise(n_genes = n()) %>% 
+  arrange(desc(n_genes))
+
+```
+
+
+## number of clusters a gene belongs to
+```{r}
+#spis
+# n_clusters_spis <- spis_total_marker %>%
+#   group_by(gene_id) %>% 
+#   summarise(n_clusters = n()) %>% 
+#   group_by(n_clusters) %>% 
+#   summarise(n_genes = n())
+
+n_clusters_spis_aip_orth <- spis_total_marker_aip_orth %>%
+  group_by(gene_id) %>% 
+  summarise(n_clusters = n()) %>% 
+  group_by(n_clusters) %>% 
+  summarise(n_genes = n())
+
+#xenia
+# n_clusters_xenia <- xenia_total_marker %>%
+#   group_by(gene_id) %>% 
+#   summarise(n_clusters = n()) %>% 
+#   group_by(n_clusters) %>% 
+#   summarise(n_genes = n())
+
+n_clusters_xenia_aip_orth <- xenia_total_marker_aip_orth %>%
+  group_by(gene_id) %>% 
+  summarise(n_clusters = n()) %>% 
+  group_by(n_clusters) %>% 
+  summarise(n_genes = n())
+
+#nvec
+n_clusters_nvec_aip_orth <- nvec_total_marker_aip_orth %>%
+  group_by(Aip_XP) %>% 
+  summarise(n_clusters = n()) %>% 
+  group_by(n_clusters) %>% 
+  summarise(n_genes = n())
+
+#aip
+n_clusters_aip <- aip_marker %>%
+  group_by(gene) %>% 
+  summarise(n_clusters = n()) %>% 
+  group_by(n_clusters) %>% 
+  summarise(n_genes = n())
+```
+
+
+## get list of genes belonging to only one cluster
+```{r}
+#spis
+# genes_single_cluster_spis <- spis_total_marker %>% 
+#   group_by(gene_id) %>% 
+#   summarise(n_clusters = n()) %>% 
+#   filter(n_clusters == 1) %>% 
+#   select(gene_id)
+
+genes_single_cluster_spis_aip_orth <- spis_total_marker_aip_orth %>%
+  group_by(gene_id) %>% 
+  summarise(n_clusters = n()) %>% 
+  filter(n_clusters == 1) %>% 
+  select(gene_id)
+
+#xenia
+# genes_single_cluster_xenia <- xenia_total_marker %>%
+#   group_by(gene_id) %>% 
+#   summarise(n_clusters = n()) %>% 
+#   filter(n_clusters == 1) %>% 
+#   select(gene_id)
+
+genes_single_cluster_xenia_aip_orth <- xenia_total_marker_aip_orth %>%
+  group_by(gene_id) %>% 
+  summarise(n_clusters = n()) %>% 
+  filter(n_clusters == 1) %>% 
+  select(gene_id)
+```
+
+
+# Adding sc ortholog metrics
+```{r}
+####Load sc orthologs
+sc_orthologs <- read_rds("../2_output/24_11_27_sc_orth_gene_cluster.RDS")
+
+#filter for only xenia, spis, nvec or aip markers
+sc_orth_markergenes <- sc_orthologs %>% filter(!is.na(xenia_cluster) | !is.na(spis_cell_type) | !is.na(nvec_cluster) | !is.na(aip_cluster))
+
+## Add column showing the number of clusters they are a marker gene for
+
+sc_orth_markergenes$xenia_cluster_count <- str_count(sc_orth_markergenes$xenia_cluster, ", ") + 1
+
+sc_orth_markergenes$spis_cell_type_count <- str_count(sc_orth_markergenes$spis_cell_type, ", ") + 1
+
+sc_orth_markergenes$nvec_cluster_count <- str_count(sc_orth_markergenes$nvec_cluster, ", ") + 1
+
+sc_orth_markergenes$aip_cluster_count <- str_count(sc_orth_markergenes$aip_cluster, ", ") + 1
+
+# splitting so each gene has only one cluster or cell type
+spis_split <- sc_orth_markergenes %>% 
+  filter(!is.na(spis_cell_type)) %>%
+  separate_rows(spis_cell_type, sep = ", ")
+
+xenia_split <- sc_orth_markergenes %>% 
+  filter(!is.na(xenia_cluster)) %>%
+  separate_rows(xenia_cluster, sep = ", ")
+
+nvec_split <- sc_orth_markergenes %>% 
+  filter(!is.na(nvec_cluster)) %>%
+  separate_rows(nvec_cluster, sep = ", ")
+
+aip_split <- sc_orth_markergenes %>% 
+  filter(!is.na(aip_cluster)) %>%
+  separate_rows(aip_cluster, sep = ", ")
+
+
+### Count the number of marker genes per cluster
+###Spis
+spis_cluster_count_sc <- spis_split %>% 
+  group_by(spis_cell_type) %>% 
+  summarise(n_sc = n()) %>% 
+  rename(cell_type = spis_cell_type)
+  
+###Xenia
+xenia_cluster_count_sc <- xenia_split %>% 
+  group_by(xenia_cluster) %>% 
+  summarise(n_sc = n()) %>% 
+  rename(cluster = xenia_cluster)
+
+### NVEC
+nvec_cluster_count_sc <- nvec_split %>% 
+  group_by(nvec_cluster) %>% 
+  summarise(n_sc = n()) %>% 
+  rename(cluster = nvec_cluster)
+
+### Aip
+aip_cluster_count_sc <- aip_split %>% 
+  group_by(aip_cluster) %>% 
+  summarise(n_sc = n()) %>% 
+  rename(cluster = aip_cluster)
+  
+### Count the number of clusters per marker gene
+spis_n_clusters_sc <- spis_split %>% 
+  group_by(spis) %>% 
+  summarise(n_clusters = n()) %>% 
+  group_by(n_clusters) %>%
+  summarise(n_genes_sc = n())
+
+
+xenia_n_clusters_sc <- xenia_split %>%
+  group_by(xenia) %>% 
+  summarise(n_clusters = n()) %>% 
+  group_by(n_clusters) %>%
+  summarise(n_genes_sc = n())
+
+
+nvec_n_clusters_sc <- nvec_split %>%
+  group_by(nvec) %>% 
+  summarise(n_clusters = n()) %>% 
+  group_by(n_clusters) %>%
+  summarise(n_genes_sc = n())
+
+aip_n_clusters_sc <- aip_split %>%
+  group_by(aip_LOC) %>% 
+  summarise(n_clusters = n()) %>% 
+  group_by(n_clusters) %>%
+  summarise(n_genes_sc = n())
+```
+
+## Merging the data to combine single copy and total ortholog data
+
+```{r}
+#merging sc and total marker genes (aip orth) data
+######genes per cluster
+##spis
+genes_per_cluster_spis_merged <- genes_per_cluster_spis_aip_orth %>% 
+  merge(spis_cluster_count_sc, by = "cell_type", all = TRUE) %>% 
+  drop_na(cell_type) %>%
+  mutate(cell_type = reorder(cell_type, n_genes)) %>% 
+  pivot_longer(cols = c(n_genes, n_sc), names_to = "variable", values_to = "value")
+
+
+##xenia
+genes_per_cluster_xenia_merged <- genes_per_cluster_xenia_aip_orth %>% 
+  merge(xenia_cluster_count_sc, by = "cluster", all = TRUE) %>% 
+  drop_na(cluster) %>% 
+  mutate(cluster = reorder(cluster, n_genes)) %>% 
+  pivot_longer(cols = c(n_genes, n_sc), names_to = "variable", values_to = "value")
+
+## nvec
+genes_per_cluster_nvec_merged <- genes_per_cluster_nvec_aip_orth %>% 
+  merge(nvec_cluster_count_sc, by = "cluster", all = TRUE) %>% 
+  drop_na(cluster) %>% 
+  mutate(cluster = reorder(cluster, n_genes)) %>% 
+  pivot_longer(cols = c(n_genes, n_sc), names_to = "variable", values_to = "value")
+
+## aip
+genes_per_cluster_aip_merged <- genes_per_cluster_aip %>% 
+  merge(aip_cluster_count_sc, by = "cluster", all = TRUE) %>% 
+  drop_na(cluster) %>% 
+  mutate(cluster = reorder(cluster, n_genes)) %>% 
+  pivot_longer(cols = c(n_genes, n_sc), names_to = "variable", values_to = "value")
+
+######custers per genes
+#spis
+n_clusters_spis_merged <- n_clusters_spis_aip_orth %>% 
+  merge(spis_n_clusters_sc, by = "n_clusters", all = TRUE) %>% 
+  pivot_longer(cols = c(n_genes, n_genes_sc), names_to = "variable", values_to = "value")
+
+#xenia
+n_clusters_xenia_merged <- n_clusters_xenia_aip_orth %>% 
+  merge(xenia_n_clusters_sc, by = "n_clusters", all = TRUE) %>% 
+  pivot_longer(cols = c(n_genes, n_genes_sc), names_to = "variable", values_to = "value")
+# nvec
+n_clusters_nvec_merged <- n_clusters_nvec_aip_orth %>% 
+  merge(nvec_n_clusters_sc, by = "n_clusters", all = TRUE) %>% 
+  pivot_longer(cols = c(n_genes, n_genes_sc), names_to = "variable", values_to = "value")
+
+#aip
+n_clusters_aip_merged <- n_clusters_aip %>% 
+  merge(aip_n_clusters_sc, by = "n_clusters", all = TRUE) %>% 
+  pivot_longer(cols = c(n_genes, n_genes_sc), names_to = "variable", values_to = "value")
+```
+
+# Plotting
+Create theme
+```{r}
+custom_theme <- theme_classic() +
+  theme(
+    axis.text.x = element_text(size = 12, angle = 0), axis.text.y = element_text(size = 12)
+  ) 
+
+angle_theme <- custom_theme + 
+  theme(
+  axis.text.x = element_text(angle = 45, hjust = 1, margin = margin(1, 10, 1, 10))
+) 
+
+
+```
+
+## generating plots with stacked bars
+
+```{r}
+### Genes per cluster
+# Spis
+p_genes_per_cluster_spis_stacked <- ggplot(genes_per_cluster_spis_merged, aes(x = cell_type, fill = variable)) +
+  geom_bar(aes(y = value), stat = "identity", position = "identity") +
+  labs(title = "Total Marker Genes per Cluster (spis, aip orthologs)",
+       x = NULL,
+       y = "Number of Genes") +
+  scale_fill_manual(values = c("n_genes" = "gray", "n_sc" = "royalblue"), 
+                    name = expression(italic("Stylophora pistillata")),
+                    labels = c("Total Markers", "Single Copy Orthologs")) +  # Legend labels are common
+  angle_theme +
+  theme(legend.position = "none", plot.title = element_blank())
+
+
+# Xenia
+p_genes_per_cluster_xenia_stacked <- ggplot(genes_per_cluster_xenia_merged, aes(x = cluster, fill = variable)) +
+  geom_bar(aes(y = value), stat = "identity", position = "identity") +
+  labs(title = "Total Marker Genes per Cluster (xenia, aip orthologs)",
+       x = NULL,
+       y = "Number of Genes") +
+  scale_fill_manual(values = c("n_genes" = "gray", "n_sc" = "tomato3"), 
+                    name = expression(italic("Xenia ") * "sp."),
+                    labels = c("Total Markers", "Single Copy Orthologs")) +  # Same labels
+  custom_theme +
+  theme(axis.text.x = element_text(angle = 0)) +
+  theme(legend.position = "none", plot.title = element_blank())
+
+#nvec
+p_genes_per_cluster_nvec_stacked <- ggplot(genes_per_cluster_nvec_merged, aes(x = cluster, fill = variable)) +
+  geom_bar(aes(y = value), stat = "identity", position = "identity") +
+  labs(title = "Total Marker Genes per Cluster (nvec, aip orthologs)",
+       x = NULL,
+       y = "Number of Genes") +
+  scale_fill_manual(values = c("n_genes" = "gray", "n_sc" = "yellow2"), 
+                    name = expression(italic("Nematostella vectensis")),
+                    labels = c("Total Markers", "Single Copy Orthologs")) +  # Same labels
+  angle_theme + 
+  theme(legend.position = "none", plot.title = element_blank())
+
+#aip
+p_genes_per_cluster_aip_stacked <- ggplot(genes_per_cluster_aip_merged, aes(x = cluster, fill = variable)) +
+  geom_bar(aes(y = value), stat = "identity", position = "identity") +
+  labs(title = "Total Marker Genes per Cluster",
+       x = NULL,
+       y = "Number of Genes") +
+  scale_fill_manual(values = c("n_genes" = "gray", "n_sc" = "green4"), 
+                    name = expression(italic("Aiptasia")),
+                    labels = c("Total Markers", "Single Copy Orthologs")) +  # Same labels
+  custom_theme +
+  theme(axis.text.x = element_text(angle = 0)) +
+  theme(legend.position = "none")
+
+#### clusters per gene
+# Spis
+p_n_clusters_spis_stacked <- ggplot(n_clusters_spis_merged, aes(x = n_clusters, fill = variable)) +
+  geom_bar(aes(y = value), stat = "identity", position = "identity") +
+  labs(title = "Clusters per Gene (spis, aip orthologs)",
+       x = NULL,
+       y = "Number of Genes") +
+  scale_fill_manual(values = c("n_genes" = "gray", "n_genes_sc" = "royalblue"), 
+                    name = expression(italic("Stylophora pistillata")),
+                    labels = c("Total Markers", "Single Copy Orthologs")) +  # Same legend
+  custom_theme +
+  theme(axis.text.x = element_text(angle = 0)) +
+  theme(plot.title = element_blank()) 
+
+# Xenia
+p_n_clusters_xenia_stacked <- ggplot(n_clusters_xenia_merged, aes(x = n_clusters, fill = variable)) +
+  geom_bar(aes(y = value), stat = "identity", position = "identity") +
+  labs(title = "Clusters per Gene (xenia, aip orthologs)",
+       x = NULL,
+       y = "Number of Genes") +
+  scale_fill_manual(values = c("n_genes" = "gray", "n_genes_sc" = "tomato3"), 
+                    name = expression(italic("Xenia ") * "sp."),
+                    labels = c("Total Markers", "Single Copy Orthologs")) +  # Same legend
+  custom_theme +
+  theme(axis.text.x = element_text(angle = 0)) +
+  theme(plot.title = element_blank())
+
+#nvec
+p_n_clusters_nvec_stacked <- ggplot(n_clusters_nvec_merged, aes(x = n_clusters, fill = variable)) +
+  geom_bar(aes(y = value), stat = "identity", position = "identity") +
+  labs(title = "Clusters per Gene (nvec, aip orthologs)",
+       x = NULL,
+       y = "Number of Genes") +
+  scale_fill_manual(values = c("n_genes" = "gray", "n_genes_sc" = "yellow2"), 
+                    name = expression(italic("Nematostella vectensis")),
+                    labels = c("Total Markers", "Single Copy Orthologs")) +  # Same legend
+  custom_theme +
+  theme(axis.text.x = element_text(angle = 0)) +
+  theme(plot.title = element_blank())
+
+#aip
+p_n_clusters_aip_stacked <- ggplot(n_clusters_aip_merged, aes(x = n_clusters, fill = variable)) +
+  geom_bar(aes(y = value), stat = "identity", position = "identity") +
+  labs(title = "Clusters per Gene",
+       x = NULL,
+       y = "Number of Genes") +
+  scale_fill_manual(values = c("n_genes" = "gray", "n_genes_sc" = "green4"), 
+                    name = expression(italic("Aiptasia")),
+                    labels = c("Total Markers", "Single Copy Orthologs")) +  # Same legend
+  custom_theme +
+  theme(axis.text.x = element_text(angle = 0))
+
+ 
+```
+
+## Generate per species plots
+```{r}
+p_aip <- p_genes_per_cluster_aip_stacked +
+  scale_y_continuous(expand = c(0, 0)) + p_n_clusters_aip_stacked  +
+  scale_y_continuous(expand = c(0, 0))
+p_aip
+
+
+```
+
+
+
+## Generate multiplots
+
+```{r}
+p_final_marker_metrics <- (p_genes_per_cluster_spis_stacked + p_n_clusters_spis_stacked) / (p_genes_per_cluster_xenia_stacked + p_n_clusters_xenia_stacked) /
+  (p_genes_per_cluster_nvec_stacked + p_n_clusters_nvec_stacked) /
+  (p_genes_per_cluster_aip_stacked + p_n_clusters_aip_stacked)
+
+p_final_marker_metrics + plot_layout(guides = "collect")
+
+p_genes_per_cluster_all <- (p_genes_per_cluster_aip_stacked / p_genes_per_cluster_spis_stacked / p_genes_per_cluster_xenia_stacked / p_genes_per_cluster_nvec_stacked) + labs(x = 'Cluster') + plot_layout(axis_titles = "collect")
+  
+p_n_clusters_all <-  (p_n_clusters_aip_stacked / p_n_clusters_spis_stacked / p_n_clusters_xenia_stacked / p_n_clusters_nvec_stacked) + plot_layout(guides = "collect", axis_titles = "collect") + labs(x = 'Number of Clusters')
+
+p_final <- p_genes_per_cluster_all | p_n_clusters_all
+p_final <- p_final & 
+  theme(plot.tag = element_text(size = 10), axis.title.y = element_text(vjust = 5))
+```
+
+
+
+
+# Only algaehosting
+```{r}
+sc_algae_hosting <- sc_orthologs %>% filter(str_detect(spis_cell_type, "algae_hosting") | str_detect(xenia_cluster, "16") | str_detect(aip_cluster, "\\b4\\b"))
+
+
+```
+

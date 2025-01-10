@@ -1,0 +1,351 @@
+---
+title: "24_11_27_isoform_filtering"
+author: "L Botzenhardt"
+date: "2024-11-27"
+output: html_document
+---
+
+```{r setup, include=FALSE, eval=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+library(dplyr)
+library(tidyr)
+library(Seurat)
+```
+
+
+# Filtering Proteomes 
+## Aiptasia
+The Proteomes (sources) were filtered to keep only the longest Isoforms, and had duplicated sequences removed. 
+```{bash, eval=FALSE}
+##this way seems to be the most concise
+#cut out column 9, remove the first 4 lines, get only lines with protein_id,
+#get the gene and protein ID using awk from column 9 of GTF
+
+cut -f 9  aip_genomic_refseq.gtf | tail -n+5 | grep "protein_id" | \
+awk -F';' '{for(i=1;i<=NF;i++) if ($i ~ /gene_id/ || $i ~ /protein_id/) printf $i; print ""}'| \ 
+cut -d " " -f2,4 | sed 's/"//g' | uniq > ../02_output/04_aiptasia/aip_gene_protID.tab
+
+#getting the protein lengths
+seqtk comp aip_protein_refseq.faa | cut -f1,2 > ../02_output/04_aiptasia/aip_protein_lengths.tab
+```
+
+```{r}
+#read in the data
+aip_gene_protID <- read.table("../02_output/04_aiptasia/aip_gene_protID.tab", header = FALSE, sep = " ")
+aip_gene_protID <- aip_gene_protID %>% 
+  rename("gene_id" = V1, "protein_id" = V2)
+
+aip_protein_lengths <- read.table("../02_output/04_aiptasia/aip_protein_lengths.tab", header = FALSE, sep = "\t")
+aip_protein_lengths <- aip_protein_lengths %>% 
+  rename("protein_id" = V1, "length" = V2)
+```
+
+## Merge the data
+```{r, eval=FALSE}
+#merge by protein_id  
+aip_gene_prot_lengths <- aip_gene_protID %>% 
+  left_join(aip_protein_lengths, by = "protein_id")
+```
+
+## checking amount of duplicates
+```{r}
+aip_longest_transcript_n_copies <- aip_gene_prot_lengths %>% 
+  group_by(gene_id) %>% 
+  filter(length == max(length)) %>% 
+  summarize(n = n())
+  
+```
+## taking a single duplicate per gene ID
+```{r}
+aip_long_transcript_distinct <- aip_gene_prot_lengths %>% 
+  group_by(gene_id) %>% 
+  filter(length == max(length)) %>% 
+  distinct(gene_id, length, .keep_all = TRUE)
+
+write.table(aip_long_transcript_distinct, "../02_output/04_aiptasia/aip_long_transcript_distinct.tab", sep = "\t", quote = FALSE, row.names = FALSE)
+write.table(aip_long_transcript_distinct$protein_id, "../02_output/04_aiptasia/aip_long_transcript_distinct_protein.txt", sep = "\t", quote = FALSE, row.names = FALSE, col.names = FALSE)
+```
+
+```{bash, eval=FALSE}
+seqtk subseq ../../00_data/aip_protein_refseq.faa aip_long_transcript_distinct_protein.txt > aip_longest_isoforms.fasta
+```
+
+## Nematostella
+#### extract gene_ids for proteins from gtf file
+take only column containing gene + Protein ID
+remove header
+filter for lines that contain protein_ids
+take only those to entries per row
+
+```{bash, eval=FALSE}
+##approach using awk
+$ cut -f 9 nvec_genomic_jaNemVect1_1.gtf | tail -n+5 | grep "protein_id" | awk -F';' '{for(i=1;i<=NF;i++) if ($i ~ /gene_id/ || $i ~ /protein_id/) printf $i";"; print ""}' | uniq | sed -e "s/;/\t/g" -e "s/\"//g" -e "s/protein_id//g" -e "s/gene_id//g" -e "s/\t$//g" -e "s/ //g" > ../02_output/03_nvec/nvec_gene_protID.tab
+
+#get protein lengths
+$ seqtk comp nvec_protein_jaNemVect1_1.faa | cut -f1,2 > ../02_output/03_nvec/nvec_protein_lengths.tab
+
+```
+### Read into R and rename
+```{r, eval=FALSE}
+#read in the data
+nvec_gene_protID <- read.table("../02_output/03_nvec/nvec_gene_protID.tab", header = FALSE, sep = "\t")
+nvec_gene_protID <- nvec_gene_protID %>% 
+  rename("gene_id" = V1, "protein_id" = V2)
+
+nvec_protein_lengths <- read.table("../02_output/03_nvec/nvec_protein_lengths.tab", header = FALSE, sep = "\t")
+nvec_protein_lengths <- nvec_protein_lengths %>% 
+  rename("protein_id" = V1, "length" = V2)
+```
+### Merge the data
+```{r, eval=FALSE}
+#merge by protein_id  
+nvec_gene_prot_lengths <- nvec_gene_protID %>% 
+  left_join(nvec_protein_lengths, by = "protein_id")
+
+nvec_n_protein_duplicates <- nvec_gene_prot_lengths %>% 
+  group_by(gene_id) %>% 
+  filter(length == max(length)) %>% 
+  summarize(n = n())
+
+```
+
+### Filter longest isoform
+# Filtering Proteomes 
+## Aiptasia
+The Proteomes (sources) were filtered to keep only the longest Isoforms, and had duplicated sequences removed. 
+```{bash, eval=FALSE}
+##this way seems to be the most concise
+#cut out column 9, remove the first 4 lines, get only lines with protein_id,
+#get the gene and protein ID
+#
+cut -f 9 aip_genomic_refseq.gtf | tail -n+5 | grep "protein_id" | \
+awk -F';' '{for(i=1;i<=NF;i++) if ($i ~ /gene_id/ || $i ~ /protein_id/) printf $i; print ""}'| \ 
+cut -d " " -f2,4 | sed 's/"//g' | uniq > ../02_output/04_aiptasia/aip_gene_protID.tab
+
+#getting the protein lengths
+seqtk comp aip_protein_refseq.faa | cut -f1,2 > ../02_output/04_aiptasia/aip_protein_lengths.tab
+```
+
+```{r}
+#read in the data
+aip_gene_protID <- read.table("../02_output/04_aiptasia/aip_gene_protID.tab", header = FALSE, sep = " ")
+aip_gene_protID <- aip_gene_protID %>% 
+  rename("gene_id" = V1, "protein_id" = V2)
+
+aip_protein_lengths <- read.table("../02_output/04_aiptasia/aip_protein_lengths.tab", header = FALSE, sep = "\t")
+aip_protein_lengths <- aip_protein_lengths %>% 
+  rename("protein_id" = V1, "length" = V2)
+```
+
+## Merge the data
+```{r, eval=FALSE}
+#merge by protein_id  
+aip_gene_prot_lengths <- aip_gene_protID %>% 
+  left_join(aip_protein_lengths, by = "protein_id")
+```
+
+## checking amount of duplicates
+```{r}
+aip_longest_transcript_n_copies <- aip_gene_prot_lengths %>% 
+  group_by(gene_id) %>% 
+  filter(length == max(length)) %>% 
+  summarize(n = n())
+  
+```
+## taking a single duplicate per gene ID
+```{r}
+aip_long_transcript_distinct <- aip_gene_prot_lengths %>% 
+  group_by(gene_id) %>% 
+  filter(length == max(length)) %>% 
+  distinct(gene_id, length, .keep_all = TRUE)
+
+write.table(aip_long_transcript_distinct, "../02_output/04_aiptasia/aip_long_transcript_distinct.tab", sep = "\t", quote = FALSE, row.names = FALSE)
+write.table(aip_long_transcript_distinct$protein_id, "../02_output/04_aiptasia/aip_long_transcript_distinct_protein.txt", sep = "\t", quote = FALSE, row.names = FALSE, col.names = FALSE)
+```
+
+```{bash, eval=FALSE}
+seqtk subseq ../../00_data/aip_protein_refseq.faa aip_long_transcript_distinct_protein.txt > aip_longest_isoforms.fasta
+```
+
+## Nematostella
+#### extract gene_ids for proteins from gtf file
+take only column containing gene + Protein ID
+remove header
+filter for lines that contain protein_ids
+take only those to entries per row
+
+```{bash, eval=FALSE}
+##approach using awk
+$ cut -f 9 nvec_genomic_jaNemVect1_1.gtf | tail -n+5 | grep "protein_id" | awk -F';' '{for(i=1;i<=NF;i++) if ($i ~ /gene_id/ || $i ~ /protein_id/) printf $i";"; print ""}' | uniq | sed -e "s/;/\t/g" -e "s/\"//g" -e "s/protein_id//g" -e "s/gene_id//g" -e "s/\t$//g" -e "s/ //g" > ../02_output/03_nvec/nvec_gene_protID.tab
+
+#get protein lengths
+$ seqtk comp nvec_protein_jaNemVect1_1.faa | cut -f1,2 > ../02_output/03_nvec/nvec_protein_lengths.tab
+
+```
+### Read into R and rename
+```{r, eval=FALSE}
+#read in the data
+nvec_gene_protID <- read.table("../02_output/03_nvec/nvec_gene_protID.tab", header = FALSE, sep = "\t")
+###Solution
+#this only keeps the first occurance of a given gene_id and length, the result has a unique gene_id and length and only 1 protein ID per gene
+nvec_long_transcript_distinct <- nvec_gene_prot_lengths %>% 
+  group_by(gene_id) %>% 
+  filter(length == max(length))%>% 
+  distinct(gene_id, length, .keep_all = TRUE)
+
+#save this we dont care about marker genes for now
+write.table(nvec_long_transcript_distinct, "../02_output/03_nvec/nvec_long_transcript_distinct.tab", quote = FALSE, row.names = FALSE, col.names = TRUE)
+write.table(nvec_long_transcript_distinct$protein_id, "../02_output/03_nvec/nvec_long_transcript_distinct_protein.txt", quote = FALSE, row.names = FALSE, col.names = F)
+```
+
+
+###get longest isoforms as fasta file
+its saved as nvec_longest_isoforms.fasta
+```{bash, eval=FALSE}
+$ seqtk subseq ../../00_data/nvec_protein_jaNemVect1_1.faa nvec_long_transcript_distinct_protein.txt > nvec_longest_isoform.fasta
+```
+
+
+## Xenia
+Here protein lengths could directly be extracted from the fasta file
+
+```{bash, eval=FALSE}
+#xenia prot lengths
+seqtk comp xenSp1.proteins_hu2020.fa | cut -f1,2 > /home/leon/Masterarbeit/Projects/filter_proteomes/02_output/xenia_protein_lengths.tab
+```
+
+### Import data
+
+```{r}
+#import lengths
+xenia_protein_lengths <- read.table("/home/leon/Masterarbeit/Projects/filter_proteomes/02_output/xenia_protein_lengths.tab", header = FALSE, sep = "\t")
+
+xenia_protein_lengths <- xenia_protein_lengths %>% 
+  rename("protein" = V1, "length" = V2)
+
+```
+### add gene ID
+```{r}
+xenia_protein_lengths$gene <- xenia_protein_lengths$protein %>%
+  substr(1,9)
+```
+### filter longest transcript
+```{r}
+xenia_longest_transcript <- xenia_protein_lengths %>% 
+  group_by(gene) %>% 
+  filter(length == max(length))
+
+#export protein as list
+write.table(xenia_longest_transcript$protein, "/home/leon/Masterarbeit/Projects/filter_proteomes/02_output/xenia_longest_transcript.txt", quote = FALSE, row.names = FALSE, col.names = FALSE)
+```
+
+### get longest isoforms as fasta file
+its saved as xenia_longest_isoforms.fasta
+```{bash, eval=FALSE}
+seqtk subseq ../00_data/xenSp1.proteins_hu2020.fa xenia_longest_transcript.txt > xenia_longest_isoforms.fasta
+```
+
+## Stylophora
+
+### this way seems to be the most concise
+```{bash, eval=FALSE}
+$ cut -f 9 nvec_genomic_jaNemVect1_1.gtf | tail -n+5 | grep "protein_id" | awk -F';' '{for(i=1;i<=NF;i++) if ($i ~ /gene_id/ || $i ~ /protein_id/) printf $i; print ""}' | cut -d " " -f2,4 | sed 's/"//g' | uniq > ../02_output/02_spis/spis_gene_protID.tab
+
+
+#getting the protein lengths
+$ seqtk comp spis_proteome_refseq_17.faa | cut -f1,2 > ../02_output/02_spis/spis_protein_lengths.tab
+```
+
+### Read into R and rename
+```{r, eval=FALSE}
+#read in the data
+spis_gene_protID <- read.table("../02_output/02_spis/spis_gene_protID.tab", header = FALSE, sep = "\t")
+spis_gene_protID <- spis_gene_protID %>% 
+  rename("gene_id" = V1, "protein_id" = V2)
+
+spis_protein_lengths <- read.table("../02_output/02_spis/spis_protein_lengths.tab", header = FALSE, sep = "\t")
+spis_protein_lengths <- spis_protein_lengths %>% 
+  rename("protein_id" = V1, "length" = V2)
+```
+### Merge the data
+```{r, eval=FALSE}
+#merge by protein_id  
+spis_gene_prot_lengths <- spis_gene_protID %>% 
+  left_join(spis_protein_lengths, by = "protein_id")
+```
+
+### Filter longest isoform
+```{r, eval=FALSE}
+#this has duplicate genes due to duplicate proteinIDs in genome
+spis_longest_transcript_length <- spis_gene_prot_lengths %>% 
+  group_by(gene_id) %>% 
+  summarize(length = max(length))
+
+###Solution
+#this only keeps the first occurance of a given gene_id and length, the result has a unique gene_id and length and only 1 protein ID per gene
+spis_long_transcript_distinct <- spis_gene_prot_lengths %>% 
+  group_by(gene_id) %>% 
+  filter(length == max(length))%>% 
+  distinct(gene_id, length, .keep_all = TRUE)
+```
+
+### checking the duplicates, there are more than 1 protein IDs per unique protein
+```{r, eval=FALSE}  
+#unique longest transcripts
+spis_longest_transcript_unique <- spis_gene_prot_lengths %>% 
+  group_by(gene_id) %>% 
+  filter(length == max(length)) #%>% 
+  #summarize(n = n())
+
+#this gives the number of duplicates
+spis_n_protein_duplicates <- spis_gene_prot_lengths %>% 
+  group_by(gene_id) %>% 
+  filter(length == max(length)) %>% 
+  summarize(n = n())
+```
+
+### look for marker genes in duplicates
+```{r, eval=FALSE}
+#get all proteinIDs corresponding to duplicate gene IDs
+#use this to lookup marker genes
+spis_genes_with_duplicate_proteinIDs <- spis_n_protein_duplicates %>% 
+  filter(n > 1) %>%
+  left_join(spis_gene_prot_lengths, by = "gene_id") %>%
+  select(gene_id, protein_id)
+
+#find wether duplicate genes are marker genes
+spis_genes_with_duplicate_proteinIDs$is_marker <- spis_genes_with_duplicate_proteinIDs$protein_id %in% spis_marker$gene_id
+
+#export list of ´duplicate genes that are marker genes
+write.table(spis_genes_with_duplicate_proteinIDs[spis_genes_with_duplicate_proteinIDs$is_marker,], "../02_output/02_spis/spis_markers_with_duplicate_proteinIDs.txt", quote = FALSE, row.names = FALSE, col.names = TRUE)
+```
+
+## add proteins to longest transcript that are marker genes
+```{r, eval=FALSE}
+# add marker genes duplicates to longest transcript
+#going from spis_long_transcript_distinct which has a unique gene_id and length and only 1 protein ID per gene, while removing an arbitrary protein ID
+#replace the protein IDs with the marker gene protein IDs
+spis_marker_duplicates <- spis_genes_with_duplicate_proteinIDs[spis_genes_with_duplicate_proteinIDs$is_marker,] %>% 
+  select(gene_id, protein_id)
+
+spis_longest_transcript_distinct_markers <- spis_long_transcript_distinct %>% 
+  anti_join(spis_marker_duplicates, by = "gene_id") %>% 
+  bind_rows(spis_marker_duplicates)
+
+```
+
+
+## Export list
+```{r, eval=FALSE}
+write.table(spis_longest_transcript_distinct_markers$protein_id, "../02_output/02_spis/spis_longest_transcript_distinct_markers_protein.txt", quote = FALSE, row.names = FALSE, col.names = FALSE)
+
+write.table(spis_longest_transcript_distinct_markers, "../02_output/02_spis/spis_longest_transcript_distinct_markers.tsv", quote = FALSE, row.names = FALSE, col.names = FALSE)
+```
+
+#get longest isoforms as fasta file
+its saved as spis_longest_isoforms.fasta
+```{bash, eval=FALSE}
+seqtk subseq ../../00_data/spis_proteome_refseq_17.faa spis_longest_transcript_distinct_markers_protein.txt > spis_longest_isoforms.fasta
+```

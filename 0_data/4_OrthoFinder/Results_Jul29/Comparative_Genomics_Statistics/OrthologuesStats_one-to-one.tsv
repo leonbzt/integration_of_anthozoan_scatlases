@@ -1,0 +1,5 @@
+	aip_longest_isoforms	nvec_longest_isoform	spis_longest_isoform_marker	xenia_longest_isoforms
+aip_longest_isoforms	0.0	10298.0	9319.0	6347.0
+nvec_longest_isoform	10298.0	0.0	10002.0	6784.0
+spis_longest_isoform_marker	9319.0	10002.0	0.0	6644.0
+xenia_longest_isoforms	6347.0	6784.0	6644.0	0.0

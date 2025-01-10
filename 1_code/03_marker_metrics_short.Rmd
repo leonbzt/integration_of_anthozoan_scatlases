@@ -1,0 +1,461 @@
+---
+title: "03_24_11_27_marker_metrics"
+author: "L Botzenhardt"
+date: "2024-11-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(patchwork)
+library(scales)
+```
+
+
+# Loading
+## Orthogroups
+```{r}
+orthogroups <- read_rds("../2_output/24_11_27_orthogroups_markers.RDS")
+
+####Load sc orthologs
+sc_orthologs <- read_rds("../2_output/24_11_27_sc_orth_gene_cluster.RDS")
+```
+## Marker genes
+```{r}
+####Loading marker genes
+##Xenia
+#cluster 16 is likely algae-hosting cells https://www.nature.com/articles/s41586-020-2385-7
+xenia_marker <- readRDS("../0_data/1_xenia/cluster_markers.RDS") %>% select(gene, cluster)
+xenia_id2symbol <- read_tsv("../0_data/1_xenia/id2symbol.txt")
+  
+#replace _ with - to unify with marker genes
+xenia_id2symbol$symbol <- gsub(pattern = "_", replacement = "-", x = xenia_id2symbol$symbol)
+
+#add gene_id column to xenia marker genes
+xenia_marker <- xenia_marker %>% 
+  left_join(xenia_id2symbol, by = c("gene" = "symbol")) %>% 
+  rename(gene_id = ID)
+
+
+##Stylophora, remove spis_ from gene names to unify with orthofinder results
+spis_marker <- read.csv("../0_data/2_stylophora/spis_all_marker_genes_annotated.tsv", header = TRUE, sep = "\t") 
+spis_marker$gene.ID <- gsub("Spis_", "", spis_marker$gene.ID)
+spis_marker$gene.ID <- gsub("(\\d)_(\\d)", "\\1.\\2", spis_marker$gene.ID)
+spis_marker <- spis_marker %>% rename(gene_id = gene.ID) %>% rename (cluster = cell_type) %>% select (gene_id, cluster, PFAM)
+
+#NVEC
+nvec_marker <- read.csv("../0_data/3_nematostella/Aiptasia_orthologs_of_Nematostella_markers - All_markers.csv", header = TRUE, sep = ",")
+
+#Aiptasia
+aip_marker <- read.csv("../0_data/0_aiptasia/24_10_10_clustering_16/Sym_clustering_res_0.5_50dims.markers.tab", header = TRUE, sep = "\t")
+aip_fun_ann <- read.csv("../0_data/0_aiptasia/refseq_Aip1.1.fun_annotations.tsv", header = TRUE, sep = "\t")
+
+```
+
+### Seperating and filtering for only orthologs of aiptasia
+here I decided to filter to keep only rows that have in ortholog in aiptasia, to compare to sc orthologs, which all have an ortholog in aptasia. I will do it with both versions
+```{r}
+##filter for aiptasia orthologs
+orthogroups_aip <- orthogroups #%>% filter(!is.na(aip))
+```
+
+
+### getting the split lists of genes for spis and xenia
+```{r}
+#spis
+#spis_genes <- orthogroups %>% pull(spis) %>% strsplit(", ") %>% unlist() %>% unique()
+#spis_genes <- spis_genes[!is.na(spis_genes)]
+spis_genes_aip_orth <- orthogroups_aip %>% pull(spis) %>% strsplit(", ") %>% unlist() %>% unique()
+spis_genes_aip_orth <- spis_genes_aip_orth[!is.na(spis_genes_aip_orth)]
+
+#xenia
+#xenia_genes <- orthogroups %>% pull(xenia) %>% strsplit(", ") %>% unlist() %>% unique()
+#xenia_genes <- xenia_genes[!is.na(xenia_genes)]
+xenia_genes_aip_orth <- orthogroups_aip %>% pull(xenia) %>% strsplit(", ") %>% unlist() %>% unique()
+xenia_genes_aip_orth <- xenia_genes_aip_orth[!is.na(xenia_genes_aip_orth)]
+
+#nvec
+nvec_genes_aip_orth <- orthogroups_aip %>% pull(nvec) %>% strsplit(", ") %>% unlist() %>% unique()
+nvec_genes_aip_orth <- nvec_genes_aip_orth[!is.na(nvec_genes_aip_orth)]
+
+#aip
+aip_genes <- orthogroups %>% pull(aip) %>% strsplit(", ") %>% unlist() %>% unique()
+aip_genes <- aip_genes[!is.na(aip_genes)]
+```
+
+
+### getting only marker genes, that are in the ortholog table
+I noted that out of 3500 marker genes of spis, 800 of those gene IDs (XP) were not in the orthogroups results. could indicate problems with the isoform filtering?
+```{r}
+#spis_total_marker <- spis_marker %>% filter(gene_id %in% spis_genes)
+#spis_ommited_genes <- spis_marker %>% filter(!gene_id %in% spis_genes)
+spis_total_marker_aip_orth <- spis_marker %>% filter(gene_id %in% spis_genes_aip_orth)
+
+#xenia_total_marker <- xenia_marker %>% filter(gene_id %in% xenia_genes)
+#xenia_ommited_genes <- xenia_marker %>% filter(!gene_id %in% xenia_genes)
+xenia_total_marker_aip_orth <- xenia_marker %>% filter(gene_id %in% xenia_genes_aip_orth)
+
+#nvec
+nvec_total_marker_aip_orth <- nvec_marker %>% filter(Aip_XP %in% aip_genes)
+
+```
+
+
+# Analysis
+
+```{r}
+# Centralized function to summarize genes per cluster
+summarize_genes_per_cluster <- function(data, group_col) {
+  data %>%
+    group_by(.data[[group_col]]) %>%
+    summarise(n_genes = n(), .groups = "drop") %>%
+    arrange(desc(n_genes))
+}
+
+# Centralized function to summarize clusters per gene
+summarize_clusters_per_gene <- function(data, gene_col) {
+  data %>%
+    group_by(.data[[gene_col]]) %>%
+    summarise(n_clusters = n(), .groups = "drop") %>%
+    group_by(n_clusters) %>%
+    summarise(n_genes = n(), .groups = "drop")
+}
+
+# List of datasets and columns for processing
+species_data <- list(
+  spis = list(data = spis_total_marker_aip_orth, cluster_col = "cluster", gene_col = "gene_id"),
+  xenia = list(data = xenia_total_marker_aip_orth, cluster_col = "cluster", gene_col = "gene_id"),
+  nvec = list(data = nvec_total_marker_aip_orth, cluster_col = "cluster", gene_col = "Aip_XP"),
+  aip = list(data = aip_marker, cluster_col = "cluster", gene_col = "gene")
+)
+
+```
+
+
+```{r}
+# Apply summarization functions
+genes_per_cluster <- lapply(species_data, function(s) {
+  summarize_genes_per_cluster(s$data, s$cluster_col)
+})
+
+clusters_per_gene <- lapply(species_data, function(s) {
+  summarize_clusters_per_gene(s$data, s$gene_col)
+})
+```
+
+
+# Adding sc ortholog metrics
+```{r}
+### getting only marker genes, that are in the ortholog table
+#spis
+spis_marker_aip_orth_sc <- spis_marker %>% filter(gene_id %in% spis_genes_aip_orth) %>% filter(gene_id %in% sc_orthologs$spis)
+
+#xenia
+xenia_marker_aip_orth_sc <- xenia_marker %>% filter(gene_id %in% xenia_genes_aip_orth) %>% filter(gene_id %in% sc_orthologs$xenia)
+
+#nvec
+nvec_marker_aip_orth_sc <- nvec_marker %>% filter(Aip_XP %in% aip_genes) %>% filter(Aip_LOC %in% sc_orthologs$aip_LOC)
+
+aip_marker_sc <- aip_marker %>% filter(gene %in% sc_orthologs$aip_LOC)
+
+```
+
+
+```{r}
+# List of datasets and columns for processing
+species_data <- list(
+  spis = list(data = spis_marker_aip_orth_sc, cluster_col = "cluster", gene_col = "gene_id"),
+  xenia = list(data = xenia_marker_aip_orth_sc, cluster_col = "cluster", gene_col = "gene_id"),
+  nvec = list(data = nvec_marker_aip_orth_sc, cluster_col = "cluster", gene_col = "Aip_XP"),
+  aip = list(data = aip_marker_sc, cluster_col = "cluster", gene_col = "gene")
+)
+
+```
+
+
+```{r}
+# Apply summarization functions
+genes_per_cluster_sc <- lapply(species_data, function(s) {
+  summarize_genes_per_cluster(s$data, s$cluster_col)
+})
+
+clusters_per_gene_sc <- lapply(species_data, function(s) {
+  summarize_clusters_per_gene(s$data, s$gene_col)
+})
+```
+
+
+```{r}
+# Merge total and single-copy ortholog stats
+merged_genes_per_cluster <- mapply(function(total, sc) {
+  total %>%
+    rename(n_genes_total = n_genes) %>%
+    left_join(sc %>% rename(n_genes_sc = n_genes), by = "cluster") %>%
+    mutate(n_genes_sc = replace_na(n_genes_sc, 0)) # Replace NA with 0 for missing single-copy orthologs
+}, genes_per_cluster, genes_per_cluster_sc, SIMPLIFY = FALSE)
+
+merged_clusters_per_gene <- mapply(function(total, sc) {
+  total %>%
+    rename(n_genes_total = n_genes) %>%
+    left_join(sc %>% rename(n_genes_sc = n_genes), by = "n_clusters") %>%
+    mutate(n_genes_sc = replace_na(n_genes_sc, 0)) # Replace NA with 0 for missing single-copy orthologs
+}, clusters_per_gene, clusters_per_gene_sc, SIMPLIFY = FALSE)
+
+# Standardize 'cluster' to character for all merged datasets
+merged_genes_per_cluster <- lapply(merged_genes_per_cluster, function(df) {
+  df %>% mutate(cluster = as.character(cluster))
+})
+
+# Add percentage calculation to merged datasets
+merged_genes_per_cluster <- lapply(merged_genes_per_cluster, function(df) {
+  df %>%
+    mutate(
+      sc_percentage = ifelse(n_genes_total == 0, 0, (n_genes_sc / n_genes_total) * 100)
+    )
+})
+
+# Add percentage calculation to merged datasets
+merged_clusters_per_gene <- lapply(merged_clusters_per_gene, function(df) {
+  df %>%
+    mutate(
+      sc_percentage = ifelse(n_genes_total == 0, 0, (n_genes_sc / n_genes_total) * 100)
+    )
+})
+
+
+```
+
+```{r}
+# Convert merged lists into tidy format for plotting
+tidy_genes_per_cluster <- bind_rows(
+  lapply(names(merged_genes_per_cluster), function(species) {
+    merged_genes_per_cluster[[species]] %>%
+      mutate(species = species) %>% # Preserve species names
+      pivot_longer(
+        cols = starts_with("n_genes"),
+        names_to = "gene_type",
+        values_to = "n_genes"
+      )
+  })
+)
+
+tidy_clusters_per_gene <- bind_rows(
+  lapply(names(merged_clusters_per_gene), function(species) {
+    merged_clusters_per_gene[[species]] %>%
+      mutate(species = species) %>% # Preserve species names
+      pivot_longer(
+        cols = starts_with("n_genes"),
+        names_to = "gene_type",
+        values_to = "n_genes"
+      )
+  })
+)
+
+
+# Calculate percentages and prepare data for stacked bar plots
+tidy_genes_per_cluster_pc <- bind_rows(
+  lapply(names(merged_genes_per_cluster), function(species) {
+    merged_genes_per_cluster[[species]] %>%
+      mutate(
+        species = species, # Add species name
+        sc_percentage = ifelse(n_genes_total == 0, 0, (n_genes_sc / n_genes_total) * 100), # Single-copy percentage
+      ) %>%
+      select(cluster, n_genes_total, n_genes_sc, sc_percentage, species)
+  })
+)
+
+tidy_cluster_per_gene_pc <- bind_rows(
+  lapply(names(merged_clusters_per_gene), function(species) {
+    merged_clusters_per_gene[[species]] %>%
+      mutate(
+        species = species, # Add species name
+        sc_percentage = ifelse(n_genes_total == 0, 0, (n_genes_sc / n_genes_total) * 100), # Single-copy percentage
+      ) %>%
+      select(n_clusters, n_genes_total, n_genes_sc, sc_percentage, species) 
+  })
+)
+
+# Reshape the data for plotting
+long_cluster_per_gene <- tidy_cluster_per_gene_pc %>%
+  gather(key = "gene_type", value = "n_genes", n_genes_total, n_genes_sc)
+
+long_genes_per_cluster <- tidy_genes_per_cluster_pc %>%
+  gather(key = "gene_type", value = "n_genes", n_genes_total, n_genes_sc)
+
+```
+
+```{r}
+# Define the function to generate the overlaid bar plot
+plot_clusters_per_gene <- function(data, species_input, color, species_name) {
+  
+  # Filter data based on the input species
+  data_species <- data %>% filter(species == species_input)
+  
+  # Create the overlaid bar plot
+  ggplot(data_species, aes(x = factor(n_clusters), y = n_genes, fill = gene_type)) +
+    geom_bar(stat = "identity", position = "identity") +  # alpha for transparency
+    labs(x = "Number of Clusters", y = "Number of Genes") +#title = paste("Overlaid Barplot for", species_input)
+    scale_fill_manual(values = c("n_genes_total" = alpha(color, 0.5), "n_genes_sc" = color), 
+      name = species_name,  # Set the legend title
+      labels = c("Single-Copy Markers", "Total Markers")) +  # Use the provided color settings
+    global_theme +  # Apply the provided theme
+    #geom_text(aes(label = ifelse(gene_type == "n_genes_sc", paste0(round(sc_percentage), "%"), "")), vjust = -0.5, size = 3) +
+  scale_y_continuous(expand = c(0, 0))
+}
+
+
+# Define the function to generate the overlaid bar plot
+plot_genes_per_cluster <- function(data, species_input, color, species_name) {
+  
+   # Filter data based on the input species
+  data_species <- data %>% filter(species == species_input)
+  
+  # Check if the data_species is empty or not
+  if(nrow(data_species) == 0) {
+    stop("No data found for the specified species.")
+  }
+  
+  # Summarize the data to calculate the total number of genes per cluster (n_genes_total)
+  cluster_totals <- data_species %>%
+    filter(gene_type == "n_genes_total") %>%
+    group_by(cluster) %>%
+    summarise(total_genes = sum(n_genes), .groups = "drop")
+  
+  # Reorder the 'cluster' variable based on 'n_genes_total' (descending order)
+  data_species$cluster <- factor(data_species$cluster, 
+                                 levels = cluster_totals$cluster[order(cluster_totals$total_genes, decreasing = TRUE)])
+  
+
+  
+  # Create the overlaid bar plot
+  ggplot(data_species, aes(x = factor(cluster), y = n_genes, fill = gene_type)) +
+    geom_bar(stat = "identity", position = "identity") +  # alpha for transparency
+    labs(x = "Cluster", y = "Number of Marker Genes") + #title = paste("Overlaid Barplot for", species_input
+    scale_fill_manual(values = c("n_genes_total" = alpha(color, 0.5), "n_genes_sc" = color), 
+      name = species_name,  # Set the legend title
+      labels = c("Single-Copy Markers", "Total Markers")
+      ) +  # Use the provided color settings
+    global_theme +  # Apply the provided theme
+    geom_text(
+      aes(label = ifelse(gene_type == "n_genes_sc", paste0(round(sc_percentage), "%"), "")),  # Show percentage only for n_genes_sc
+      vjust = -0.4,  # Adjust vertical position (slightly above the bar)
+      size = 2.4,  # Adjust text size
+      alpha = 0.8  # Adjust transparency
+    ) +
+  scale_y_continuous(expand = c(0, 0))
+}
+
+```
+
+```{r}
+# Centralized plot settings
+global_theme <- theme_classic() +
+  theme(
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 10),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    #axis.title = element_text(hjust = 1, vjust = 1),
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    legend.position = c(0.9, 0.9),
+    text = element_text(family = "Arial")
+  )
+
+global_scale <- scale_fill_manual(values=c("#00883A", "gold2", "tomato", "dodgerblue3", "darkorchid3"))
+
+# Generate plots
+p_aip_cpg <- plot_clusters_per_gene(long_cluster_per_gene, "aip", "#00883A", expression(italic("Exaiptasia diaphana")))
+p_spis_cpg <- plot_clusters_per_gene(long_cluster_per_gene, "spis", "gold2", expression(italic("Stylophora pistillata")))
+p_xenia_cpg <- plot_clusters_per_gene(long_cluster_per_gene, "xenia", "tomato", expression(italic("Xenia") * " sp."))
+p_nvec_cpg <- plot_clusters_per_gene(long_cluster_per_gene, "nvec", "dodgerblue3", expression(italic("Nematostella vectensis")))
+
+
+#genes per cluster
+p_aip_gpc <- plot_genes_per_cluster(long_genes_per_cluster, "aip", "#00883A", expression(italic("Exaiptasia diaphana")))
+p_spis_gpc <- plot_genes_per_cluster(long_genes_per_cluster, "spis", "gold2", expression(italic("Stylophora pistillata"))) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1, margin = margin(1, 10, 1, 10)))
+p_xenia_gpc <- plot_genes_per_cluster(long_genes_per_cluster, "xenia", "tomato", expression(italic("Xenia") * " sp."))
+p_nvec_gpc <- plot_genes_per_cluster(long_genes_per_cluster, "nvec", "dodgerblue3", expression(italic("Nematostella vectensis"))) +
+  theme(axis.text.x = element_text(angle =50, hjust = 1, margin = margin(1, 10, 1, 10)))
+
+# Adjust theme settings and collect the legends
+p_aip <- p_aip_gpc + guides(fill = "none") + p_aip_cpg + theme(axis.title.y = element_blank()) # Collect legends across all plots
+
+p_spis <- p_spis_gpc + guides(fill = "none") + p_spis_cpg + theme(axis.title.y = element_blank()) # Collect legends across all plots
+
+p_gpc <- p_aip_gpc / p_spis_gpc / p_xenia_gpc / p_nvec_gpc #+ plot_layout(ncol = 2) + theme(axis.title.y = element_blank()) # Collect legends across all plots
+```
+
+```{r, fig.width=8, fig.height=5}
+# Print the combined plot to inspect
+print(p_aip)
+
+print(p_spis)
+
+print(p_gpc)
+
+p_aip_gpc
+p_spis_gpc + theme(axis.title.x = element_text(margin = margin(-15, 0, 0, 0)))
+p_xenia_gpc
+p_nvec_gpc + theme(axis.title.x = element_text(margin = margin(-15, 0, 0, 0)))
+
+p_aip_cpg
+p_spis_cpg
+p_xenia_cpg
+p_nvec_cpg
+
+
+```
+
+```{r}
+
+# Save plots (if required)
+ggsave("../2_output/0_plots/0_marker_metrics/24_12_12_aiptasia_gpc.png", plot = p_aip_gpc, width = 8, height = 5)
+ggsave("../2_output/0_plots/0_marker_metrics/24_12_12_spis_gpc.png", plot = p_spis_gpc, width = 8, height = 5)
+ggsave("../2_output/0_plots/0_marker_metrics/24_12_12_xenia_gpc.png", plot = p_xenia_gpc, width = 8, height = 5)
+ggsave("../2_output/0_plots/0_marker_metrics/24_12_12_nvec_gpc.png", plot = p_nvec_gpc, width = 8, height = 5)
+
+ggsave("../2_output/0_plots/0_marker_metrics/24_12_12_aiptasia_cpg.png", plot = p_aip_cpg, width = 8, height = 5)
+ggsave("../2_output/0_plots/0_marker_metrics/24_12_12_spis_cpg.png", plot = p_spis_cpg, width = 8, height = 5)
+ggsave("../2_output/0_plots/0_marker_metrics/24_12_12_xenia_cpg.png", plot = p_xenia_cpg, width = 8, height = 5)
+ggsave("../2_output/0_plots/0_marker_metrics/24_12_12_nvec_cpg.png", plot = p_nvec_cpg, width = 8, height = 5)
+
+ggsave("24_12_12_spis_marker_metrics.png", plot = p_spis, width = 8, height = 6)
+
+```
+
+```{r}
+sc_orthologs_ann <- sc_orthologs %>% left_join(fun_ann, by = c("aip_LOC"= "LOC"))
+sc_orth_ann_ah <- sc_orthologs_ann %>% filter(str_detect(aip_cluster, "4"))
+                                               
+```
+# plotting total marker assignment
+```{r, fig.width=8, fig.height=5}
+# Ensure your dataset is loaded and reshaped correctly
+assignment <- read.csv("../assigned_markers.csv")
+assignment <- assignment %>% 
+  pivot_longer(cols = -X, names_to = "species", values_to = "value")
+
+# Plot the bars
+ggplot(assignment, aes(x = species, y = value, fill = species, alpha = X)) +
+  geom_bar(stat = "identity", position = "identity") +  # Use identity for overlay
+  geom_text(aes(label = value), position = position_identity(), vjust = -0.2, alpha = 1, size = 3) +
+  labs(
+    y = "Number of Genes",
+    x = "Species"
+  ) +
+  global_theme + global_scale +  # Optional color palette
+  scale_alpha_manual(values = c(0.65, 1, 0.4)) +  # Adjust alpha levels
+  theme(legend.position = c(0.2, 1.05)) +
+  scale_alpha_manual(
+    values = c(0.65, 1, 0.4),
+    labels = c("Assigned Marker Genes", "Single-Copy Orthologs", "Total Marker Genes")
+  ) +
+  labs(fill = NULL)
+```
+

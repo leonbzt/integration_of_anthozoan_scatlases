@@ -1,0 +1,321 @@
+---
+title: "MacrosynthR_anaylsis"
+author: "L Botzenhardt"
+date: "2024-12-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# Loading
+```{r}
+#load orthogroups
+orthogroups <- read.delim("../2_output/24_11_27_orthogroups_markers.tsv")
+
+
+#Load marker genes
+##Xenia
+#cluster 16 is likely algae-hosting cells https://www.nature.com/articles/s41586-020-2385-7
+xenia_marker <- readRDS("../0_data/1_xenia/cluster_markers.RDS") %>% select(gene, cluster)
+xenia_id2symbol <- read_tsv("../0_data/1_xenia/id2symbol.txt")
+  #replace _ with - to unify with marker genes
+xenia_id2symbol$symbol <- gsub(pattern = "_", replacement = "-", x = xenia_id2symbol$symbol)
+#add gene_id column to xenia marker genes
+xenia_marker <- xenia_marker %>% 
+  left_join(xenia_id2symbol, by = c("gene" = "symbol")) %>% 
+  rename(gene_id = ID) %>% 
+  mutate(cluster = as.numeric(cluster))
+  
+
+##Stylophora, remove spis_ from gene names to unify with orthofinder results
+spis_marker <- read.csv("../0_data/2_stylophora/spis_all_marker_genes_annotated.tsv", header = TRUE, sep = "\t") 
+spis_marker$gene.ID <- gsub("Spis_", "", spis_marker$gene.ID)
+spis_marker$gene.ID <- gsub("(\\d)_(\\d)", "\\1.\\2", spis_marker$gene.ID)
+spis_marker <- spis_marker %>% rename(gene_id = gene.ID) %>% rename (cluster = cell_type) %>% select (gene_id, cluster, PFAM)
+
+#NVEC
+nvec_marker <- read.csv("../0_data/3_nematostella/Aiptasia_orthologs_of_Nematostella_markers - All_markers.csv", header = TRUE, sep = ",")
+
+#Aiptasia
+aip_marker <- read.csv("../0_data/0_aiptasia/24_10_10_clustering_16/Sym_clustering_res_0.5_50dims.markers.tab", header = TRUE, sep = "\t")
+aip_fun_ann <- read.csv("../0_data/0_aiptasia/refseq_Aip1.1.fun_annotations.tsv", header = TRUE, sep = "\t")
+```
+
+# Preprocessing
+##get single_copy orthologs of only a species pair to have more sc_orthologs in total (compared to getting scorth between 4 species)
+### Aiptasia x Xenia
+```{r}
+sc_orthologs_aip_xen <- orthogroups %>% 
+  filter(!is.na(aip) & !is.na(xenia)) %>% 
+  filter(!str_detect(aip, ",")) %>%
+  filter(!str_detect(xenia, ",")) %>% 
+  select(Orthogroup = Orthogroup, aip, xenia) %>%
+  left_join(xenia_marker %>% select(gene_id, cluster), by = c("xenia" = "gene_id")) %>%
+  rename(xenia_cluster = cluster) %>% 
+  left_join(aip_fun_ann %>% select(XP, LOC), by = c("aip" = "XP")) %>%
+  left_join(aip_marker %>% select(gene, cluster), by = c("LOC" = "gene")) %>% 
+  rename(aip_cluster = cluster)
+
+#filter for only genes that are markers
+sc_orthologs_aip_xen <- sc_orthologs_aip_xen %>% 
+  filter(!is.na(aip_cluster) & !is.na(xenia_cluster))
+```
+
+### Aiptasia x Nematostella
+```{r}
+## Aiptasia x Nematostella NVEC hard so far since there is no XP notation
+sc_orthologs_aip_nvec <- orthogroups %>% 
+  filter(!is.na(aip) & !is.na(nvec)) %>% 
+  filter(!str_detect(aip, ",")) %>%
+  filter(!str_detect(nvec, ",")) %>% 
+  select(Orthogroup = Orthogroup, aip, nvec) %>% 
+  left_join(aip_fun_ann %>% select(XP, LOC), by = c("aip" = "XP")) %>%
+  left_join(aip_marker %>% select(gene, cluster), by = c("LOC" = "gene")) %>% 
+  rename(aip_cluster = cluster) %>% 
+  left_join(nvec_marker %>% select(Aip_LOC, cluster), by = c("LOC" = "Aip_LOC")) %>%
+  rename(nvec_cluster = cluster)
+  
+
+sc_orthologs_aip_nvec <- sc_orthologs_aip_nvec %>% 
+  filter (!is.na(aip_cluster) & !is.na(nvec_cluster))
+```
+
+### Aiptasia x Stylophora
+```{r}
+sc_orthologs_aip_spis <- orthogroups %>% 
+  filter(!is.na(aip) & !is.na(spis)) %>% 
+  filter(!str_detect(aip, ",")) %>%
+  filter(!str_detect(spis, ",")) %>% 
+  select(Orthogroup = Orthogroup, aip, spis) %>% 
+  left_join(aip_fun_ann %>% select(XP, LOC), by = c("aip" = "XP")) %>%
+  left_join(aip_marker %>% select(gene, cluster), by = c("LOC" = "gene")) %>% 
+  rename(aip_cluster = cluster) %>%
+  left_join(spis_marker %>% select(gene_id, cluster), by = c("spis" = "gene_id")) %>% 
+  rename(spis_cluster = cluster)
+
+
+#filter for only markers
+sc_orthologs_aip_spis <- sc_orthologs_aip_spis %>% 
+  filter(!is.na(aip_cluster) & !is.na(spis_cluster))
+```
+
+
+## Generating files for MacrosynthR
+### Bed files
+CAPITALIZED species give which species the genes are for of the 2 species comaprison
+```{r}
+###############generate bed files############################################
+########## For aip_spis
+AIP_spis_sc_orth_bed <- sc_orthologs_aip_spis %>% 
+  select(aip_cluster, aip) %>%
+  arrange(aip_cluster) %>% 
+  unique()
+  # split into individual clusters
+
+# Factorize spis_cluster and save the factor levels
+aip_SPIS_sc_orth_bed <- sc_orthologs_aip_spis %>% 
+  select(spis_cluster, spis) %>%
+  arrange(spis_cluster) %>% 
+  unique()
+
+# Save the factor levels in a separate variable for translation
+cell_type_factor <- factor(aip_SPIS_sc_orth_bed$spis_cluster)
+# Translate cell types to numeric
+aip_SPIS_sc_orth_bed <- aip_SPIS_sc_orth_bed %>%
+  mutate(spis_cluster = as.numeric(cell_type_factor))
+# Save the translation
+SPIS_cell_types <- data.frame(
+  cell_type = levels(cell_type_factor),
+  cell_type_number = seq_along(levels(cell_type_factor))
+)
+
+
+############generate bed files for aip_xen
+AIP_xen_sc_orth_bed <- sc_orthologs_aip_xen %>% 
+  select(aip_cluster, aip) %>%
+  arrange(aip_cluster) %>% 
+  unique()
+
+aip_XEN_sc_orth_bed <- sc_orthologs_aip_xen %>% 
+  select(xenia_cluster, xenia) %>%
+  arrange(xenia_cluster) %>% 
+  unique()
+
+
+###############aip x nvec
+AIP_nvec_sc_orth_bed <- sc_orthologs_aip_nvec %>% 
+  select(aip_cluster, aip) %>%
+  arrange(aip_cluster) %>% 
+  unique()
+  # split into individual clusters
+
+# Factorize cell_type and save the factor levels
+aip_NVEC_sc_orth_bed <- sc_orthologs_aip_nvec %>% 
+  select(nvec_cluster, nvec) %>%
+  arrange(nvec_cluster) %>% 
+  unique()
+
+# Save the factor levels in a separate variable for translation
+cell_type_factor <- factor(aip_NVEC_sc_orth_bed$nvec_cluster)
+# Translate cell types to numeric
+aip_NVEC_sc_orth_bed <- aip_NVEC_sc_orth_bed %>%
+  mutate(nvec_cluster = as.numeric(cell_type_factor))
+# Save the translation
+NVEC_cell_types <- data.frame(
+  cell_type = levels(cell_type_factor),
+  cell_type_number = seq_along(levels(cell_type_factor))
+)
+
+
+##### Set ranges to make bed files compatible with MacrosynthR
+# Define start and end points for the ranges
+start_points <- seq(1, 910000, by = 10)  # Start at 1, go up by 10
+end_points <- seq(10, 910000, by = 10)   # End at 10, go up by 10
+# Create a data frame with these two columns
+ranges <- data.frame(
+  start = start_points,
+  end = end_points)
+
+#add reanges to bedfiles
+AIP_spis_sc_orth_bed$a <- ranges$start[1:nrow(AIP_spis_sc_orth_bed)]
+AIP_spis_sc_orth_bed$b <- ranges$end[1:nrow(AIP_spis_sc_orth_bed)]
+AIP_spis_sc_orth_bed <- AIP_spis_sc_orth_bed %>% select(aip_cluster, a, b, aip)
+
+aip_SPIS_sc_orth_bed$a <- ranges$start[1:nrow(aip_SPIS_sc_orth_bed)]
+aip_SPIS_sc_orth_bed$b <- ranges$end[1:nrow(aip_SPIS_sc_orth_bed)]
+aip_SPIS_sc_orth_bed <- aip_SPIS_sc_orth_bed %>% select(spis_cluster, a, b, spis)
+
+AIP_xen_sc_orth_bed$a <- ranges$start[1:nrow(AIP_xen_sc_orth_bed)]
+AIP_xen_sc_orth_bed$b <- ranges$end[1:nrow(AIP_xen_sc_orth_bed)]
+AIP_xen_sc_orth_bed <- AIP_xen_sc_orth_bed %>% select(aip_cluster, a, b, aip)
+
+aip_XEN_sc_orth_bed$a <- ranges$start[1:nrow(aip_XEN_sc_orth_bed)]
+aip_XEN_sc_orth_bed$b <- ranges$end[1:nrow(aip_XEN_sc_orth_bed)]
+aip_XEN_sc_orth_bed <- aip_XEN_sc_orth_bed %>% select(xenia_cluster, a, b, xenia)
+
+AIP_nvec_sc_orth_bed$a <- ranges$start[1:nrow(AIP_nvec_sc_orth_bed)]
+AIP_nvec_sc_orth_bed$b <- ranges$end[1:nrow(AIP_nvec_sc_orth_bed)]
+AIP_nvec_sc_orth_bed <- AIP_nvec_sc_orth_bed %>% select(aip_cluster, a, b, aip)
+
+aip_NVEC_sc_orth_bed$a <- ranges$start[1:nrow(aip_NVEC_sc_orth_bed)]
+aip_NVEC_sc_orth_bed$b <- ranges$end[1:nrow(aip_NVEC_sc_orth_bed)]
+aip_NVEC_sc_orth_bed <- aip_NVEC_sc_orth_bed %>% select(nvec_cluster, a, b, nvec)
+
+
+##################Save files#########################
+###### aip x spis#########
+#orthology
+write_tsv(sc_orthologs_aip_spis %>% select(aip, spis) %>% unique(), "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_Spis_sc.tab", col_names = F)
+#bed files
+write_tsv(AIP_spis_sc_orth_bed, "../2_output/1_macrosynthR/0_pairwise_sc_bed/AIP_vs_Spis_sc.bed", col_names = F)
+write_tsv(aip_SPIS_sc_orth_bed, "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_SPIS_sc.bed", col_names = F)
+
+###### aip x xen#########
+#orthology
+write_tsv(sc_orthologs_aip_xen %>% select(aip, xenia) %>% unique(), "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_Xen_sc.tab", col_names = F)
+#bed files
+write_tsv(AIP_xen_sc_orth_bed, "../2_output/1_macrosynthR/0_pairwise_sc_bed/AIP_vs_Xen_sc.bed", col_names = F)
+write_tsv(aip_XEN_sc_orth_bed, "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_XEN_sc.bed", col_names = F)
+
+###### aip x nvec#########
+#orthology
+write_tsv(sc_orthologs_aip_nvec %>% select(aip, nvec) %>% unique(), "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_Nvec_sc.tab", col_names = F)
+#bed files
+write_tsv(AIP_nvec_sc_orth_bed, "../2_output/1_macrosynthR/0_pairwise_sc_bed/AIP_vs_Nvec_sc.bed", col_names = F)
+write_tsv(aip_NVEC_sc_orth_bed, "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_NVEC_sc.bed", col_names = F)
+
+```
+
+# Plotting
+## Generating Ortholog tables
+
+```{r}
+library(macrosyntR)
+
+aip_spis_orthologs <- load_orthologs(orthologs_table = "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_Spis_sc.tab",
+                                     bedfiles = c("../2_output/1_macrosynthR/0_pairwise_sc_bed/AIP_vs_Spis_sc.bed",
+                                     "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_SPIS_sc.bed"))
+
+aip_xen_orthologs <- load_orthologs(orthologs_table = "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_Xen_sc.tab",
+                                     bedfiles = c("../2_output/1_macrosynthR/0_pairwise_sc_bed/AIP_vs_Xen_sc.bed",
+                                     "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_XEN_sc.bed"))
+
+
+aip_nvec_orthologs <- load_orthologs(orthologs_table = "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_Nvec_sc.tab",
+                                     bedfiles = c("../2_output/1_macrosynthR/0_pairwise_sc_bed/AIP_vs_Nvec_sc.bed",
+                                     "../2_output/1_macrosynthR/0_pairwise_sc_bed/Aip_vs_NVEC_sc.bed"))
+
+
+## Reordering
+# Call the reordering function, test significance and plot it :
+aip_spis_orthologs_reorderd <- reorder_macrosynteny(aip_spis_orthologs)
+aip_spis_macrosyntheny <- compute_macrosynteny(aip_spis_orthologs_reorderd, pvalue_threshold = 0.05)
+
+aip_xen_orthologs_reorderd <- reorder_macrosynteny(aip_xen_orthologs)
+aip_xen_macrosyntheny <- compute_macrosynteny(aip_xen_orthologs_reorderd, pvalue_threshold = 0.001)
+
+aip_nvec_orthologs_reorderd <- reorder_macrosynteny(aip_nvec_orthologs)
+aip_nvec_macrosyntheny <- compute_macrosynteny(aip_nvec_orthologs_reorderd, pvalue_threshold = 0.001)
+
+```
+
+
+## Setting gloabal theme
+```{r}
+global_theme <- theme_classic() +
+  theme(
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 10),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+   # axis.title = element_text(hjust = 1, vjust = 1),
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    text = element_text(family = "Arial"),
+    panel.grid.major = element_line(color = "gray", linewidth = 0.5, linetype = 1),
+    panel.border = element_rect(color = "black", linewidth = 1, linetype = 1, fill = F)
+  )
+
+```
+
+## Aip spis
+"Xenia sp." "Stylophora pistillata" "Aiptasia" expression(italic("Nematostella vectensis"))
+```{r}
+p_aip_spis <- plot_macrosynteny(aip_spis_macrosyntheny) + 
+  ylab(expression(italic("Stylophora pistillata")* " cell type")) + 
+  xlab(expression(italic("Aiptasia") *" cluster")) +
+  global_theme + 
+  theme(legend.position = "left") +
+  scale_y_discrete(
+    breaks = SPIS_cell_types$cell_type_number,
+    labels = SPIS_cell_types$cell_type
+  ) + scale_color_manual(values=c("tomato", "#00883A"))
+p_aip_spis
+```
+## Aip xen
+```{r}
+p_aip_xen <- plot_macrosynteny(aip_xen_macrosyntheny) + 
+  global_theme + 
+  theme(legend.position = "left") + 
+  ylab(expression(italic("Xenia")*" sp. cluster")) + 
+  xlab(expression(italic("Aiptasia")* " cluster")) +
+  scale_color_manual(values=c("tomato", "#00883A"))
+p_aip_xen
+```
+## Aip nvec
+```{r}
+p_aip_nvec <- plot_macrosynteny(aip_nvec_macrosyntheny) + 
+  global_theme + 
+  theme(legend.position = "left") + 
+  ylab(expression(italic("Nematostella vectensis")* " cluster")) + 
+  xlab(expression(italic("Aiptasia")* " cluster")) +
+  scale_y_discrete(
+    breaks = NVEC_cell_types$cell_type_number, 
+    labels = NVEC_cell_types$cell_type)+
+  scale_color_manual(values=c("tomato", "#00883A"))
+p_aip_nvec
+```
+
+

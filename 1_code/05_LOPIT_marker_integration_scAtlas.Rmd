@@ -1,0 +1,244 @@
+---
+title: "LOPIT_scAtlas_integration"
+author: "L Botzenhardt"
+date: "2024-12-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(tidyverse)
+library(Seurat)
+library(patchwork)
+```
+
+#Loading
+
+```{r}
+aip_fun_ann <- read.delim("../0_data/0_aiptasia/refseq_Aip1.1.fun_annotations.tsv")
+#average expression of genes across clusters
+avg_exp <- read.delim("../0_data/5_proteomics/Sym_clustering_res_0.5_50dims.avg_scores.tab", header = TRUE)
+
+#putative lopit cluster markers
+lopit_markers <- read_csv("../0_data/5_proteomics/Possible_symbiosome_marker_genes_LOC.csv")
+
+sym <- readRDS("../0_data/0_aiptasia/24_10_10_clustering_16/Sym_clustering.dims_50.res_05.RDS")
+```
+#Preprocessing
+
+```{r}
+# combine expression w/ clusters
+lopit_expression <- lopit_markers %>% left_join(avg_exp, by = c("LOC" = "gene"))
+
+# reshape data to get a column that contains the 16 clusters
+lopit_expression <- lopit_expression %>% gather(key = "cluster", value = "avg_score", g1:g16)
+lopit_expression$cluster <- gsub("g", "", lopit_expression$cluster) %>% reorder(., as.numeric(.))
+lopit_expression$cluster <- factor(lopit_expression$cluster, levels = c(1:16))
+lopit_expression_4_7_11 <- lopit_expression %>% filter(cluster %in% c(4,7,11))
+lopit_expression_4_7_11_top5_LOC <- lopit_expression_4_7_11 %>% arrange(desc(avg_score)) %>% select(LOC) %>% unique() %>% head(5)
+
+
+lopit_perc_expressed <- DotPlot(sym, features = unique(lopit_markers$LOC))$data[,c("pct.exp", "id", "features.plot")] %>% left_join(unique(lopit_markers), by = c("features.plot" = "LOC"))
+lopit_perc_expressed_4_7_11 <- lopit_perc_expressed %>% filter(id %in% c(4,7,11))
+
+```
+
+#Plotting
+
+```{r}
+# Centralized plot settings
+global_theme <- theme_classic() +
+  theme(
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 10),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    #axis.title = element_text(hjust = 1, vjust = 1),
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    legend.position = c(0.85, 0.9),
+    text = element_text(family = "Arial")
+  )
+
+global_scale <- scale_fill_manual(values=c("#00883A", "gold2", "tomato", "dodgerblue3", "darkorchid3"))
+```
+
+
+```{r}
+# plot with the cluster as x and avg_score as y
+p_lopit_exp <- ggplot(na.omit(lopit_expression), aes(x = cluster, y = avg_score, fill = Marker_Expal4_Curated_v1)) +
+  geom_boxplot(outlier.shape = NA) +
+  global_theme +  global_scale +
+  labs(#title = "Expression of symbiosome markers in scAtlas",
+       x = "Cluster",
+       y = "Average expression score") +
+  scale_y_continuous(limits = c(0, 0.8), expand = c(0, 0)) 
+p_lopit_exp
+
+# save as svg
+p_lopit_exp + theme(legend.position = c(0.9, 0.9))
+```
+
+Plotting top5
+```{r}
+
+lopit_expression_4_7_11_top5 <- lopit_expression_4_7_11 %>% filter(LOC %in% lopit_expression_4_7_11_top5_LOC$LOC) %>%  mutate(LOC_cluster = paste(LOC, cluster, sep = "\nCluster "))
+
+p_lopit_exp_top5 <- ggplot(lopit_expression_4_7_11_top5, aes(x = LOC_cluster, y = avg_score, fill = Marker_Expal4_Curated_v1)) +
+  geom_bar(stat = "identity") +
+  labs(x = "LOC ID and Cluster", y = "Average Expression Score") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Expression Scores for Selected LOCs and Clusters")
+p_lopit_exp_top5
+
+
+p_lopit_exp_top5 <- ggplot(lopit_expression_4_7_11_top5, aes(x = cluster, y = avg_score, fill = Marker_Expal4_Curated_v1)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~LOC) +
+  labs(x = "LOC ID and Cluster", y = "Average Expression Score") +
+  ggtitle("Expression Scores for Selected LOCs and Clusters") + global_theme + global_scale + theme(legend.position = c(0.9, 0.2))
+p_lopit_exp_top5                                                                                               
+```
+
+
+```{r}
+# plot with the cluster as x and avg_score as y
+p_lopit_perc <- ggplot(na.omit(lopit_perc_expressed), aes(x = id, y = pct.exp, fill = Marker_Expal4_Curated_v1)) +
+  geom_boxplot(outlier.shape = NA, alpha = 1) +
+  global_theme + global_scale +
+  labs(x = "Cluster",
+       y = "Percent expressed") +
+  scale_y_continuous(limits = c(0, 40), expand = c(0, 0))
+p_lopit_perc + theme(legend.position = c(0.85, 0.9))
+
+
+p_lopit_perc + theme(legend.position = c(0.9, 0.9))
+
+
+#lopit perc top5 (the top 5 are the same top 5 of the expression (maybe also plot genes?)
+lopit_perc_expressed_4_7_11_top_5 <- lopit_perc_expressed_4_7_11 %>% filter(features.plot %in% lopit_expression_4_7_11_top5_LOC$LOC)
+p_lopit_perc_top5 <- ggplot(lopit_perc_expressed_4_7_11_top_5, aes(x = id, y = pct.exp, fill = Marker_Expal4_Curated_v1)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~features.plot) +
+  labs(x = "LOC ID and Cluster", y = "Percent expressed") + global_theme + global_scale + theme(legend.position = c(0.85, 0.2))
+p_lopit_perc_top5      
+```
+
+
+```{r}
+p_lopit <- ggplot(lopit_expression, aes(x = cluster, y = avg_score)) +
+  geom_boxplot() +
+  global_theme +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title = "Expression of symbiosome markers in LOPITxscAtlas",
+       x = "Cluster",
+       y = "Average expression score")
+p_lopit
+```
+
+
+
+#statistics?
+
+```{r}
+lopit_orths <- lopit_markers %>% left_join(sc_orthologs, by = c("LOC" = "aip_LOC"))
+
+PSAP_LOCs <- c("LOC110232979", "LOC110232999", "LOC110240311") #"LOC110240302"
+
+cathepsin_LOCs <- c("LOC110234324", "LOC110242992") #LOC110252826, LOC110242992, LOC110242988, LOC110242831, LOC110242831
+
+progranulin <- "LOC110244979"
+
+FeaturePlot(sym, features = PSAP_LOCs) + scale_fill_gradient(low = "gray", high = "#00883A")
+  
+PSAPs <- aip_fun_ann %>% filter(LOC %in% PSAP_LOCs) %>% select(LOC, Pfam, KEGG, HumanGene, refseq_desc, pepSize) %>%
+  mutate(subtitle = paste("HumanGene:", HumanGene, "\n" ,"refseq_desc:", refseq_desc, pepSize, "aa")) 
+# Create a FeaturePlot for each LOC
+# Create the plots with improvements
+PSAP_plots <- lapply(1:length(PSAPs$LOC), function(i) {
+  FeaturePlot(sym, features = PSAPs$LOC[i], pt.size = 0.5) +
+    labs(
+      title = PSAPs$LOC[i],  # Set title as the LOC
+      subtitle = PSAPs$subtitle[i]  # Add subtitle
+    ) +
+    coord_fixed() +
+    scale_color_gradient(low = "gray", high = "#00883A") +  # Uniform gradient
+    theme(
+      plot.title = element_text(size = 12, face = "bold"),  # Adjust title size
+      plot.subtitle = element_text(size = 10),  # Adjust subtitle size
+      axis.title = element_blank(),  # Remove axis titles for cleaner look
+      legend.position = "right"  # Align colorbar to the right
+    )
+})
+
+# Combine and wrap the plots
+wrapped_plot <- wrap_plots(PSAP_plots, ncol = 2) +
+  plot_layout(  # Combine legends if needed
+    widths = c(1, 1),     # Adjust the relative widths
+    heights = c(1, 1)     # Adjust the relative heights
+  ) &
+  theme(
+    plot.margin = unit(c(0, 0, 0, 0), "cm"),
+    legend.position = "right",                # Consolidate legend
+    legend.box.margin = margin(0, 0, 0, 0),
+     padding = unit(-3.1, "cm")# Reduce margin around individual plots
+  )  # Collect legends for consistency
+
+# Print the combined plot
+print(wrapped_plot)
+
+DotPlot(sym, features = PSAP_LOCs) + scale_color_gradient(low = "gray90",high = "#00883A") +  theme(axis.title.x = element_blank()) 
+
+FeaturePlot(sym, features = "LOC110232979", label = T) + scale_color_gradient(low = "gray90",high = "#00883A") + theme(axis.text = element_blank()) +
+    labs(title = expression("Prosaposin [LOC110232979]"))
+
+
+
+FeaturePlot(sym, features = "LOC110240311") + scale_color_gradient(low = "gray90",high = "#00883A") + theme(axis.text = element_blank()) +
+    labs(title = expression("Prosaposin [LOC110240311]"))
+
+
+####### cathepsins
+DotPlot(sym, features = cathepsin_LOCs) #+ scale_color_gradient(low = "gray90",high = "#00883A")
+
+p <- FeaturePlot(sym, features = cathepsin_LOCs) + scale_color_gradient(low = "gray90",high = "#00883A") + theme(axis.title.x = element_blank())
+p
+
+FeaturePlot(sym, features = cathepsin_LOCs[1]) + scale_color_gradient(low = "gray90",high = "#00883A") + theme(axis.text = element_blank()) +
+    labs(title = expression("Cathepsin B [LOC110234324]"))
+
+
+
+FeaturePlot(sym, features = c(progranulin, cathepsin_LOCs[1]), blend = T)
+
+
+
+
+## Progranulin
+FeaturePlot(sym, features = progranulin) + scale_color_gradient(low = "gray90",high = "#00883A")+ theme(axis.text = element_blank()) 
+#LOC110235692 NPC2
+FeaturePlot(sym, features = c(progranulin, "LOC110232979"), blend = T)
+
+
+DotPlot(sym, features = c(PSAP_LOCs[1],"LOC110240311", cathepsin_LOCs[1], progranulin)) + scale_color_gradient(low = "gray90",high = "#00883A") + theme(axis.title.x = element_blank())
+
+FeaturePlot(sym, features = c(progranulin, PSAP_LOCs[1]), blend = T) + scale_color_gradient(low = "gray90",high = "#00883A") + theme(axis.title.x = element_blank()) 
+
+
+
+##### Vitellogenin
+vit_LOC <- "LOC110241526"
+FeaturePlot(sym, features = vit_LOC) + scale_color_gradient(low = "gray90",high = "#00883A") + theme(axis.text = element_blank())
+    labs(title = expression("Vitellogenin [LOC110241526]"))
+
+p <- DimPlot(sym) + theme(axis.text = element_blank())
+LabelClusters(p, id = "ident", fontface = "bold", repel = F, size = 4)
+p
+
+####NPC2 
+FeaturePlot(sym, features = "LOC110235692") + scale_color_gradient(low = "gray90",high = "#00883A") + theme(axis.text = element_blank()) +
+    labs(title = expression("NPC2 [LOC110235692]"))
+```
+
+

@@ -1,0 +1,1 @@
+(aip_longest_isoforms_XP_020907177.1:0.397452,(nvec_longest_isoform_XP_048581545.1:0.7549,(nvec_longest_isoform_XP_048581045.1:0.416813,nvec_longest_isoform_XP_032238577.1:0.410267)n2:0.180188)n1:0.397452)n0;

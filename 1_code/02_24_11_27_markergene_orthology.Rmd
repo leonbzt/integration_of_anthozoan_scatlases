@@ -1,0 +1,295 @@
+---
+title: "01_24_11_26_markergene_orthology"
+author: "L Botzenhardt"
+date: "2024-11-27"
+output: html_document
+---
+```{r setup, include=FALSE, eval=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+library(dplyr)
+library(tidyr)
+library(Seurat)
+```
+
+
+### OrthoFinder
+
+put unix command to run OrthoFinder
+
+
+
+# Orthology
+The Orthology was calculated using OrthoFinder from the Proteomes that were filtered to keep only the longest Isoforms, and had duplicated sequences removed. The Orthogroups and Single Copy Orthologs were loaded and processed.
+
+## Loading 
+###Orthogroups and Single Copy Orthologs
+```{r}
+orthogroups <- read_tsv("../0_data/4_OrthoFinder/Results_Jul29/Orthogroups/Orthogroups.tsv")
+orthogroups <- orthogroups %>% 
+  rename(aip = aip_longest_isoforms, nvec = nvec_longest_isoform, spis = spis_longest_isoform_marker, xenia = xenia_longest_isoforms)
+orthogroups$xenia <- gsub("-T[0-9]", "", orthogroups$xenia)
+#Load single copy orthologs from orthofinder run
+sc_orth <- read_tsv("../0_data/4_OrthoFinder/Results_Jul29/Orthogroups/Orthogroups_SingleCopyOrthologues.txt", col_names = F)
+
+```
+### marker genes
+
+```{r}
+####Loading marker genes
+##Xenia
+#cluster 16 is likely algae-hosting cells https://www.nature.com/articles/s41586-020-2385-7
+xenia_marker <- readRDS("../0_data/1_xenia/cluster_markers.RDS")
+xenia_id2symbol <- read_tsv("../0_data/1_xenia/id2symbol.txt")
+#replace _ with - to unify with marker genes
+xenia_id2symbol$symbol <- gsub(pattern = "_", replacement = "-", x = xenia_id2symbol$symbol)
+#add gene_id column to xenia marker genes
+xenia_marker <- xenia_marker %>% 
+  left_join(xenia_id2symbol, by = c("gene" = "symbol"))
+xenia_marker <- rename(xenia_marker, gene_id = ID)
+
+##Stylophora, remove spis_ from gene names to unify with orthofinder results
+spis_marker <- read.csv("../0_data/2_stylophora/spis_all_marker_genes_annotated.tsv", header = TRUE, sep = "\t")
+
+#NVEC
+nvec_marker <- read.csv("../0_data/3_nematostella/Aiptasia_orthologs_of_Nematostella_markers - All_markers.csv", header = TRUE, sep = ",")
+
+#Aiptasia
+aip_marker <- read.csv("../0_data/0_aiptasia/24_10_10_clustering_16/Sym_clustering_res_0.5_50dims.markers.tab", header = TRUE, sep = "\t")
+aip_fun_ann <- read.csv("../0_data/0_aiptasia/refseq_Aip1.1.fun_annotations.tsv", header = TRUE, sep = "\t")
+
+```
+### unifiy spis marker gene names 
+```{r}
+########## Processing ##############
+###Cleaning data
+## clean spis marker gene names, remove "Spis_" and change last underscore to dot
+spis_marker$gene.ID <- gsub("Spis_", "", spis_marker$gene.ID)
+spis_marker$gene.ID <- gsub("(\\d)_(\\d)", "\\1.\\2", spis_marker$gene.ID)
+spis_marker <- rename(spis_marker, gene_id = gene.ID)
+```
+
+
+### add LOC IDs to orthogroups
+```{r}
+#Problem LOC Ids refer to multiple XP IDs
+#mapping of LOC to XP
+aip_fun_ann <- aip_fun_ann %>% select(LOC, XP)
+
+# Split the original_ids column into separate rows for each ID
+df_long <- orthogroups %>%
+  mutate(row_id = row_number()) %>%  # Add a row identifier to help recombine later
+  separate_rows(aip, sep = ",\\s*")  # Split IDs into separate rows
+
+# Perform a left join to map old IDs to new IDs
+df_long_mapped <- df_long %>%
+  left_join(aip_fun_ann, by = c("aip" = "XP"))
+
+# Recombine into a single string per original entry
+df_translated <- df_long_mapped %>%
+  group_by(row_id) %>%
+  summarise(translated_ids = paste(na.omit(LOC), collapse = ", "), .groups = 'drop') %>%
+  select(-row_id)
+
+orthogroups <- orthogroups %>%
+  bind_cols(df_translated)
+
+orthogroups <- orthogroups %>% rename(aip_LOC = translated_ids)
+```
+
+
+
+## Annotating marker genes !!!!Currently reworking!!!
+
+```{r}
+###fill empty cells with NA
+orthogroups$spis <- ifelse(orthogroups$spis == "", NA, orthogroups$spis)
+orthogroups$xenia <- ifelse(orthogroups$xenia == "", NA, orthogroups$xenia)
+orthogroups$aip <- ifelse(orthogroups$aip == "", NA, orthogroups$aip)
+orthogroups$nvec <- ifelse(orthogroups$nvec == "", NA, orthogroups$nvec)
+orthogroups$aip_LOC <- ifelse(orthogroups$aip_LOC == "", NA, orthogroups$aip_LOC)
+```
+
+### Analysis
+### assigning sc ortholog
+```{r}
+orthogroups$single_copy <- ifelse(orthogroups$Orthogroup %in% sc_orth$X1, TRUE, FALSE)
+```
+
+
+### Assign Orthogroup to marker gene lists
+
+Orthogroups were assigned to the marker genes by searching for the gene names in the respective orthogroup columns. The orthogroups were then added to the marker gene lists as a new column.
+This allows for easier filtering and comparison of the marker genes based on their orthogroups.
+
+it could be easier to directly look for marker gene ID in the orthogroups table
+
+```{r}
+########Assign Orthogroup to marker gene lists
+# function to find the Orthogroup for a given marker gene, with column name as an input
+find_orthogroup_for_marker_gene <- function(marker_gene, column_name) {
+  # Dynamically access the specified column in orthogroups
+  gene_list <- orthogroups[[column_name]]
+  # Search for the marker gene in the specified column
+  matching_indices <- grep(marker_gene, gene_list)
+  # Extract the corresponding Orthogroup(s)
+  orthogroups_found <- orthogroups$Orthogroup[matching_indices]
+  # Return the Orthogroup(s) as a comma-separated string
+  paste(orthogroups_found, collapse = ",")
+}
+
+# assign Orthogroup to xenia_marker$ID
+xenia_marker$Orthogroup <- sapply(xenia_marker$gene_id, find_orthogroup_for_marker_gene, column_name = "xenia")
+
+# assign Orthogroup to spis_marker$ID
+spis_marker$Orthogroup <- sapply(spis_marker$gene_id, find_orthogroup_for_marker_gene, column_name = "spis")
+
+# assign Orthogroup to nvec_marker$ID
+nvec_marker$Orthogroup <- sapply(nvec_marker$Aip_XP, find_orthogroup_for_marker_gene, column_name = "aip")
+
+# assign Orthogroup to aip_marker$gene
+aip_marker$Orthogroup <- sapply(aip_marker$gene, find_orthogroup_for_marker_gene, column_name = "aip_LOC")
+
+```
+
+### Assignment of markergenes to Orthogroups table
+The marker genes were assigned to the Orthogroups table by matching the Orthogroup column of the marker genes lists
+```{r}
+############add marker genes and status to orthogroups
+# Function to check if the current orthogroup has any matching marker genes
+check_matching_status <- function(current_orthogroup, marker_orthogroups) {
+    return(current_orthogroup %in% marker_orthogroups)
+}
+
+# Function to get matching genes for the current orthogroup with duplicates removed
+get_matching_genes <- function(current_orthogroup, marker_data, gene_column) {
+    matching_genes <- marker_data[[gene_column]][marker_data$Orthogroup == current_orthogroup]
+    if (length(matching_genes) > 0) {
+        unique_genes <- unique(matching_genes)  # Remove duplicates
+        return(paste(unique_genes, collapse = ", "))
+    } else {
+        return(NA)  # Return NA if no genes match
+    }
+}
+
+# Assuming xenia_marker is a dataframe with columns ID and Orthogroup
+# and orthogroups is a dataframe with a column orthogroup
+
+# Apply the function to check matching status for xenia
+orthogroups$xenia_marker_status <- sapply(orthogroups$Orthogroup, check_matching_status, marker_orthogroups = xenia_marker$Orthogroup)
+
+# Apply the function to get matching genes for xenia
+orthogroups$xenia_marker_genes <- sapply(orthogroups$Orthogroup, get_matching_genes, marker_data = xenia_marker, gene_column = "gene_id")
+
+
+
+# Apply the function to check matching status for spis
+orthogroups$spis_marker_status <- sapply(orthogroups$Orthogroup, check_matching_status, marker_orthogroups = spis_marker$Orthogroup)
+
+# Apply the function to get matching genes for spis
+orthogroups$spis_marker_genes <- sapply(orthogroups$Orthogroup, get_matching_genes, marker_data = spis_marker, gene_column = "gene_id")
+
+
+
+
+# Apply the function to check matching status for nvec
+orthogroups$nvec_marker_status <- sapply(orthogroups$Orthogroup, check_matching_status, marker_orthogroups = nvec_marker$Orthogroup)
+
+# Apply the function to get matching genes for nvec
+orthogroups$nvec_marker_genes <- sapply(orthogroups$Orthogroup, get_matching_genes, marker_data = nvec_marker, gene_column = "Aip_XP")
+
+
+
+# Apply the function to check matching status for aip
+orthogroups$aip_marker_status <- sapply(orthogroups$Orthogroup, check_matching_status, marker_orthogroups = aip_marker$Orthogroup)
+
+# Apply the function to get matching genes for aip
+orthogroups$aip_marker_genes <- sapply(orthogroups$Orthogroup, get_matching_genes, marker_data = aip_marker, gene_column = "gene")
+```
+
+## Single Copy Orthologs
+### Get single copy dataframe
+```{r}
+single_copy_orthologs <- orthogroups %>% 
+  filter(single_copy == TRUE)
+```
+
+### assign cluster ID to single copy orthologs
+```{r}
+#drop marker gene columns that contain now duplicate information
+single_copy_orthologs <- single_copy_orthologs %>% 
+  select(!c(xenia_marker_genes, spis_marker_genes, aip_marker_genes, nvec_marker_genes))
+
+#### Xenia
+#collapse markers to have all clusters in one row
+xenia_marker <- xenia_marker %>% 
+  group_by(gene_id) %>% 
+  summarize(cluster = paste(cluster, collapse = ", "),
+            .groups = "drop")
+
+single_copy_orthologs <- single_copy_orthologs %>% 
+  left_join(xenia_marker %>% rename(xenia_cluster = cluster), by = c("xenia" = "gene_id"))
+
+### Stylophora
+#collapse markers to have all clusters in one row
+spis_marker <- spis_marker %>% 
+  group_by(gene_id) %>% 
+  summarize(cell_type = paste(cell_type, collapse = ", "),
+            .groups = "drop")
+
+single_copy_orthologs <- single_copy_orthologs %>%
+  left_join(spis_marker %>% rename(spis_cell_type = cell_type), by = c("spis" = "gene_id"))
+
+### Nematostella
+#collapse markers to have all clusters in one row
+nvec_marker <- nvec_marker %>%
+  group_by(Aip_LOC) %>% 
+  summarize(cluster = paste(cluster, collapse = ", "),
+            .groups = "drop")
+
+single_copy_orthologs <- single_copy_orthologs %>% 
+  left_join(nvec_marker %>% rename(nvec_cluster = cluster), by = c("aip_LOC" = "Aip_LOC"))
+
+
+### Aiptasia
+#collapse markers to have all clusters in one row
+aip_marker <- aip_marker %>% 
+  group_by(gene) %>% 
+  summarize(cluster = paste(cluster, collapse = ", "),
+            .groups = "drop")
+
+single_copy_orthologs <- single_copy_orthologs %>% 
+  left_join(aip_marker %>% rename(aip_cluster = cluster), by = c("aip_LOC" = "gene"))
+```
+
+### Generate a table with only genes and clusters
+
+```{r}
+sc_orth_gene_cluster <- single_copy_orthologs %>% 
+  select(aip_LOC, aip_cluster, nvec, nvec_cluster, spis, spis_cell_type, xenia, xenia_cluster)
+```
+
+### unname marker gene columns
+```{r}
+orthogroups <- as.data.frame(lapply(orthogroups, unname))
+```
+
+
+# Save data, NAs introduced to .tsv due to coercion, double check or use RDS
+```{r}
+write_tsv(sc_orth_gene_cluster, "../2_output/24_11_27_sc_orth_gene_cluster.tsv")
+write_rds(sc_orth_gene_cluster, "../2_output/24_11_27_sc_orth_gene_cluster.RDS")
+
+write_tsv(orthogroups, "../2_output/24_11_27_orthogroups_markers.tsv")
+write_rds(orthogroups, "../2_output/24_11_27_orthogroups_markers.RDS")
+```
+# check assigned genes
+```{r}
+length(unique(aip_marker$gene))
+length(unique(orthogroups %>% filter(aip_marker_status == T) %>% select(aip_LOC) %>% unlist()))
+
+length(unique(spis_marker$gene_id))
+length(unique(orthogroups %>% filter(spis_marker_status == T) %>% select(spis) %>% unlist()))
+```
+

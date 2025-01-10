@@ -1,0 +1,1 @@
+(xenia_longest_isoforms_Xe_002850-T1:0.242726,(spis_longest_isoform_marker_XP_022788475.1:0.189606,(nvec_longest_isoform_XP_032236339.1:0.117959,aip_longest_isoforms_XP_020914315.1:0.093028)n2:0.038686)n1:0.242726)n0;

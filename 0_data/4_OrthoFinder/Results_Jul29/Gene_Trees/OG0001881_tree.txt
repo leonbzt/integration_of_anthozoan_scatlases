@@ -1,0 +1,1 @@
+(aip_longest_isoforms_XP_028517849.1:0.237934,(aip_longest_isoforms_XP_020912563.2:0.145177,(aip_longest_isoforms_XP_028518349.1:0.179067,(aip_longest_isoforms_XP_020907951.1:0.272557,((aip_longest_isoforms_XP_028514292.1:0.434318,aip_longest_isoforms_XP_028514299.1:0.352458):0.525836,aip_longest_isoforms_XP_028516351.1:0.699955):0.248324):0.159834):0.053778):0.237934);
